@@ -1,0 +1,17 @@
+project:
+  type: website
+
+website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Publications"
+        contents:
+          - page1.qmd
+          - page2.qmd
+      - section: "Lectures"
+        contents:
+          - page3.qmd
+          - page4.qmd
+          - page5.qmd

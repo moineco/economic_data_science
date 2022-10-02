@@ -1,0 +1,31 @@
+{
+    "id": "2F5D43F4",
+    "path": "~/Dropbox/quarto_my_website/Personal website/index.qmd",
+    "project_path": "index.qmd",
+    "type": "quarto_markdown",
+    "hash": "4123215214",
+    "contents": "",
+    "dirty": false,
+    "created": 1663624646800.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "152:0",
+        "cursorPosition": "4,37",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1664679079,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1664679079932,
+    "read_only": false,
+    "read_only_alternatives": []
+}
