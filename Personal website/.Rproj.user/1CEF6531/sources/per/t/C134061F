@@ -1,9 +1,9 @@
 {
     "id": "C134061F",
-    "path": "~/Dropbox/quarto_my_website/Personal website/_quarto.yml",
+    "path": "~/Dropbox/git_working_directory_3/git_quarto_trial_website/Personal website/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "3350731972",
+    "hash": "2371160464",
     "contents": "",
     "dirty": false,
     "created": 1663624647191.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "9,17",
+        "cursorPosition": "2,18",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1663628270,
+    "lastKnownWriteTime": 1664679672,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663628270857,
+    "last_content_update": 1664679672745,
     "read_only": false,
     "read_only_alternatives": []
 }
