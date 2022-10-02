@@ -2,9 +2,13 @@
 title: "Journal Articles"
 ---
 
+## 2022
+
 1. Islam, M., Zhang, B., and Managi, S. (2022). The tradeoff between natural capital and other capitals in Pakistan. Sustainability Science (forthcoming). <https://doi.org/10.1007/s11625-022-01143-w>
 
 2. Managi, S., Islam, M., Saito, O. et al. (2022). Valuation of nature and nature’s contributions to people. Sustainability Science, 17, 701-705. <https://doi.org/10.1007/s11625-022-01140-z>
+
+## 2021
 
 3. Islam, M., and Managi, S. (2021). Valuation of Nature’s Contribution in Ladakh, India: An Inclusive Wealth Method. Sustainability Science, 17, 905-918. <https://doi.org/10.1007/s11625-021-01030-w>
 
@@ -18,6 +22,8 @@ title: "Journal Articles"
 
 8. Simangan, D., Virji, H., Hendrix, C., Islam, M., Kaneko, S., Ma, Y., Mechler, R., Pangotra, P., Peters, K., Sharifi, A. and Shams, S. (2021). A co-designed heuristic guide for investigating the peace-sustainability nexus in the context of global change. Sustainability Science, 16, 1097-1109. <https://doi.org/10.1007/s11625-021-00970-7>
 
+## 2020
+
 9. Essandoh, O. K., Islam, M., and Kakinaka, M. (2020). Linking international trade and foreign direct investment to CO2 emissions: Any differences between developed and developing countries? Science of The Total Environment, 712, 136437. <https://doi.org/10.1016/j.scitotenv.2019.136437>
 
 10. Jingyu, W., Yuping B., Yihzong W., Zhihui L., Xiangzheng D., Islam M., and Managi S. (2020). Measuring inclusive wealth of China: Advances in sustainable use of resources. Journal of Environmental Management, 264, 110328. <https://doi.org/10.1016/j.jenvman.2020.110328>
@@ -27,6 +33,8 @@ title: "Journal Articles"
 12. Coulibaly, T., Islam, M., and Managi, S. (2020). The Impacts of climate change and natural disasters on agriculture in African countries. Economics of Disasters and Climate Change, 4, 347-363. <https://doi.org/10.1007/s41885-019-00057-9>
 
 13. Coulibaly, T., Wakamatsu, M., Islam, M., Fukai, H., Managi, S. and Zhang, B. (2020). Differences in water policy efficacy across South African water management areas (2020). Ecological Economics, 175, 106707. <https://doi.org/10.1016/j.ecolecon.2020.106707>
+
+## 2019
 
 14. Islam, M., and Managi, S. (2019). Green growth and pro-environmental behavior: Sustainable resource management using natural capital accounting in India. Resources, Conservation and Recycling, 145, 126-138. <https://doi.org/10.1016/j.resconrec.2019.02.027>
 
@@ -38,6 +46,8 @@ title: "Journal Articles"
 
 18. Ying Lee, C., Lotsu, S., Islam, M., Yoshida, Y., and Kaneko, S. (2019). The Impact of an energy efficiency improvement policy on the economic performance of electricity-intensive firms in Ghana. Energies, 12, 3684. <https://doi.org/10.3390/en12193684>
 
+## 2018
+
 19. Islam, M., Yamaguchi, R., Sugiawan, Y., and Managi, S. (2018). Valuing natural capital and ecosystem services: A literature review. Sustainability Science, 14, 159-174. <https://doi.org/10.1007/s11625-018-0597-7>
 
 20. Islam, M., and Managi, S. (2018). Sustainable adaptation to multiple water risks in agriculture: Evidence from Bangladesh. Sustainability (Switzerland), 10(6). <https://doi.org/10.3390/su10061734>
@@ -46,9 +56,13 @@ title: "Journal Articles"
 
 22. Tolliver, C., Islam, M., Shin, K., and Managi, S. (2018). The impact of energy security risks on energy consumption. International Journal of Innovation and Sustainable Development, 12, 258–270. <https://doi.org/10.1504/IJISD.2018.091522>
 
+## 2017
+
 23. Sugiawan, Y., Islam, M., and Managi, S. (2017). Global marine fisheries with environmental sustainability. Economic Analysis and Policy, 55, 158-168. <https://doi.org/10.1016/j.eap.2017.08.004>
 
 24. Rajapaksa, D., Islam, M., and Managi, S. (2017). Natural capital depletion: The impact of natural disasters on inclusive growth. Economics of Disasters and Climate Change, 1, 233–244. <https://doi.org/10.1007/s41885-017-0009-y>
+
+## 2016
 
 25. Islam, M., Kanemoto, K., and Managi, S. (2016). Impact of trade openness and sector trade on embodied greenhouse gases emissions and air pollutants. Journal of Industrial Ecology, 20, 494-505. <https://doi.org/10.1111/jiec.12455>
 
