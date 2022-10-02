@@ -19,3 +19,9 @@ website:
           - page3.qmd
           - page4.qmd
           - page5.qmd
+          
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
