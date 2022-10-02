@@ -9,7 +9,7 @@ website:
     contents:
       - section: "Publications"
         contents:
-          - page1.qmd
+          - journal.qmd
           - page2.qmd
       - section: "Lectures"
         contents:
