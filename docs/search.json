@@ -1,79 +1,23 @@
 [
   {
-    "objectID": "journal.html",
-    "href": "journal.html",
-    "title": "Journal Articles",
+    "objectID": "chapter_1.html",
+    "href": "chapter_1.html",
+    "title": "Chapter 1",
     "section": "",
-    "text": "Islam, M., Zhang, B., and Managi, S. (2022). The tradeoff between natural capital and other capitals in Pakistan. Sustainability Science (forthcoming). https://doi.org/10.1007/s11625-022-01143-w\nManagi, S., Islam, M., Saito, O. et al. (2022). Valuation of nature and nature’s contributions to people. Sustainability Science, 17, 701-705. https://doi.org/10.1007/s11625-022-01140-z"
+    "text": "This chapter focuses on ggplot2, one of the core packages in the tidyverse. Load the tidyverse by running:\npacman::p_load(\"tidyverse\",\n               \"ggthemes\"\n               )\nWe will use penguins data frame. A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). penguins contains 344 observations.\npenguins &lt;- read.csv(\"data/penguins.csv\")\nglimpse(penguins)\n\nRows: 344\nColumns: 9\n$ rowid             &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…\n$ species           &lt;chr&gt; \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"Adelie\", \"A…\n$ island            &lt;chr&gt; \"Torgersen\", \"Torgersen\", \"Torgersen\", \"Torgersen\", …\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;chr&gt; \"male\", \"female\", \"female\", NA, \"female\", \"male\", \"f…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\nview(penguins)"
+  },
+  {
+    "objectID": "chapter_1.html#creating-a-ggplot",
+    "href": "chapter_1.html#creating-a-ggplot",
+    "title": "Chapter 1",
+    "section": "Creating a ggplot",
+    "text": "Creating a ggplot\nLet’s recreate this plot step-by-step.\nWith ggplot2, you begin a plot with the function ggplot(), defining a plot object that you then add layers to. The first argument of ggplot() is the dataset to use in the graph and so ggplot(data = penguins) creates an empty graph that is primed to display the penguins data, but since we haven’t told it how to visualize it yet, for now it’s empty. This is not a very exciting plot, but you can think of it like an empty canvas you’ll paint the remaining layers of your plot onto.\n\nggplot(data = penguins)\n\n\n\n\nNext, we need to tell ggplot() how the information from our data will be visually represented. The mapping argument of the ggplot() function defines how variables in your dataset are mapped to visual properties (aesthetics) of your plot. The mapping argument is always defined in the aes() function, and the x and y arguments of aes() specify which variables to map to the x and y axes. For now, we will only map flipper length to the x aesthetic and body mass to the y aesthetic. ggplot2 looks for the mapped variables in the data argument, in this case, penguins.\nThe following plot shows the result of adding these mappings.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n)\n\n\n\n\nOur empty canvas now has more structure – it’s clear where flipper lengths will be displayed (on the x-axis) and where body masses will be displayed (on the y-axis). But the penguins themselves are not yet on the plot. This is because we have not yet articulated, in our code, how to represent the observations from our data frame on our plot.\nTo do so, we need to define a geom: the geometrical object that a plot uses to represent data. These geometric objects are made available in ggplot2 with functions that start with geom_. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms (geom_bar()), line charts use line geoms (geom_line()), boxplots use boxplot geoms (geom_boxplot()), scatterplots use point geoms (geom_point()), and so on.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point()\n\nWarning: Removed 2 rows containing missing values (`geom_point()`).\n\n\n\n\n\nNow we have something that looks like what we might think of as a “scatterplot”. It doesn’t yet match our “ultimate goal” plot.\nWe’re seeing the warning message because there are two penguins in our dataset with missing body mass and/or flipper length values and ggplot2 has no way of representing them on the plot without both of these values.\nLet’s incorporate species into our plot and see if this reveals any additional insights into the apparent relationship between these variables. We will do this by representing species with different colored points.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)\n) +\n  geom_point()\n\n\n\n\nNow let’s add one more layer: a smooth curve displaying the relationship between body mass and flipper length.\nSince this is a new geometric object representing our data, we will add a new geom as a layer on top of our point geom: geom_smooth(). And we will specify that we want to draw the line of best fit based on a linear model with method = “lm”.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\nWhen aesthetic mappings are defined in ggplot(), at the global level, they’re passed down to each of the subsequent geom layers of the plot. However, each geom function in ggplot2 can also take a mapping argument, which allows for aesthetic mappings at the local level that are added to those inherited from the global level. Since we want points to be colored based on species but don’t want the lines to be separated out for them, we should specify color = species for geom_point() only.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point(mapping = aes(color = species)) +\n  geom_smooth(method = \"lm\")\n\n\n\n\nIt’s generally not a good idea to represent information using only colors on a plot, as people perceive colors differently due to color blindness or other color vision differences. Therefore, in addition to color, we can also map species to the shape aesthetic.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point(mapping = aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\")\n\n\n\n\nAnd finally, we can improve the labels of our plot using the labs() function in a new layer. Some of the arguments to labs() might be self explanatory: title adds a title and subtitle adds a subtitle to the plot. Other arguments match the aesthetic mappings, x is the x-axis label, y is the y-axis label, and color and shape define the label for the legend. In addition, we can improve the color palette to be colorblind safe with the scale_color_colorblind() function from the ggthemes package.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point(aes(color = species, shape = species)) +\n  geom_smooth(method = \"lm\") +\n  labs(\n    title = \"Body mass and flipper length\",\n    subtitle = \"Dimensions for Adelie, Chinstrap, and Gentoo Penguins\",\n    x = \"Flipper length (mm)\", y = \"Body mass (g)\",\n    color = \"Species\", shape = \"Species\"\n  ) +\n  scale_color_colorblind()"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Moinul Islam",
+    "title": "Preface",
     "section": "",
-    "text": "I am Dr. Moinul Islam, working as an assistant professor at Kochi University of Technology. I have received my Ph.D. in engineering degree from Kyushu University in 2016. My research focuses are:\nI have extensive experience to conduct experimental research by using the methods of online experiment, field experiment and laboratory experiment. Based on the experimental data analysis, my goal is to identify and develop suitable policy framework that will contribute to the policies for sustainable environments and societies."
-  },
-  {
-    "objectID": "index.html#working-experience",
-    "href": "index.html#working-experience",
-    "title": "Moinul Islam",
-    "section": "Working experience",
-    "text": "Working experience\n\n2020, Assistant Professor, Research Institute for Future Design, Kochi University of Technology, Kochi, Japan\n2019, Assistant Professor, Graduate School for International Development and Cooperation (IDEC), Hiroshima University, Hiroshima, Japan\n2016, Assistant Professor, Graduate School of Urban and Environmental Engineering, Kyushu University, Fukuoka, Japan\n2012, Research Assistant, Graduate School of Environmental Studies, Tohoku University, Sendai, Japan"
-  },
-  {
-    "objectID": "index.html#affiliation",
-    "href": "index.html#affiliation",
-    "title": "Moinul Islam",
-    "section": "Affiliation",
-    "text": "Affiliation\n\nResearch Institute for Future Design, Kochi University of Technology, 2-22 Eikokuji, Kochi City, Kochi 780-8515, Japan\nSchool of Economics and Management, Kochi University of Technology, 2-22 Eikokuji, Kochi City, Kochi 780-8518, Japan\nUrban Institute, Kyushu University, Fukuoka, Japan"
-  },
-  {
-    "objectID": "index.html#skills",
-    "href": "index.html#skills",
-    "title": "Moinul Islam",
-    "section": "Skills",
-    "text": "Skills\n\nComputer programs\nR, Python\nSTATA, EViews\nArcGIS, QGIS\noTree, zTree\nGNU Emacs\n\n\nLanguage\nEnglish (Fluent), Japanese (Fluent), Hindi (Fluent), Bengali (Native)"
-  },
-  {
-    "objectID": "journal.html#section-1",
-    "href": "journal.html#section-1",
-    "title": "Journal Articles",
-    "section": "2021",
-    "text": "2021\n\nIslam, M., and Managi, S. (2021). Valuation of Nature’s Contribution in Ladakh, India: An Inclusive Wealth Method. Sustainability Science, 17, 905-918. https://doi.org/10.1007/s11625-021-01030-w\nN’dri, L., Islam, M., and Kakinaka, M. (2021). ICT and environmental sustainability: Any differences in developing countries? Journal of Cleaner Production, 297, 126642. https://doi.org/10.1016/j.jclepro.2021.126642\nBadamvaanchig, M., Islam, M., and Kakinaka, M. (2021). Pass-through of commodity price to Mongolian stock price: Symmetric or asymmetric? Resources Policy, 70, 101955. https://doi.org/10.1016/j.resourpol.2020.101955\nHongsakhone, S., Islam, M., and Ichihashi, M. (2021). Producing a village input-output table (VIOT) from household survey data: A case study of a VIOT for a rural village in northern Lao PDR. Journal of Economic Structures, 10, 1-24. https://doi.org/10.1186/s40008-020-00231-3\nSharifi, A., Simangan, D., Lee, C. Y., Reyes, S. R. C., Katramiz, T., Josol, J. C. C., &Islam, M. (2021). Climate-induced stressors to peace: A review of recent literature. Environmental Research Letters, 16, 073006. https://doi.org/10.1088/1748-9326/abfc08\nSimangan, D., Virji, H., Hendrix, C., Islam, M., Kaneko, S., Ma, Y., Mechler, R., Pangotra, P., Peters, K., Sharifi, A. and Shams, S. (2021). A co-designed heuristic guide for investigating the peace-sustainability nexus in the context of global change. Sustainability Science, 16, 1097-1109. https://doi.org/10.1007/s11625-021-00970-7"
-  },
-  {
-    "objectID": "journal.html#section-2",
-    "href": "journal.html#section-2",
-    "title": "Journal Articles",
-    "section": "2020",
-    "text": "2020\n\nEssandoh, O. K., Islam, M., and Kakinaka, M. (2020). Linking international trade and foreign direct investment to CO2 emissions: Any differences between developed and developing countries? Science of The Total Environment, 712, 136437. https://doi.org/10.1016/j.scitotenv.2019.136437\nJingyu, W., Yuping B., Yihzong W., Zhihui L., Xiangzheng D., Islam M., and Managi S. (2020). Measuring inclusive wealth of China: Advances in sustainable use of resources. Journal of Environmental Management, 264, 110328. https://doi.org/10.1016/j.jenvman.2020.110328\nHotak, S., Islam, M., Kakinaka, M. and Kotani, K. (2020). Carbon emissions and carbon trade balances: International evidence from panel ARDL analysis. Environmental Science and Pollution Research, 27, 24115-24128. https://doi.org/10.1007/s11356-020-08478-w\nCoulibaly, T., Islam, M., and Managi, S. (2020). The Impacts of climate change and natural disasters on agriculture in African countries. Economics of Disasters and Climate Change, 4, 347-363. https://doi.org/10.1007/s41885-019-00057-9\nCoulibaly, T., Wakamatsu, M., Islam, M., Fukai, H., Managi, S. and Zhang, B. (2020). Differences in water policy efficacy across South African water management areas (2020). Ecological Economics, 175, 106707. https://doi.org/10.1016/j.ecolecon.2020.106707"
-  },
-  {
-    "objectID": "journal.html#section-3",
-    "href": "journal.html#section-3",
-    "title": "Journal Articles",
-    "section": "2019",
-    "text": "2019\n\nIslam, M., and Managi, S. (2019). Green growth and pro-environmental behavior: Sustainable resource management using natural capital accounting in India. Resources, Conservation and Recycling, 145, 126-138. https://doi.org/10.1016/j.resconrec.2019.02.027\nManagi, S., Islam, M., Saito, O., Stenseke, M., Dziba, L., Lavorel, S., Pascual, U., and Hashimoto, S. (2019). Valuation of nature and nature’s contributions to people. Sustainability Science, 1463-1465. https://doi.org/10.1007/s11625-019-00732-6\nIslam, M., Kanemoto, K., and Managi, S. (2019). Growth potential for CO2 emissions transfer by tariff reduction. Environmental Research Letters, 14, 024011. https://iopscience.iop.org/article/10.1088/1748-9326/aaf688/meta\nYamaguchi, R., Islam, M., and Managi, S. (2019). Inclusive wealth in the 21st century. Letters in Spatial and Resource Sciences, 12, 101-111. (https://doi.org/10.1007/s12076-019-00229-x)\nYing Lee, C., Lotsu, S., Islam, M., Yoshida, Y., and Kaneko, S. (2019). The Impact of an energy efficiency improvement policy on the economic performance of electricity-intensive firms in Ghana. Energies, 12, 3684. https://doi.org/10.3390/en12193684"
-  },
-  {
-    "objectID": "journal.html#section-4",
-    "href": "journal.html#section-4",
-    "title": "Journal Articles",
-    "section": "2018",
-    "text": "2018\n\nIslam, M., Yamaguchi, R., Sugiawan, Y., and Managi, S. (2018). Valuing natural capital and ecosystem services: A literature review. Sustainability Science, 14, 159-174. https://doi.org/10.1007/s11625-018-0597-7\nIslam, M., and Managi, S. (2018). Sustainable adaptation to multiple water risks in agriculture: Evidence from Bangladesh. Sustainability (Switzerland), 10(6). https://doi.org/10.3390/su10061734\nRajapaksa, D., Islam, M., and Managi, S. (2018). Pro-environmental behavior: The role of public perception in infrastructure and the social factors for sustainable development. Sustainability (Switzerland), 10, 937. https://doi.org/10.3390/su10040937\nTolliver, C., Islam, M., Shin, K., and Managi, S. (2018). The impact of energy security risks on energy consumption. International Journal of Innovation and Sustainable Development, 12, 258–270. https://doi.org/10.1504/IJISD.2018.091522"
-  },
-  {
-    "objectID": "journal.html#section-5",
-    "href": "journal.html#section-5",
-    "title": "Journal Articles",
-    "section": "2017",
-    "text": "2017\n\nSugiawan, Y., Islam, M., and Managi, S. (2017). Global marine fisheries with environmental sustainability. Economic Analysis and Policy, 55, 158-168. https://doi.org/10.1016/j.eap.2017.08.004\nRajapaksa, D., Islam, M., and Managi, S. (2017). Natural capital depletion: The impact of natural disasters on inclusive growth. Economics of Disasters and Climate Change, 1, 233–244. https://doi.org/10.1007/s41885-017-0009-y"
-  },
-  {
-    "objectID": "journal.html#section-6",
-    "href": "journal.html#section-6",
-    "title": "Journal Articles",
-    "section": "2016",
-    "text": "2016\n\nIslam, M., Kanemoto, K., and Managi, S. (2016). Impact of trade openness and sector trade on embodied greenhouse gases emissions and air pollutants. Journal of Industrial Ecology, 20, 494-505. https://doi.org/10.1111/jiec.12455\nIslam, M., Kotani, K., and Managi, S. (2016). Climate perception and flood mitigation cooperation: A Bangladesh case study. Economic Analysis and Policy, 49, 117-133. https://doi.org/10.1016/j.eap.2016.01.001\nIslam, M., and Kotani, K. (2016). Changing seasonality in Bangladesh. Regional Environmental Change, 16, 585-590. https://doi.org/10.1007/s10113-015-0758-5"
+    "text": "Preface\nData Science"
   }
 ]

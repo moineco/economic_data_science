@@ -7,18 +7,19 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Profile"
+      - index.qmd
+      - section: "Section 1"
         contents: 
-          - index.qmd
-      - section: "Publications"
+          - chapter_1.qmd
+      - section: "Section 2"
         contents:
-          - journal.qmd
-          - page2.qmd
-      - section: "Lectures"
+          - chapter_2.qmd
+          - chapter_3.qmd
+      - section: "Section 3"
         contents:
-          - page3.qmd
-          - page4.qmd
-          - page5.qmd
+          - chapter_4.qmd
+          - chapter_5.qmd
+          - chapter_6.qmd
           
 format:
   html:
