@@ -1,4 +1,52 @@
 ---
 title: "Chapter 2"
 ---
+# More on ggplot2
+
+Load necessary packages for this chapter:
+
+
+```{r}
+pacman::p_load("tidyverse",
+               "ggthemes"
+               )
+```
+
+We will use the `penguins` data set which contains 344 observations.
+
+```{r}
+penguins <- read.csv("data/penguins.csv")
+```
+
+As we move on from these introductory sections, we’ll transition to a more concise expression of ggplot2 code. So far we’ve been very explicit, which is helpful when you are learning:
+
+Expression 1:
+
+```{r}
+#| warning: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+```
+Typically, the first one or two arguments to a function are so important that you should know them by heart. The first two arguments to ggplot() are data and mapping, in the remainder of the book, we won’t supply those names. That saves typing, and, by reducing the amount of extra text, makes it easier to see what’s different between plots.
+
+Expression 2:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+```
+We can also use the pipe, |>, which will allow you to create that plot.
+
+Expression 3:
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+```
 
