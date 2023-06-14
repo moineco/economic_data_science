@@ -1,29 +1,26 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
-website:
-  sidebar:
-    style: "docked"
-    search: true
-    contents:
-      - index.qmd
-      - section: "Section 1"
-        contents: 
-          - chapter_1.qmd
-      - section: "Section 2"
-        contents:
-          - chapter_2.qmd
-          - chapter_3.qmd
-      - section: "Section 3"
-        contents:
-          - chapter_4.qmd
-          - chapter_5.qmd
-          - chapter_6.qmd
-          
+book:
+  title: "Data Science"
+  author: "Moinul Islam"
+  date: "5/1/2023"
+  chapters:
+    - index.qmd
+    - chapter_1.qmd
+    - chapter_2.qmd
+    - chapter_3.qmd
+    - chapter_4.qmd
+    - chapter_5.qmd
+    - chapter_6.qmd
+#bibliography: development_economics.bib
+
 format:
   html:
     theme: cosmo
-    css: styles.css
-    toc: true
-   
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
