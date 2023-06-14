@@ -15,7 +15,7 @@ book:
     - chapter_5.qmd
     - chapter_6.qmd
     - references.qmd
-#bibliography: development_economics.bib
+bibliography: data_science.bib
 
 format:
   html:
