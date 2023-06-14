@@ -1,6 +1,5 @@
----
-title: "Chapter 2"
----
+#Chapter 2
+
 # More on ggplot2
 
 Load necessary packages for this chapter:
