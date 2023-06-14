@@ -3,7 +3,6 @@
 ```{r}
 #| warning: false
 #| message: false
-#| echo: false
 pacman::p_load(ggVennDiagram,
                ggplot2)
 ```
