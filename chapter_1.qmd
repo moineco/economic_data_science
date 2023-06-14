@@ -1,5 +1,4 @@
-#Chapter 1
-
+#Basics of ggplot2
 
 This chapter focuses on *ggplot2*, one of the core packages in the *tidyverse*.
 Load the tidyverse by running:

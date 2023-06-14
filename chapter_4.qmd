@@ -1,3 +1,91 @@
----
-title: "Chapter 4"
----
+# Create simple vann diagram by using R
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+pacman::p_load(ggVennDiagram,
+               ggplot2)
+```
+
+## Basic 2D Vann diagram:
+
+```{r}
+#| warning: false
+#| message: false
+x <- list(A = 1:5, B = 2:7)
+ggVennDiagram(x)
+```
+
+## 3D Venn diagram:
+
+If you pass a list with three elements you will get some Venn diagram like the following
+
+```{r}
+#| warning: false
+#| message: false
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x)
+```
+
+## Changing the colors of the diagram
+
+-   As `ggVennDiagram` is based on `ggplot2` you can add more layers or override the ones existing. In order to change the colors use `scale_fill_gradient` as in the following example:
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF") 
+```
+
+-   The border can also be customized but making use of color argument. The line width and line style can be changed with `lwd` and `lty`, respectively.
+
+## Labels and group names
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, category.names = c("A",
+                                    "B",
+                                    "C"))
+```
+
+-   Labels with percentages
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, 
+              label = "percent",
+              category.names = c("A",
+                                    "B",
+                                    "C")) 
+```
+
+-   Remove the labels
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, 
+              label = "none",
+              category.names = c("A",
+                                    "B",
+                                    "C")) 
+```
+
+-Customize the legend
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x) + 
+  guides(fill = guide_legend(title = "Title")) +
+  theme(legend.title = element_text(color = "black"),
+        legend.position = "bottom") 
+```
+
+## 4D Venn diagram
+
+You can also pass a list with up to four different elements.
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10, D = 8:15)
+ggVennDiagram(x)
+```
