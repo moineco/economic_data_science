@@ -82,5 +82,19 @@
     "title": "4  Create simple vann diagram by using R",
     "section": "4.5 4D Venn diagram",
     "text": "4.5 4D Venn diagram\nYou can also pass a list with up to four different elements.\n\nx &lt;- list(A = 1:5, B = 2:7, C = 5:10, D = 8:15)\nggVennDiagram(x)"
+  },
+  {
+    "objectID": "chapter_5.html",
+    "href": "chapter_5.html",
+    "title": "5  Data",
+    "section": "",
+    "text": "6 The Simple Regression Model"
+  },
+  {
+    "objectID": "chapter_5.html#chapter-9-more-on-specification-and-data-issues",
+    "href": "chapter_5.html#chapter-9-more-on-specification-and-data-issues",
+    "title": "5  Data",
+    "section": "12.1 Chapter 9: More on Specification and Data Issues",
+    "text": "12.1 Chapter 9: More on Specification and Data Issues\n\n12.1.1 Example 9.8: R&D Intensity and Firm Size\n\\[rdintens = \\beta_0 + \\beta_1sales + \\beta_2profmarg + \\mu\\]\nFrom Businessweek R&D Scoreboard, October 25, 1991. Load the data and estimate the model.\n\nall_rdchem &lt;- lm(rdintens ~ sales + profmarg, data = rdchem)\n\nPlotting the data reveals the outlier on the far right of the plot, which will skew the results of our model.\n\n\n\n\n\nSo, we can estimate the model without that data point to gain a better understanding of how sales and profmarg describe rdintens for most firms. We can use the subset argument of the linear model function to indicate that we only want to estimate the model using data that is less than the highest sales.\n\nsmallest_rdchem &lt;- lm(rdintens ~ sales + profmarg, data = rdchem, \n                      subset = (sales &lt; max(sales)))\n\nThe table below compares the results of both models side by side. By removing the outlier firm, \\(sales\\) become a more significant determination of R&D expenditures.\n============================================================== Dependent variable:\n—————————————— rdintens\n(1) (2)\n————————————————————– sales 0.00005 (0.00004) 0.00019** (0.00008) profmarg 0.04462 (0.04618) 0.04784 (0.04448)\nConstant 2.62526*** (0.58553) 2.29685*** (0.59180) ————————————————————– Observations 32 31\nR2 0.07612 0.17281\nAdjusted R2 0.01240 0.11372\nResidual Std. Error 1.86205 (df = 29) 1.79218 (df = 28)\nF Statistic 1.19465 (df = 2; 29) 2.92476* (df = 2; 28) ============================================================== Note: p&lt;0.1; p&lt;0.05; p&lt;0.01"
   }
 ]
