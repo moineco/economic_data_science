@@ -29,7 +29,7 @@ wage1 <- read.csv("data/wage1.csv")
 ```
 
 
-## The Simple Regression Model
+##  Chapter 2: The Simple Regression Model
 
 ### **`Example 2.10:` A Log Wage Equation**
 
