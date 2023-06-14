@@ -1,3 +1,4 @@
+# Regression models
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(error = TRUE)
@@ -28,7 +29,7 @@ wage1 <- read.csv("data/wage1.csv")
 ```
 
 
-# The Simple Regression Model
+## The Simple Regression Model
 
 ### **`Example 2.10:` A Log Wage Equation**
 
@@ -74,7 +75,7 @@ summary(log_wage_model)
 
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text", log_wage_model, single.row = TRUE, header = FALSE, digits = 5)
+stargazer(type = "html", log_wage_model, single.row = TRUE, header = FALSE, digits = 5)
 ```
 
 Plot the $log($`wage`$)$ vs `educ`. The blue line represents the least squares fit.
@@ -89,7 +90,7 @@ abline(log_wage_model, col = "blue", lwd=2)
 rug(wage1$lwage, side=2, col="darkgreen")
 ```
 
-# Chapter 3: Multiple Regression Analysis: Estimation
+## Chapter 3: Multiple Regression Analysis: Estimation
 
 ### **`Example 3.2:` Hourly Wage Equation**
 
@@ -145,7 +146,7 @@ barplot(sort(100*hourly_wage_model$coefficients[-1]), horiz=TRUE, las=1,
         ylab = " ", main = "Coefficients of Hourly Wage Equation")
 ```
 
-# Chapter 4: Multiple Regression Analysis: Inference
+## Chapter 4: Multiple Regression Analysis: Inference
 
 ### **`Example 4.1` Hourly Wage Equation**
 
@@ -157,7 +158,7 @@ summary(hourly_wage_model)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text", hourly_wage_model,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html", hourly_wage_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
 For the years of experience variable, or `exper`, use coefficient and Standard Error 
@@ -287,7 +288,7 @@ summary(linear_model)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text", linear_model, single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html", linear_model, single.row = TRUE, header = FALSE, digits=5)
 ```
 
 
@@ -301,7 +302,7 @@ arrows(graph, coefficient, graph, confidence[,1], angle=90, length=0.55, col="bl
 arrows(graph, coefficient, graph, confidence[,2], angle=90, length=0.55, col="blue", lwd=2)
 ```
 
-# Chapter 5: Multiple Regression Analysis: OLS Asymptotics
+## Chapter 5: Multiple Regression Analysis: OLS Asymptotics
 
 ### **`Example 5.1:` Housing Prices and Distance From an Incinerator**
 
@@ -347,7 +348,7 @@ summary(price_area_model)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",price_dist_model, price_area_model,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",price_dist_model, price_area_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
  Graphing illustrates the larger coefficient for `area`.
@@ -364,7 +365,7 @@ plot(y = hprice3$lprice, x = hprice3$larea, frame = FALSE, main = "Log(square fo
 abline(lm(lprice ~ larea, data=hprice3), col = "blue", lwd=2)
 ```
 
-# Chapter 6: Multiple Regression: Further Issues
+## Chapter 6: Multiple Regression: Further Issues
 
 ### **`Example 6.1:` Effects of Pollution on Housing Prices, standardized.**
 
@@ -411,7 +412,7 @@ summary(housing_standardized)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",housing_level, housing_standardized,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",housing_level, housing_standardized,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
 ### **`Example 6.2:` Effects of Pollution on Housing Prices, Quadratic Interactive Term**
@@ -433,7 +434,7 @@ summary(housing_model_6.2)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text", housing_model_4.5 , housing_model_6.2, single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html", housing_model_4.5 , housing_model_6.2, single.row = TRUE, header = FALSE, digits=5)
 ```
 
 Estimate the minimum turning point at which the `rooms` interactive term changes
@@ -484,7 +485,7 @@ axis(side = 1, at = c(min(hprice2$rooms), 4, 5, 6, 7, 8, max(hprice2$rooms)))
 lines(sort(hprice2$rooms), sort(fitted(rooms_interaction)), col = "red", lwd=2.5)
 ```
 
-# Chapter 7: Multiple Regression Analysis with Qualitative Information 
+## Chapter 7: Multiple Regression Analysis with Qualitative Information 
 ### **`Example 7.4:` Housing Price Regression, Qualitative Binary variable**
 
 This time, use the `hrprice1` data. 
@@ -537,10 +538,10 @@ summary(housing_qualitative)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",housing_qualitative,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",housing_qualitative,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 8: Heteroskedasticity
+## Chapter 8: Heteroskedasticity
 ### **`Example 8.9:` Determinants of Personal Computer Ownership**
 
 $$\widehat{PC} = \beta_0 + \beta_1hsGPA + \beta_2ACT + \beta_3parcoll + \beta_4colonial $$
@@ -561,7 +562,7 @@ GPA_WLS <- lm(PC ~ hsGPA + ACT + parcoll, data = gpa1, weights = 1/weights)
 Compare the OLS and WLS model in the table below:
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",GPA_OLS, GPA_WLS,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",GPA_OLS, GPA_WLS,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
 ## Chapter 9: More on Specification and Data Issues
@@ -595,10 +596,10 @@ The table below compares the results of both models side by side. By removing th
 
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",all_rdchem, smallest_rdchem,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",all_rdchem, smallest_rdchem,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 10: Basic Regression Analysis with Time Series Data
+## Chapter 10: Basic Regression Analysis with Time Series Data
 
 ### **`Example 10.2:` Effects of Inflation and Deficits on Interest Rates**
 
@@ -631,7 +632,7 @@ tbill_model <- lm(Tbill3mo ~ cpi + deficit, data = intdef.xts)
 
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",tbill_model, single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",tbill_model, single.row = TRUE, header = FALSE, digits=5)
 ```
 
 Now lets update the example with current data, pull from the Federal Reserve Economic Research (FRED) using the [quantmod package](https://CRAN.R-project.org/package=quantmod). Other than the convenient API, the package also formats time series data into [xts: eXtensible Time Series](https://CRAN.R-project.org/package=xts) objects, which add many feature and benefits when working with time series.
@@ -691,10 +692,10 @@ updated_model <- lm(TB3MS ~ inflation + deficit, data = intdef_updated)
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 updated_model <- lm(TB3MS ~ inflation + deficit, data = intdef_updated)
-stargazer(type = "text", updated_model, single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html", updated_model, single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 11: Further Issues in Using OLS with with Time Series Data
+## Chapter 11: Further Issues in Using OLS with with Time Series Data
 
 ### **`Example 11.7:` Wages and Productivity**
 
@@ -710,10 +711,10 @@ wage_diff <- lm(diff(lhrwage) ~ diff(loutphr), data = earns)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",wage_time, wage_diff,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",wage_time, wage_diff,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions
+## Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions
 
 ### **`Example 12.8:` Heteroskedasticity and the Efficient Markets Hypothesis**
 
@@ -734,7 +735,7 @@ mu2_hat_model <- lm(return_mu^2 ~ return_1, data = return_AR1$model)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",return_AR1, mu2_hat_model,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",return_AR1, mu2_hat_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
 ### **`Example 12.9:` ARCH in Stock Returns**
@@ -751,10 +752,10 @@ arch_model <- lm(mu2_hat ~ mu2_hat_1)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",arch_model, single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",arch_model, single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods
+## Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods
 
 ### **`Example 13.7:` Effect of Drunk Driving Laws on Traffic Fatalities**
 
@@ -766,10 +767,10 @@ DD_model <- lm(cdthrte ~ copen + cadmn, data = traffic1)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",DD_model,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",DD_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-# Chapter 18: Advanced Time Series Topics
+## Chapter 18: Advanced Time Series Topics
 
 ### **`Example 18.8:` FORECASTING THE U.S. UNEMPLOYMENT RATE**
 
@@ -791,7 +792,7 @@ unem_inf_VAR1 <- lm(unem ~ unem_1 + inf_1, data = phillips_train)
 ```
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
-stargazer(type = "text",unem_AR1, unem_inf_VAR1,  single.row = TRUE, header = FALSE, digits=5)
+stargazer(type = "html",unem_AR1, unem_inf_VAR1,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
 Now, use the `subset` argument to create our testing data set containing observation after 1996.

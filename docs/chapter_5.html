@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science and Economics - 5&nbsp; Data</title>
+<title>Data Science and Economics - 5&nbsp; Regression models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression models</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_5.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -192,60 +192,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-simple-regression-model" id="toc-the-simple-regression-model" class="nav-link active" data-scroll-target="#the-simple-regression-model"><span class="header-section-number">6</span> The Simple Regression Model</a>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data"><span class="header-section-number">5.1</span> Data</a></li>
+  <li><a href="#the-simple-regression-model" id="toc-the-simple-regression-model" class="nav-link" data-scroll-target="#the-simple-regression-model"><span class="header-section-number">5.2</span> The Simple Regression Model</a>
   <ul class="collapse">
-  <li><a href="#example-2.10-a-log-wage-equation" id="toc-example-2.10-a-log-wage-equation" class="nav-link" data-scroll-target="#example-2.10-a-log-wage-equation"><span class="header-section-number">6.0.1</span> <strong><code>Example 2.10:</code> A Log Wage Equation</strong></a></li>
+  <li><a href="#example-2.10-a-log-wage-equation" id="toc-example-2.10-a-log-wage-equation" class="nav-link" data-scroll-target="#example-2.10-a-log-wage-equation"><span class="header-section-number">5.2.1</span> <strong><code>Example 2.10:</code> A Log Wage Equation</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-3-multiple-regression-analysis-estimation" id="toc-chapter-3-multiple-regression-analysis-estimation" class="nav-link" data-scroll-target="#chapter-3-multiple-regression-analysis-estimation"><span class="header-section-number">7</span> Chapter 3: Multiple Regression Analysis: Estimation</a>
+  <li><a href="#chapter-3-multiple-regression-analysis-estimation" id="toc-chapter-3-multiple-regression-analysis-estimation" class="nav-link" data-scroll-target="#chapter-3-multiple-regression-analysis-estimation"><span class="header-section-number">5.3</span> Chapter 3: Multiple Regression Analysis: Estimation</a>
   <ul class="collapse">
-  <li><a href="#example-3.2-hourly-wage-equation" id="toc-example-3.2-hourly-wage-equation" class="nav-link" data-scroll-target="#example-3.2-hourly-wage-equation"><span class="header-section-number">7.0.1</span> <strong><code>Example 3.2:</code> Hourly Wage Equation</strong></a></li>
+  <li><a href="#example-3.2-hourly-wage-equation" id="toc-example-3.2-hourly-wage-equation" class="nav-link" data-scroll-target="#example-3.2-hourly-wage-equation"><span class="header-section-number">5.3.1</span> <strong><code>Example 3.2:</code> Hourly Wage Equation</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-4-multiple-regression-analysis-inference" id="toc-chapter-4-multiple-regression-analysis-inference" class="nav-link" data-scroll-target="#chapter-4-multiple-regression-analysis-inference"><span class="header-section-number">8</span> Chapter 4: Multiple Regression Analysis: Inference</a>
+  <li><a href="#chapter-4-multiple-regression-analysis-inference" id="toc-chapter-4-multiple-regression-analysis-inference" class="nav-link" data-scroll-target="#chapter-4-multiple-regression-analysis-inference"><span class="header-section-number">5.4</span> Chapter 4: Multiple Regression Analysis: Inference</a>
   <ul class="collapse">
-  <li><a href="#example-4.1-hourly-wage-equation" id="toc-example-4.1-hourly-wage-equation" class="nav-link" data-scroll-target="#example-4.1-hourly-wage-equation"><span class="header-section-number">8.0.1</span> <strong><code>Example 4.1</code> Hourly Wage Equation</strong></a></li>
-  <li><a href="#example-4.7-effect-of-job-training-on-firm-scrap-rates" id="toc-example-4.7-effect-of-job-training-on-firm-scrap-rates" class="nav-link" data-scroll-target="#example-4.7-effect-of-job-training-on-firm-scrap-rates"><span class="header-section-number">8.0.2</span> <strong><code>Example 4.7</code> Effect of Job Training on Firm Scrap Rates</strong></a></li>
+  <li><a href="#example-4.1-hourly-wage-equation" id="toc-example-4.1-hourly-wage-equation" class="nav-link" data-scroll-target="#example-4.1-hourly-wage-equation"><span class="header-section-number">5.4.1</span> <strong><code>Example 4.1</code> Hourly Wage Equation</strong></a></li>
+  <li><a href="#example-4.7-effect-of-job-training-on-firm-scrap-rates" id="toc-example-4.7-effect-of-job-training-on-firm-scrap-rates" class="nav-link" data-scroll-target="#example-4.7-effect-of-job-training-on-firm-scrap-rates"><span class="header-section-number">5.4.2</span> <strong><code>Example 4.7</code> Effect of Job Training on Firm Scrap Rates</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-5-multiple-regression-analysis-ols-asymptotics" id="toc-chapter-5-multiple-regression-analysis-ols-asymptotics" class="nav-link" data-scroll-target="#chapter-5-multiple-regression-analysis-ols-asymptotics"><span class="header-section-number">9</span> Chapter 5: Multiple Regression Analysis: OLS Asymptotics</a>
+  <li><a href="#chapter-5-multiple-regression-analysis-ols-asymptotics" id="toc-chapter-5-multiple-regression-analysis-ols-asymptotics" class="nav-link" data-scroll-target="#chapter-5-multiple-regression-analysis-ols-asymptotics"><span class="header-section-number">5.5</span> Chapter 5: Multiple Regression Analysis: OLS Asymptotics</a>
   <ul class="collapse">
-  <li><a href="#example-5.1-housing-prices-and-distance-from-an-incinerator" id="toc-example-5.1-housing-prices-and-distance-from-an-incinerator" class="nav-link" data-scroll-target="#example-5.1-housing-prices-and-distance-from-an-incinerator"><span class="header-section-number">9.0.1</span> <strong><code>Example 5.1:</code> Housing Prices and Distance From an Incinerator</strong></a></li>
+  <li><a href="#example-5.1-housing-prices-and-distance-from-an-incinerator" id="toc-example-5.1-housing-prices-and-distance-from-an-incinerator" class="nav-link" data-scroll-target="#example-5.1-housing-prices-and-distance-from-an-incinerator"><span class="header-section-number">5.5.1</span> <strong><code>Example 5.1:</code> Housing Prices and Distance From an Incinerator</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-6-multiple-regression-further-issues" id="toc-chapter-6-multiple-regression-further-issues" class="nav-link" data-scroll-target="#chapter-6-multiple-regression-further-issues"><span class="header-section-number">10</span> Chapter 6: Multiple Regression: Further Issues</a>
+  <li><a href="#chapter-6-multiple-regression-further-issues" id="toc-chapter-6-multiple-regression-further-issues" class="nav-link" data-scroll-target="#chapter-6-multiple-regression-further-issues"><span class="header-section-number">5.6</span> Chapter 6: Multiple Regression: Further Issues</a>
   <ul class="collapse">
-  <li><a href="#example-6.1-effects-of-pollution-on-housing-prices-standardized." id="toc-example-6.1-effects-of-pollution-on-housing-prices-standardized." class="nav-link" data-scroll-target="#example-6.1-effects-of-pollution-on-housing-prices-standardized."><span class="header-section-number">10.0.1</span> <strong><code>Example 6.1:</code> Effects of Pollution on Housing Prices, standardized.</strong></a></li>
-  <li><a href="#example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" id="toc-example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" class="nav-link" data-scroll-target="#example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term"><span class="header-section-number">10.0.2</span> <strong><code>Example 6.2:</code> Effects of Pollution on Housing Prices, Quadratic Interactive Term</strong></a></li>
+  <li><a href="#example-6.1-effects-of-pollution-on-housing-prices-standardized." id="toc-example-6.1-effects-of-pollution-on-housing-prices-standardized." class="nav-link" data-scroll-target="#example-6.1-effects-of-pollution-on-housing-prices-standardized."><span class="header-section-number">5.6.1</span> <strong><code>Example 6.1:</code> Effects of Pollution on Housing Prices, standardized.</strong></a></li>
+  <li><a href="#example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" id="toc-example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" class="nav-link" data-scroll-target="#example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term"><span class="header-section-number">5.6.2</span> <strong><code>Example 6.2:</code> Effects of Pollution on Housing Prices, Quadratic Interactive Term</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-7-multiple-regression-analysis-with-qualitative-information" id="toc-chapter-7-multiple-regression-analysis-with-qualitative-information" class="nav-link" data-scroll-target="#chapter-7-multiple-regression-analysis-with-qualitative-information"><span class="header-section-number">11</span> Chapter 7: Multiple Regression Analysis with Qualitative Information</a>
+  <li><a href="#chapter-7-multiple-regression-analysis-with-qualitative-information" id="toc-chapter-7-multiple-regression-analysis-with-qualitative-information" class="nav-link" data-scroll-target="#chapter-7-multiple-regression-analysis-with-qualitative-information"><span class="header-section-number">5.7</span> Chapter 7: Multiple Regression Analysis with Qualitative Information</a>
   <ul class="collapse">
-  <li><a href="#example-7.4-housing-price-regression-qualitative-binary-variable" id="toc-example-7.4-housing-price-regression-qualitative-binary-variable" class="nav-link" data-scroll-target="#example-7.4-housing-price-regression-qualitative-binary-variable"><span class="header-section-number">11.0.1</span> <strong><code>Example 7.4:</code> Housing Price Regression, Qualitative Binary variable</strong></a></li>
+  <li><a href="#example-7.4-housing-price-regression-qualitative-binary-variable" id="toc-example-7.4-housing-price-regression-qualitative-binary-variable" class="nav-link" data-scroll-target="#example-7.4-housing-price-regression-qualitative-binary-variable"><span class="header-section-number">5.7.1</span> <strong><code>Example 7.4:</code> Housing Price Regression, Qualitative Binary variable</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-8-heteroskedasticity" id="toc-chapter-8-heteroskedasticity" class="nav-link" data-scroll-target="#chapter-8-heteroskedasticity"><span class="header-section-number">12</span> Chapter 8: Heteroskedasticity</a>
+  <li><a href="#chapter-8-heteroskedasticity" id="toc-chapter-8-heteroskedasticity" class="nav-link" data-scroll-target="#chapter-8-heteroskedasticity"><span class="header-section-number">5.8</span> Chapter 8: Heteroskedasticity</a>
   <ul class="collapse">
-  <li><a href="#example-8.9-determinants-of-personal-computer-ownership" id="toc-example-8.9-determinants-of-personal-computer-ownership" class="nav-link" data-scroll-target="#example-8.9-determinants-of-personal-computer-ownership"><span class="header-section-number">12.0.1</span> <strong><code>Example 8.9:</code> Determinants of Personal Computer Ownership</strong></a></li>
-  <li><a href="#chapter-9-more-on-specification-and-data-issues" id="toc-chapter-9-more-on-specification-and-data-issues" class="nav-link" data-scroll-target="#chapter-9-more-on-specification-and-data-issues"><span class="header-section-number">12.1</span> Chapter 9: More on Specification and Data Issues</a>
-  <ul class="collapse">
-  <li><a href="#example-9.8-rd-intensity-and-firm-size" id="toc-example-9.8-rd-intensity-and-firm-size" class="nav-link" data-scroll-target="#example-9.8-rd-intensity-and-firm-size"><span class="header-section-number">12.1.1</span> <strong><code>Example 9.8:</code> R&amp;D Intensity and Firm Size</strong></a></li>
+  <li><a href="#example-8.9-determinants-of-personal-computer-ownership" id="toc-example-8.9-determinants-of-personal-computer-ownership" class="nav-link" data-scroll-target="#example-8.9-determinants-of-personal-computer-ownership"><span class="header-section-number">5.8.1</span> <strong><code>Example 8.9:</code> Determinants of Personal Computer Ownership</strong></a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#chapter-10-basic-regression-analysis-with-time-series-data" id="toc-chapter-10-basic-regression-analysis-with-time-series-data" class="nav-link" data-scroll-target="#chapter-10-basic-regression-analysis-with-time-series-data"><span class="header-section-number">13</span> Chapter 10: Basic Regression Analysis with Time Series Data</a>
+  <li><a href="#chapter-9-more-on-specification-and-data-issues" id="toc-chapter-9-more-on-specification-and-data-issues" class="nav-link" data-scroll-target="#chapter-9-more-on-specification-and-data-issues"><span class="header-section-number">5.9</span> Chapter 9: More on Specification and Data Issues</a>
   <ul class="collapse">
-  <li><a href="#example-10.2-effects-of-inflation-and-deficits-on-interest-rates" id="toc-example-10.2-effects-of-inflation-and-deficits-on-interest-rates" class="nav-link" data-scroll-target="#example-10.2-effects-of-inflation-and-deficits-on-interest-rates"><span class="header-section-number">13.0.1</span> <strong><code>Example 10.2:</code> Effects of Inflation and Deficits on Interest Rates</strong></a></li>
+  <li><a href="#example-9.8-rd-intensity-and-firm-size" id="toc-example-9.8-rd-intensity-and-firm-size" class="nav-link" data-scroll-target="#example-9.8-rd-intensity-and-firm-size"><span class="header-section-number">5.9.1</span> <strong><code>Example 9.8:</code> R&amp;D Intensity and Firm Size</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-11-further-issues-in-using-ols-with-with-time-series-data" id="toc-chapter-11-further-issues-in-using-ols-with-with-time-series-data" class="nav-link" data-scroll-target="#chapter-11-further-issues-in-using-ols-with-with-time-series-data"><span class="header-section-number">14</span> Chapter 11: Further Issues in Using OLS with with Time Series Data</a>
+  <li><a href="#chapter-10-basic-regression-analysis-with-time-series-data" id="toc-chapter-10-basic-regression-analysis-with-time-series-data" class="nav-link" data-scroll-target="#chapter-10-basic-regression-analysis-with-time-series-data"><span class="header-section-number">5.10</span> Chapter 10: Basic Regression Analysis with Time Series Data</a>
   <ul class="collapse">
-  <li><a href="#example-11.7-wages-and-productivity" id="toc-example-11.7-wages-and-productivity" class="nav-link" data-scroll-target="#example-11.7-wages-and-productivity"><span class="header-section-number">14.0.1</span> <strong><code>Example 11.7:</code> Wages and Productivity</strong></a></li>
+  <li><a href="#example-10.2-effects-of-inflation-and-deficits-on-interest-rates" id="toc-example-10.2-effects-of-inflation-and-deficits-on-interest-rates" class="nav-link" data-scroll-target="#example-10.2-effects-of-inflation-and-deficits-on-interest-rates"><span class="header-section-number">5.10.1</span> <strong><code>Example 10.2:</code> Effects of Inflation and Deficits on Interest Rates</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" id="toc-chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" class="nav-link" data-scroll-target="#chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions"><span class="header-section-number">15</span> Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions</a>
+  <li><a href="#chapter-11-further-issues-in-using-ols-with-with-time-series-data" id="toc-chapter-11-further-issues-in-using-ols-with-with-time-series-data" class="nav-link" data-scroll-target="#chapter-11-further-issues-in-using-ols-with-with-time-series-data"><span class="header-section-number">5.11</span> Chapter 11: Further Issues in Using OLS with with Time Series Data</a>
   <ul class="collapse">
-  <li><a href="#example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" id="toc-example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" class="nav-link" data-scroll-target="#example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis"><span class="header-section-number">15.0.1</span> <strong><code>Example 12.8:</code> Heteroskedasticity and the Efficient Markets Hypothesis</strong></a></li>
-  <li><a href="#example-12.9-arch-in-stock-returns" id="toc-example-12.9-arch-in-stock-returns" class="nav-link" data-scroll-target="#example-12.9-arch-in-stock-returns"><span class="header-section-number">15.0.2</span> <strong><code>Example 12.9:</code> ARCH in Stock Returns</strong></a></li>
+  <li><a href="#example-11.7-wages-and-productivity" id="toc-example-11.7-wages-and-productivity" class="nav-link" data-scroll-target="#example-11.7-wages-and-productivity"><span class="header-section-number">5.11.1</span> <strong><code>Example 11.7:</code> Wages and Productivity</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" id="toc-chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" class="nav-link" data-scroll-target="#chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods"><span class="header-section-number">16</span> Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods</a>
+  <li><a href="#chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" id="toc-chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" class="nav-link" data-scroll-target="#chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions"><span class="header-section-number">5.12</span> Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions</a>
   <ul class="collapse">
-  <li><a href="#example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" id="toc-example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" class="nav-link" data-scroll-target="#example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities"><span class="header-section-number">16.0.1</span> <strong><code>Example 13.7:</code> Effect of Drunk Driving Laws on Traffic Fatalities</strong></a></li>
+  <li><a href="#example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" id="toc-example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" class="nav-link" data-scroll-target="#example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis"><span class="header-section-number">5.12.1</span> <strong><code>Example 12.8:</code> Heteroskedasticity and the Efficient Markets Hypothesis</strong></a></li>
+  <li><a href="#example-12.9-arch-in-stock-returns" id="toc-example-12.9-arch-in-stock-returns" class="nav-link" data-scroll-target="#example-12.9-arch-in-stock-returns"><span class="header-section-number">5.12.2</span> <strong><code>Example 12.9:</code> ARCH in Stock Returns</strong></a></li>
   </ul></li>
-  <li><a href="#chapter-18-advanced-time-series-topics" id="toc-chapter-18-advanced-time-series-topics" class="nav-link" data-scroll-target="#chapter-18-advanced-time-series-topics"><span class="header-section-number">17</span> Chapter 18: Advanced Time Series Topics</a>
+  <li><a href="#chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" id="toc-chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" class="nav-link" data-scroll-target="#chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods"><span class="header-section-number">5.13</span> Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods</a>
   <ul class="collapse">
-  <li><a href="#example-18.8-forecasting-the-u.s.-unemployment-rate" id="toc-example-18.8-forecasting-the-u.s.-unemployment-rate" class="nav-link" data-scroll-target="#example-18.8-forecasting-the-u.s.-unemployment-rate"><span class="header-section-number">17.0.1</span> <strong><code>Example 18.8:</code> FORECASTING THE U.S. UNEMPLOYMENT RATE</strong></a></li>
+  <li><a href="#example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" id="toc-example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" class="nav-link" data-scroll-target="#example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities"><span class="header-section-number">5.13.1</span> <strong><code>Example 13.7:</code> Effect of Drunk Driving Laws on Traffic Fatalities</strong></a></li>
+  </ul></li>
+  <li><a href="#chapter-18-advanced-time-series-topics" id="toc-chapter-18-advanced-time-series-topics" class="nav-link" data-scroll-target="#chapter-18-advanced-time-series-topics"><span class="header-section-number">5.14</span> Chapter 18: Advanced Time Series Topics</a>
+  <ul class="collapse">
+  <li><a href="#example-18.8-forecasting-the-u.s.-unemployment-rate" id="toc-example-18.8-forecasting-the-u.s.-unemployment-rate" class="nav-link" data-scroll-target="#example-18.8-forecasting-the-u.s.-unemployment-rate"><span class="header-section-number">5.14.1</span> <strong><code>Example 18.8:</code> FORECASTING THE U.S. UNEMPLOYMENT RATE</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -255,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Regression models</span></h1>
 </div>
 
 
@@ -278,6 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               quantmod,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               xts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="data" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="data"><span class="header-section-number">5.1</span> Data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>earns <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/earns.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gpa1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/gpa1.csv"</span>)</span>
@@ -291,10 +294,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>traffic1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/traffic1.csv"</span>)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/wage1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="the-simple-regression-model" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> The Simple Regression Model</h1>
-<section id="example-2.10-a-log-wage-equation" class="level3" data-number="6.0.1">
-<h3 data-number="6.0.1" class="anchored" data-anchor-id="example-2.10-a-log-wage-equation"><span class="header-section-number">6.0.1</span> <strong><code>Example 2.10:</code> A Log Wage Equation</strong></h3>
+</section>
+<section id="the-simple-regression-model" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-simple-regression-model"><span class="header-section-number">5.2</span> The Simple Regression Model</h2>
+<section id="example-2.10-a-log-wage-equation" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="example-2.10-a-log-wage-equation"><span class="header-section-number">5.2.1</span> <strong><code>Example 2.10:</code> A Log Wage Equation</strong></h3>
 <p>Load the <code>wage1</code> data and check out the documentation. The documentation indicates these are data from the 1976 Current Population Survey, collected by Henry Farber when he and Wooldridge were colleagues at MIT in 1988.</p>
 <p><strong><span class="math inline">\(educ\)</span>:</strong> years of education</p>
 <p><strong><span class="math inline">\(wage\)</span>:</strong> average hourly earnings</p>
@@ -317,15 +321,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_wage_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— lwage<br>
-———————————————– educ 0.08274*** (0.00757)<br>
-Constant 0.58377*** (0.09734)<br>
-———————————————– Observations 526<br>
-R2 0.18581<br>
-Adjusted R2 0.18425<br>
-Residual Std. Error 0.48008 (df = 524)<br>
-F Statistic 119.58160*** (df = 1; 524) =============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+lwage
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+educ
+</td>
+<td>
+0.08274<sup>***</sup> (0.00757)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.58377<sup>***</sup> (0.09734)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+526
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.18581
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.18425
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.48008 (df = 524)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+119.58160<sup>***</sup> (df = 1; 524)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>Plot the <span class="math inline">\(log(\)</span><code>wage</code><span class="math inline">\()\)</span> vs <code>educ</code>. The blue line represents the least squares fit.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -334,10 +433,10 @@ F Statistic 119.58160*** (df = 1; 524) =========================================
 </div>
 </section>
 </section>
-<section id="chapter-3-multiple-regression-analysis-estimation" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Chapter 3: Multiple Regression Analysis: Estimation</h1>
-<section id="example-3.2-hourly-wage-equation" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="example-3.2-hourly-wage-equation"><span class="header-section-number">7.0.1</span> <strong><code>Example 3.2:</code> Hourly Wage Equation</strong></h3>
+<section id="chapter-3-multiple-regression-analysis-estimation" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="chapter-3-multiple-regression-analysis-estimation"><span class="header-section-number">5.3</span> Chapter 3: Multiple Regression Analysis: Estimation</h2>
+<section id="example-3.2-hourly-wage-equation" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="example-3.2-hourly-wage-equation"><span class="header-section-number">5.3.1</span> <strong><code>Example 3.2:</code> Hourly Wage Equation</strong></h3>
 <p>Check the documentation for variable information</p>
 <p><strong><span class="math inline">\(lwage\)</span>:</strong> log of the average hourly earnings</p>
 <p><strong><span class="math inline">\(educ\)</span>:</strong> years of education</p>
@@ -398,25 +497,134 @@ F Statistic 119.58160*** (df = 1; 524) =========================================
 </div>
 </section>
 </section>
-<section id="chapter-4-multiple-regression-analysis-inference" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Chapter 4: Multiple Regression Analysis: Inference</h1>
-<section id="example-4.1-hourly-wage-equation" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="example-4.1-hourly-wage-equation"><span class="header-section-number">8.0.1</span> <strong><code>Example 4.1</code> Hourly Wage Equation</strong></h3>
+<section id="chapter-4-multiple-regression-analysis-inference" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="chapter-4-multiple-regression-analysis-inference"><span class="header-section-number">5.4</span> Chapter 4: Multiple Regression Analysis: Inference</h2>
+<section id="example-4.1-hourly-wage-equation" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="example-4.1-hourly-wage-equation"><span class="header-section-number">5.4.1</span> <strong><code>Example 4.1</code> Hourly Wage Equation</strong></h3>
 <p>Using the same model estimated in <strong><code>example: 3.2</code></strong>, examine and compare the standard errors associated with each coefficient. Like the textbook, these are contained in parenthesis next to each associated coefficient.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hourly_wage_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— lwage<br>
-———————————————– educ 0.09203*** (0.00733)<br>
-exper 0.00412** (0.00172)<br>
-tenure 0.02207*** (0.00309)<br>
-Constant 0.28436*** (0.10419)<br>
-———————————————– Observations 526<br>
-R2 0.31601<br>
-Adjusted R2 0.31208<br>
-Residual Std. Error 0.44086 (df = 522)<br>
-F Statistic 80.39092*** (df = 3; 522) =============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+lwage
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+educ
+</td>
+<td>
+0.09203<sup>***</sup> (0.00733)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+exper
+</td>
+<td>
+0.00412<sup>**</sup> (0.00172)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+tenure
+</td>
+<td>
+0.02207<sup>***</sup> (0.00309)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.28436<sup>***</sup> (0.10419)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+526
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.31601
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.31208
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.44086 (df = 522)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+80.39092<sup>***</sup> (df = 3; 522)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>For the years of experience variable, or <code>exper</code>, use coefficient and Standard Error to compute the <span class="math inline">\(t\)</span> statistic:</p>
 <p><span class="math display">\[t_{exper} = \frac{0.004121}{0.001723} = 2.391\]</span></p>
 <p>Fortunately, <code>R</code> includes <span class="math inline">\(t\)</span> statistics in the <code>summary</code> of model diagnostics.</p>
@@ -477,8 +685,8 @@ F Statistic 80.39092*** (df = 3; 522) ==========================================
 </div>
 </div>
 </section>
-<section id="example-4.7-effect-of-job-training-on-firm-scrap-rates" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="example-4.7-effect-of-job-training-on-firm-scrap-rates"><span class="header-section-number">8.0.2</span> <strong><code>Example 4.7</code> Effect of Job Training on Firm Scrap Rates</strong></h3>
+<section id="example-4.7-effect-of-job-training-on-firm-scrap-rates" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="example-4.7-effect-of-job-training-on-firm-scrap-rates"><span class="header-section-number">5.4.2</span> <strong><code>Example 4.7</code> Effect of Job Training on Firm Scrap Rates</strong></h3>
 <p>Load the <code>jtrain</code> data set.</p>
 <p>From H. Holzer, R. Block, M. Cheatham, and J. Knott (1993), <em>Are Training Subsidies Effective? The Michigan Experience</em>, Industrial and Labor Relations Review 46, 625-636. The authors kindly provided the data.</p>
 <p><strong><span class="math inline">\(year:\)</span></strong> 1987, 1988, or 1989</p>
@@ -518,24 +726,132 @@ F Statistic 80.39092*** (df = 3; 522) ==========================================
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— lscrap<br>
-———————————————– hrsemp -0.02927 (0.02280)<br>
-lsales -0.96203** (0.45252)<br>
-lemploy 0.76147* (0.40743)<br>
-Constant 12.45837** (5.68677)<br>
-———————————————– Observations 29<br>
-R2 0.26243<br>
-Adjusted R2 0.17392<br>
-Residual Std. Error 1.37604 (df = 25)<br>
-F Statistic 2.96504* (df = 3; 25)<br>
-=============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+lscrap
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+hrsemp
+</td>
+<td>
+-0.02927 (0.02280)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+lsales
+</td>
+<td>
+-0.96203<sup>**</sup> (0.45252)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+lemploy
+</td>
+<td>
+0.76147<sup>*</sup> (0.40743)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+12.45837<sup>**</sup> (5.68677)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.26243
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.17392
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+1.37604 (df = 25)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+2.96504<sup>*</sup> (df = 3; 25)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-5-multiple-regression-analysis-ols-asymptotics" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Chapter 5: Multiple Regression Analysis: OLS Asymptotics</h1>
-<section id="example-5.1-housing-prices-and-distance-from-an-incinerator" class="level3" data-number="9.0.1">
-<h3 data-number="9.0.1" class="anchored" data-anchor-id="example-5.1-housing-prices-and-distance-from-an-incinerator"><span class="header-section-number">9.0.1</span> <strong><code>Example 5.1:</code> Housing Prices and Distance From an Incinerator</strong></h3>
+<section id="chapter-5-multiple-regression-analysis-ols-asymptotics" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="chapter-5-multiple-regression-analysis-ols-asymptotics"><span class="header-section-number">5.5</span> Chapter 5: Multiple Regression Analysis: OLS Asymptotics</h2>
+<section id="example-5.1-housing-prices-and-distance-from-an-incinerator" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="example-5.1-housing-prices-and-distance-from-an-incinerator"><span class="header-section-number">5.5.1</span> <strong><code>Example 5.1:</code> Housing Prices and Distance From an Incinerator</strong></h3>
 <p>Load the <code>hprice3</code> data set.</p>
 <p><strong><span class="math inline">\(lprice:\)</span></strong> Log(selling price)</p>
 <p><strong><span class="math inline">\(ldist:\)</span></strong> Log(distance from house to incinerator, feet)</p>
@@ -565,17 +881,151 @@ F Statistic 2.96504* (df = 3; 25)<br>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(price_dist_model)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(price_area_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>======================================================================== Dependent variable:<br>
-—————————————————- lprice<br>
-(1) (2)<br>
-———————————————————————— ldist 0.31722*** (0.04811) 0.19623*** (0.03816)<br>
-larea 0.78368*** (0.05358)<br>
-Constant 8.25750*** (0.47383) 3.49394*** (0.49065)<br>
-———————————————————————— Observations 321 321<br>
-R2 0.11994 0.47385<br>
-Adjusted R2 0.11718 0.47054<br>
-Residual Std. Error 0.41170 (df = 319) 0.31883 (df = 318)<br>
-F Statistic 43.47673*** (df = 1; 319) 143.19470*** (df = 2; 318) ======================================================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+lprice
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ldist
+</td>
+<td>
+0.31722<sup>***</sup> (0.04811)
+</td>
+<td>
+0.19623<sup>***</sup> (0.03816)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+larea
+</td>
+<td>
+</td>
+<td>
+0.78368<sup>***</sup> (0.05358)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+8.25750<sup>***</sup> (0.47383)
+</td>
+<td>
+3.49394<sup>***</sup> (0.49065)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+321
+</td>
+<td>
+321
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.11994
+</td>
+<td>
+0.47385
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.11718
+</td>
+<td>
+0.47054
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.41170 (df = 319)
+</td>
+<td>
+0.31883 (df = 318)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+43.47673<sup>***</sup> (df = 1; 319)
+</td>
+<td>
+143.19470<sup>***</sup> (df = 2; 318)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>Graphing illustrates the larger coefficient for <code>area</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -584,10 +1034,10 @@ F Statistic 43.47673*** (df = 1; 319) 143.19470*** (df = 2; 318) ===============
 </div>
 </section>
 </section>
-<section id="chapter-6-multiple-regression-further-issues" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Chapter 6: Multiple Regression: Further Issues</h1>
-<section id="example-6.1-effects-of-pollution-on-housing-prices-standardized." class="level3" data-number="10.0.1">
-<h3 data-number="10.0.1" class="anchored" data-anchor-id="example-6.1-effects-of-pollution-on-housing-prices-standardized."><span class="header-section-number">10.0.1</span> <strong><code>Example 6.1:</code> Effects of Pollution on Housing Prices, standardized.</strong></h3>
+<section id="chapter-6-multiple-regression-further-issues" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="chapter-6-multiple-regression-further-issues"><span class="header-section-number">5.6</span> Chapter 6: Multiple Regression: Further Issues</h2>
+<section id="example-6.1-effects-of-pollution-on-housing-prices-standardized." class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="example-6.1-effects-of-pollution-on-housing-prices-standardized."><span class="header-section-number">5.6.1</span> <strong><code>Example 6.1:</code> Effects of Pollution on Housing Prices, standardized.</strong></h3>
 <p>Load the <code>hprice2</code> data and view the documentation.</p>
 <p>Data from <em>Hedonic Housing Prices and the Demand for Clean Air</em>, by Harrison, D. and D.L.Rubinfeld, Journal of Environmental Economics and Management 5, 81-102. Diego Garcia, a former Ph.D.&nbsp;student in economics at MIT, kindly provided these data, which he obtained from the book Regression Diagnostics: Identifying Influential Data and Sources of Collinearity, by D.A. Belsey, E. Kuh, and R. Welsch, 1990. New York: Wiley.</p>
 <p><span class="math inline">\(price\)</span>: median housing price.</p>
@@ -611,28 +1061,235 @@ F Statistic 43.47673*** (df = 1; 319) 143.19470*** (df = 2; 318) ===============
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(housing_level)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(housing_standardized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>============================================================================ Dependent variable:<br>
-——————————————————– price scale(price)<br>
-(1) (2)<br>
-—————————————————————————- nox -2,706.43300*** (354.08690)<br>
-crime -153.60100*** (32.92883)<br>
-rooms 6,735.49800*** (393.60370)<br>
-dist -1,026.80600*** (188.10790)<br>
-stratio -1,149.20400*** (127.42870)<br>
-scale(nox) -0.34045*** (0.04450)<br>
-scale(crime) -0.14328*** (0.03069)<br>
-scale(rooms) 0.51389*** (0.03000)<br>
-scale(dist) -0.23484*** (0.04298)<br>
-scale(stratio) -0.27028*** (0.02994)<br>
-Constant 20,871.13000*** (5,054.59900)<br>
-—————————————————————————- Observations 506 506<br>
-R2 0.63567 0.63567<br>
-Adjusted R2 0.63202 0.63203<br>
-Residual Std. Error 5,586.19800 (df = 500) 0.60601 (df = 501)<br>
-F Statistic 174.47330*** (df = 5; 500) 174.82220*** (df = 5; 501) ============================================================================ Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+price
+</td>
+<td>
+scale(price)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+nox
+</td>
+<td>
+-2,706.43300<sup>***</sup> (354.08690)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+crime
+</td>
+<td>
+-153.60100<sup>***</sup> (32.92883)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rooms
+</td>
+<td>
+6,735.49800<sup>***</sup> (393.60370)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+dist
+</td>
+<td>
+-1,026.80600<sup>***</sup> (188.10790)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+stratio
+</td>
+<td>
+-1,149.20400<sup>***</sup> (127.42870)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+scale(nox)
+</td>
+<td>
+</td>
+<td>
+-0.34045<sup>***</sup> (0.04450)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+scale(crime)
+</td>
+<td>
+</td>
+<td>
+-0.14328<sup>***</sup> (0.03069)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+scale(rooms)
+</td>
+<td>
+</td>
+<td>
+0.51389<sup>***</sup> (0.03000)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+scale(dist)
+</td>
+<td>
+</td>
+<td>
+-0.23484<sup>***</sup> (0.04298)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+scale(stratio)
+</td>
+<td>
+</td>
+<td>
+-0.27028<sup>***</sup> (0.02994)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+20,871.13000<sup>***</sup> (5,054.59900)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+506
+</td>
+<td>
+506
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.63567
+</td>
+<td>
+0.63567
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.63202
+</td>
+<td>
+0.63203
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+5,586.19800 (df = 500)
+</td>
+<td>
+0.60601 (df = 501)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+174.47330<sup>***</sup> (df = 5; 500)
+</td>
+<td>
+174.82220<sup>***</sup> (df = 5; 501)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
-<section id="example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" class="level3" data-number="10.0.2">
-<h3 data-number="10.0.2" class="anchored" data-anchor-id="example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term"><span class="header-section-number">10.0.2</span> <strong><code>Example 6.2:</code> Effects of Pollution on Housing Prices, Quadratic Interactive Term</strong></h3>
+<section id="example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="example-6.2-effects-of-pollution-on-housing-prices-quadratic-interactive-term"><span class="header-section-number">5.6.2</span> <strong><code>Example 6.2:</code> Effects of Pollution on Housing Prices, Quadratic Interactive Term</strong></h3>
 <p>Modify the housing model from <strong><code>example 4.5</code></strong>, adding a quadratic term in <em>rooms</em>:</p>
 <p><span class="math display">\[log(price) = \beta_0 + \beta_1log(nox) + \beta_2log(dist) + \beta_3rooms + \beta_4rooms^2 + \beta_5stratio + \mu\]</span></p>
 <div class="cell">
@@ -645,20 +1302,184 @@ F Statistic 174.47330*** (df = 5; 500) 174.82220*** (df = 5; 501) ==============
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(housing_model_4<span class="fl">.5</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(housing_model_6<span class="fl">.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>========================================================================= Dependent variable:<br>
-—————————————————– lprice<br>
-(1) (2)<br>
-————————————————————————- lnox -0.95354*** (0.11674) -0.90168*** (0.11469)<br>
-log(dist) -0.13434*** (0.04310) -0.08678** (0.04328)<br>
-rooms 0.25453*** (0.01853) -0.54511*** (0.16545)<br>
-I(rooms2) 0.06226*** (0.01280)<br>
-stratio -0.05245*** (0.00590) -0.04759*** (0.00585)<br>
-Constant 11.08386*** (0.31811) 13.38548*** (0.56647)<br>
-————————————————————————- Observations 506 506<br>
-R2 0.58403 0.60281<br>
-Adjusted R2 0.58071 0.59884<br>
-Residual Std. Error 0.26500 (df = 501) 0.25921 (df = 500)<br>
-F Statistic 175.85520*** (df = 4; 501) 151.77040*** (df = 5; 500) ========================================================================= Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+lprice
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+lnox
+</td>
+<td>
+-0.95354<sup>***</sup> (0.11674)
+</td>
+<td>
+-0.90168<sup>***</sup> (0.11469)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(dist)
+</td>
+<td>
+-0.13434<sup>***</sup> (0.04310)
+</td>
+<td>
+-0.08678<sup>**</sup> (0.04328)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+rooms
+</td>
+<td>
+0.25453<sup>***</sup> (0.01853)
+</td>
+<td>
+-0.54511<sup>***</sup> (0.16545)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+I(rooms2)
+</td>
+<td>
+</td>
+<td>
+0.06226<sup>***</sup> (0.01280)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+stratio
+</td>
+<td>
+-0.05245<sup>***</sup> (0.00590)
+</td>
+<td>
+-0.04759<sup>***</sup> (0.00585)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+11.08386<sup>***</sup> (0.31811)
+</td>
+<td>
+13.38548<sup>***</sup> (0.56647)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+506
+</td>
+<td>
+506
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.58403
+</td>
+<td>
+0.60281
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.58071
+</td>
+<td>
+0.59884
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.26500 (df = 501)
+</td>
+<td>
+0.25921 (df = 500)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+175.85520<sup>***</sup> (df = 4; 501)
+</td>
+<td>
+151.77040<sup>***</sup> (df = 5; 500)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>Estimate the minimum turning point at which the <code>rooms</code> interactive term changes from negative to positive.</p>
 <p><span class="math display">\[x = \frac{\hat{\beta_1}}{2\hat{\beta_2}}\]</span></p>
 <div class="cell">
@@ -730,10 +1551,10 @@ F Statistic 175.85520*** (df = 4; 501) 151.77040*** (df = 5; 500) ==============
 </div>
 </section>
 </section>
-<section id="chapter-7-multiple-regression-analysis-with-qualitative-information" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Chapter 7: Multiple Regression Analysis with Qualitative Information</h1>
-<section id="example-7.4-housing-price-regression-qualitative-binary-variable" class="level3" data-number="11.0.1">
-<h3 data-number="11.0.1" class="anchored" data-anchor-id="example-7.4-housing-price-regression-qualitative-binary-variable"><span class="header-section-number">11.0.1</span> <strong><code>Example 7.4:</code> Housing Price Regression, Qualitative Binary variable</strong></h3>
+<section id="chapter-7-multiple-regression-analysis-with-qualitative-information" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="chapter-7-multiple-regression-analysis-with-qualitative-information"><span class="header-section-number">5.7</span> Chapter 7: Multiple Regression Analysis with Qualitative Information</h2>
+<section id="example-7.4-housing-price-regression-qualitative-binary-variable" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="example-7.4-housing-price-regression-qualitative-binary-variable"><span class="header-section-number">5.7.1</span> <strong><code>Example 7.4:</code> Housing Price Regression, Qualitative Binary variable</strong></h3>
 <p>This time, use the <code>hrprice1</code> data.</p>
 <p>Data collected from the real estate pages of the Boston Globe during 1990. These are homes that sold in the Boston, MA area.</p>
 <p><strong><span class="math inline">\(lprice:\)</span></strong> Log(house price, $1000s)</p>
@@ -749,25 +1570,140 @@ F Statistic 175.85520*** (df = 4; 501) 151.77040*** (df = 5; 500) ==============
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(housing_qualitative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— lprice<br>
-———————————————– llotsize 0.16782*** (0.03818)<br>
-lsqrft 0.70719*** (0.09280)<br>
-bdrms 0.02683 (0.02872)<br>
-colonial 0.05380 (0.04477)<br>
-Constant -1.34959** (0.65104)<br>
-———————————————– Observations 88<br>
-R2 0.64907<br>
-Adjusted R2 0.63216<br>
-Residual Std. Error 0.18412 (df = 83)<br>
-F Statistic 38.37846*** (df = 4; 83)<br>
-=============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+lprice
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+llotsize
+</td>
+<td>
+0.16782<sup>***</sup> (0.03818)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+lsqrft
+</td>
+<td>
+0.70719<sup>***</sup> (0.09280)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+bdrms
+</td>
+<td>
+0.02683 (0.02872)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+colonial
+</td>
+<td>
+0.05380 (0.04477)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+-1.34959<sup>**</sup> (0.65104)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+88
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.64907
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.63216
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.18412 (df = 83)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+38.37846<sup>***</sup> (df = 4; 83)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-8-heteroskedasticity" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Chapter 8: Heteroskedasticity</h1>
-<section id="example-8.9-determinants-of-personal-computer-ownership" class="level3" data-number="12.0.1">
-<h3 data-number="12.0.1" class="anchored" data-anchor-id="example-8.9-determinants-of-personal-computer-ownership"><span class="header-section-number">12.0.1</span> <strong><code>Example 8.9:</code> Determinants of Personal Computer Ownership</strong></h3>
+<section id="chapter-8-heteroskedasticity" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="chapter-8-heteroskedasticity"><span class="header-section-number">5.8</span> Chapter 8: Heteroskedasticity</h2>
+<section id="example-8.9-determinants-of-personal-computer-ownership" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="example-8.9-determinants-of-personal-computer-ownership"><span class="header-section-number">5.8.1</span> <strong><code>Example 8.9:</code> Determinants of Personal Computer Ownership</strong></h3>
 <p><span class="math display">\[\widehat{PC} = \beta_0 + \beta_1hsGPA + \beta_2ACT + \beta_3parcoll + \beta_4colonial \]</span> Christopher Lemmon, a former MSU undergraduate, collected these data from a survey he took of MSU students in Fall 1994. Load <code>gpa1</code> and create a new variable combining the <code>fathcoll</code> and <code>mothcoll</code>, into <code>parcoll</code>. This new column indicates if either parent went to college.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gpa1<span class="sc">$</span>parcoll <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(gpa1<span class="sc">$</span>fathcoll<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> gpa1<span class="sc">$</span>mothcoll)</span>
@@ -779,20 +1715,169 @@ F Statistic 38.37846*** (df = 4; 83)<br>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>GPA_WLS <span class="ot">&lt;-</span> <span class="fu">lm</span>(PC <span class="sc">~</span> hsGPA <span class="sc">+</span> ACT <span class="sc">+</span> parcoll, <span class="at">data =</span> gpa1, <span class="at">weights =</span> <span class="dv">1</span><span class="sc">/</span>weights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Compare the OLS and WLS model in the table below:</p>
-<p>====================================================================== Dependent variable:<br>
-————————————— PC<br>
-(1) (2)<br>
-———————————————————————- hsGPA 0.06539 (0.13726) 0.03270 (0.12988) ACT 0.00056 (0.01550) 0.00427 (0.01545) parcoll 0.22105** (0.09296) 0.21519** (0.08629) Constant -0.00043 (0.49054) 0.02621 (0.47665) ———————————————————————- Observations 141 141<br>
-R2 0.04153 0.04644<br>
-Adjusted R2 0.02054 0.02556<br>
-Residual Std. Error (df = 137) 0.48599 1.01624<br>
-F Statistic (df = 3; 137) 1.97851 2.22404*<br>
-====================================================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+PC
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+hsGPA
+</td>
+<td>
+0.06539 (0.13726)
+</td>
+<td>
+0.03270 (0.12988)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ACT
+</td>
+<td>
+0.00056 (0.01550)
+</td>
+<td>
+0.00427 (0.01545)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+parcoll
+</td>
+<td>
+0.22105<sup>**</sup> (0.09296)
+</td>
+<td>
+0.21519<sup>**</sup> (0.08629)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+-0.00043 (0.49054)
+</td>
+<td>
+0.02621 (0.47665)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+141
+</td>
+<td>
+141
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.04153
+</td>
+<td>
+0.04644
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.02054
+</td>
+<td>
+0.02556
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error (df = 137)
+</td>
+<td>
+0.48599
+</td>
+<td>
+1.01624
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic (df = 3; 137)
+</td>
+<td>
+1.97851
+</td>
+<td>
+2.22404<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
-<section id="chapter-9-more-on-specification-and-data-issues" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="chapter-9-more-on-specification-and-data-issues"><span class="header-section-number">12.1</span> Chapter 9: More on Specification and Data Issues</h2>
-<section id="example-9.8-rd-intensity-and-firm-size" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-9.8-rd-intensity-and-firm-size"><span class="header-section-number">12.1.1</span> <strong><code>Example 9.8:</code> R&amp;D Intensity and Firm Size</strong></h3>
+</section>
+<section id="chapter-9-more-on-specification-and-data-issues" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="chapter-9-more-on-specification-and-data-issues"><span class="header-section-number">5.9</span> Chapter 9: More on Specification and Data Issues</h2>
+<section id="example-9.8-rd-intensity-and-firm-size" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="example-9.8-rd-intensity-and-firm-size"><span class="header-section-number">5.9.1</span> <strong><code>Example 9.8:</code> R&amp;D Intensity and Firm Size</strong></h3>
 <p><span class="math display">\[rdintens = \beta_0 + \beta_1sales + \beta_2profmarg + \mu\]</span></p>
 <p>From <em>Businessweek R&amp;D Scoreboard</em>, October 25, 1991. Load the data and estimate the model.</p>
 <div class="cell">
@@ -810,22 +1895,158 @@ F Statistic (df = 3; 137) 1.97851 2.22404*<br>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">subset =</span> (sales <span class="sc">&lt;</span> <span class="fu">max</span>(sales)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The table below compares the results of both models side by side. By removing the outlier firm, <span class="math inline">\(sales\)</span> become a more significant determination of R&amp;D expenditures.</p>
-<p>============================================================== Dependent variable:<br>
-—————————————— rdintens<br>
-(1) (2)<br>
-————————————————————– sales 0.00005 (0.00004) 0.00019** (0.00008) profmarg 0.04462 (0.04618) 0.04784 (0.04448)<br>
-Constant 2.62526*** (0.58553) 2.29685*** (0.59180) ————————————————————– Observations 32 31<br>
-R2 0.07612 0.17281<br>
-Adjusted R2 0.01240 0.11372<br>
-Residual Std. Error 1.86205 (df = 29) 1.79218 (df = 28)<br>
-F Statistic 1.19465 (df = 2; 29) 2.92476* (df = 2; 28) ============================================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+rdintens
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+sales
+</td>
+<td>
+0.00005 (0.00004)
+</td>
+<td>
+0.00019<sup>**</sup> (0.00008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+profmarg
+</td>
+<td>
+0.04462 (0.04618)
+</td>
+<td>
+0.04784 (0.04448)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+2.62526<sup>***</sup> (0.58553)
+</td>
+<td>
+2.29685<sup>***</sup> (0.59180)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+32
+</td>
+<td>
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.07612
+</td>
+<td>
+0.17281
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.01240
+</td>
+<td>
+0.11372
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+1.86205 (df = 29)
+</td>
+<td>
+1.79218 (df = 28)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+1.19465 (df = 2; 29)
+</td>
+<td>
+2.92476<sup>*</sup> (df = 2; 28)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-</section>
-<section id="chapter-10-basic-regression-analysis-with-time-series-data" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Chapter 10: Basic Regression Analysis with Time Series Data</h1>
-<section id="example-10.2-effects-of-inflation-and-deficits-on-interest-rates" class="level3" data-number="13.0.1">
-<h3 data-number="13.0.1" class="anchored" data-anchor-id="example-10.2-effects-of-inflation-and-deficits-on-interest-rates"><span class="header-section-number">13.0.1</span> <strong><code>Example 10.2:</code> Effects of Inflation and Deficits on Interest Rates</strong></h3>
+<section id="chapter-10-basic-regression-analysis-with-time-series-data" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="chapter-10-basic-regression-analysis-with-time-series-data"><span class="header-section-number">5.10</span> Chapter 10: Basic Regression Analysis with Time Series Data</h2>
+<section id="example-10.2-effects-of-inflation-and-deficits-on-interest-rates" class="level3" data-number="5.10.1">
+<h3 data-number="5.10.1" class="anchored" data-anchor-id="example-10.2-effects-of-inflation-and-deficits-on-interest-rates"><span class="header-section-number">5.10.1</span> <strong><code>Example 10.2:</code> Effects of Inflation and Deficits on Interest Rates</strong></h3>
 <p><span class="math display">\[\widehat{i3} = \beta_0 + \beta_1inf_t + \beta_2def_t\]</span> Data from the <em>Economic Report of the President, 2004</em>, Tables B-64, B-73, and B-79.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data("intdef") # load data</span></span>
@@ -853,17 +2074,118 @@ F Statistic 1.19465 (df = 2; 29) 2.92476* (df = 2; 28) =========================
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a Linear regression model</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tbill_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Tbill3mo <span class="sc">~</span> cpi <span class="sc">+</span> deficit, <span class="at">data =</span> intdef.xts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— Tbill3mo<br>
-———————————————– cpi 0.60587*** (0.08213)<br>
-deficit 0.51306*** (0.11838)<br>
-Constant 1.73327*** (0.43197)<br>
-———————————————– Observations 56<br>
-R2 0.60207<br>
-Adjusted R2 0.58705<br>
-Residual Std. Error 1.84316 (df = 53)<br>
-F Statistic 40.09424*** (df = 2; 53)<br>
-=============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Tbill3mo
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+cpi
+</td>
+<td>
+0.60587<sup>***</sup> (0.08213)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+deficit
+</td>
+<td>
+0.51306<sup>***</sup> (0.11838)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+1.73327<sup>***</sup> (0.43197)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.60207
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.58705
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+1.84316 (df = 53)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+40.09424<sup>***</sup> (df = 2; 53)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>Now lets update the example with current data, pull from the Federal Reserve Economic Research (FRED) using the <a href="https://CRAN.R-project.org/package=quantmod">quantmod package</a>. Other than the convenient API, the package also formats time series data into <a href="https://CRAN.R-project.org/package=xts">xts: eXtensible Time Series</a> objects, which add many feature and benefits when working with time series.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(quantmod)</span></span>
@@ -928,23 +2250,124 @@ F Statistic 40.09424*** (df = 2; 53)<br>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>updated_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(TB3MS <span class="sc">~</span> inflation <span class="sc">+</span> deficit, <span class="at">data =</span> intdef_updated)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— TB3MS<br>
-———————————————– inflation 0.83515*** (0.09277)<br>
-deficit 0.28243*** (0.08660)<br>
-Constant 2.07613*** (0.52079)<br>
-———————————————– Observations 63<br>
-R2 0.62114<br>
-Adjusted R2 0.60851<br>
-Residual Std. Error 2.02432 (df = 60)<br>
-F Statistic 49.18552*** (df = 2; 60)<br>
-=============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+TB3MS
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+inflation
+</td>
+<td>
+0.83515<sup>***</sup> (0.09277)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+deficit
+</td>
+<td>
+0.28243<sup>***</sup> (0.08660)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+2.07613<sup>***</sup> (0.52079)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+63
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.62114
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.60851
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+2.02432 (df = 60)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+49.18552<sup>***</sup> (df = 2; 60)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-11-further-issues-in-using-ols-with-with-time-series-data" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Chapter 11: Further Issues in Using OLS with with Time Series Data</h1>
-<section id="example-11.7-wages-and-productivity" class="level3" data-number="14.0.1">
-<h3 data-number="14.0.1" class="anchored" data-anchor-id="example-11.7-wages-and-productivity"><span class="header-section-number">14.0.1</span> <strong><code>Example 11.7:</code> Wages and Productivity</strong></h3>
+<section id="chapter-11-further-issues-in-using-ols-with-with-time-series-data" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="chapter-11-further-issues-in-using-ols-with-with-time-series-data"><span class="header-section-number">5.11</span> Chapter 11: Further Issues in Using OLS with with Time Series Data</h2>
+<section id="example-11.7-wages-and-productivity" class="level3" data-number="5.11.1">
+<h3 data-number="5.11.1" class="anchored" data-anchor-id="example-11.7-wages-and-productivity"><span class="header-section-number">5.11.1</span> <strong><code>Example 11.7:</code> Wages and Productivity</strong></h3>
 <p><span class="math display">\[\widehat{log(hrwage_t)} = \beta_0 + \beta_1log(outphr_t) + \beta_2t + \mu_t\]</span> Data from the <em>Economic Report of the President, 1989</em>, Table B-47. The data are for the non-farm business sector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>wage_time <span class="ot">&lt;-</span> <span class="fu">lm</span>(lhrwage <span class="sc">~</span> loutphr <span class="sc">+</span> t, <span class="at">data =</span> earns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -952,24 +2375,169 @@ F Statistic 49.18552*** (df = 2; 60)<br>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>wage_diff <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">diff</span>(lhrwage) <span class="sc">~</span> <span class="fu">diff</span>(loutphr), <span class="at">data =</span> earns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>================================================================================ Dependent variable:<br>
-————————————————– lhrwage diff(lhrwage)<br>
-(1) (2)<br>
-——————————————————————————– loutphr 1.63964*** (0.09335)<br>
-t -0.01823*** (0.00175)<br>
-diff(loutphr) 0.80932*** (0.17345)<br>
-Constant -5.32845*** (0.37445) -0.00366 (0.00422)<br>
-——————————————————————————– Observations 41 40<br>
-R2 0.97122 0.36424<br>
-Adjusted R2 0.96971 0.34750<br>
-Residual Std. Error (df = 38) 0.02854 0.01695<br>
-F Statistic 641.22430*** (df = 2; 38) 21.77054*** (df = 1; 38) ================================================================================ Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+lhrwage
+</td>
+<td>
+diff(lhrwage)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+loutphr
+</td>
+<td>
+1.63964<sup>***</sup> (0.09335)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+t
+</td>
+<td>
+-0.01823<sup>***</sup> (0.00175)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+diff(loutphr)
+</td>
+<td>
+</td>
+<td>
+0.80932<sup>***</sup> (0.17345)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+-5.32845<sup>***</sup> (0.37445)
+</td>
+<td>
+-0.00366 (0.00422)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+41
+</td>
+<td>
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.97122
+</td>
+<td>
+0.36424
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.96971
+</td>
+<td>
+0.34750
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error (df = 38)
+</td>
+<td>
+0.02854
+</td>
+<td>
+0.01695
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+641.22430<sup>***</sup> (df = 2; 38)
+</td>
+<td>
+21.77054<sup>***</sup> (df = 1; 38)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions</h1>
-<section id="example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" class="level3" data-number="15.0.1">
-<h3 data-number="15.0.1" class="anchored" data-anchor-id="example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis"><span class="header-section-number">15.0.1</span> <strong><code>Example 12.8:</code> Heteroskedasticity and the Efficient Markets Hypothesis</strong></h3>
+<section id="chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="chapter-12-serial-correlation-and-heteroskedasticiy-in-time-series-regressions"><span class="header-section-number">5.12</span> Chapter 12: Serial Correlation and Heteroskedasticiy in Time Series Regressions</h2>
+<section id="example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis" class="level3" data-number="5.12.1">
+<h3 data-number="5.12.1" class="anchored" data-anchor-id="example-12.8-heteroskedasticity-and-the-efficient-markets-hypothesis"><span class="header-section-number">5.12.1</span> <strong><code>Example 12.8:</code> Heteroskedasticity and the Efficient Markets Hypothesis</strong></h3>
 <p>These are Wednesday closing prices of value-weighted NYSE average, available in many publications. Wooldridge does not recall the particular source used when he collected these data at MIT, but notes probably the easiest way to get similar data is to go to the NYSE web site, <a href="https://www.nyse.com/data-and-tech">www.nyse.com</a>.</p>
 <p><span class="math display">\[return_t = \beta_0 + \beta_1return_{t-1} + \mu_t\]</span></p>
 <div class="cell">
@@ -980,18 +2548,147 @@ F Statistic 641.22430*** (df = 2; 38) 21.77054*** (df = 1; 38) =================
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>return_mu <span class="ot">&lt;-</span> <span class="fu">residuals</span>(return_AR1)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>mu2_hat_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(return_mu<span class="sc">^</span><span class="dv">2</span> <span class="sc">~</span> return_1, <span class="at">data =</span> return_AR1<span class="sc">$</span>model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>======================================================================== Dependent variable:<br>
-—————————————– return return_mu2<br>
-(1) (2)<br>
-———————————————————————— return_1 0.05890 (0.03802) -1.10413*** (0.20140) Constant 0.17963** (0.08074) 4.65650*** (0.42768) ———————————————————————— Observations 689 689<br>
-R2 0.00348 0.04191<br>
-Adjusted R2 0.00203 0.04052<br>
-Residual Std. Error (df = 687) 2.11040 11.17847<br>
-F Statistic (df = 1; 687) 2.39946 30.05460***<br>
-======================================================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+return
+</td>
+<td>
+return_mu2
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+return_1
+</td>
+<td>
+0.05890 (0.03802)
+</td>
+<td>
+-1.10413<sup>***</sup> (0.20140)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.17963<sup>**</sup> (0.08074)
+</td>
+<td>
+4.65650<sup>***</sup> (0.42768)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+689
+</td>
+<td>
+689
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.00348
+</td>
+<td>
+0.04191
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.00203
+</td>
+<td>
+0.04052
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error (df = 687)
+</td>
+<td>
+2.11040
+</td>
+<td>
+11.17847
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic (df = 1; 687)
+</td>
+<td>
+2.39946
+</td>
+<td>
+30.05460<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
-<section id="example-12.9-arch-in-stock-returns" class="level3" data-number="15.0.2">
-<h3 data-number="15.0.2" class="anchored" data-anchor-id="example-12.9-arch-in-stock-returns"><span class="header-section-number">15.0.2</span> <strong><code>Example 12.9:</code> ARCH in Stock Returns</strong></h3>
+<section id="example-12.9-arch-in-stock-returns" class="level3" data-number="5.12.2">
+<h3 data-number="5.12.2" class="anchored" data-anchor-id="example-12.9-arch-in-stock-returns"><span class="header-section-number">5.12.2</span> <strong><code>Example 12.9:</code> ARCH in Stock Returns</strong></h3>
 <p><span class="math display">\[\hat{\mu^2_t} = \beta_0 + \hat{\mu^2_{t-1}} + residual_t\]</span></p>
 <p>We still have <code>return_mu</code> in the working environment so we can use it to create <span class="math inline">\(\hat{\mu^2_t}\)</span>, (<code>mu2_hat</code>) and <span class="math inline">\(\hat{\mu^2_{t-1}}\)</span> (<code>mu2_hat_1</code>). Notice the use <code>R</code>’s matrix subset operations to perform the lag operation. We drop the first observation of <code>mu2_hat</code> and squared the results. Next, we remove the last observation of <code>mu2_hat_1</code> using the subtraction operator combined with a call to the <code>NROW</code> function on <code>return_mu</code>. Now, both contain <span class="math inline">\(688\)</span> observations and we can estimate a standard linear model.</p>
 <div class="cell">
@@ -999,42 +2696,238 @@ F Statistic (df = 1; 687) 2.39946 30.05460***<br>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mu2_hat_1 <span class="ot">&lt;-</span> return_mu[<span class="sc">-</span><span class="fu">NROW</span>(return_mu)]<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>arch_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mu2_hat <span class="sc">~</span> mu2_hat_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— mu2_hat<br>
-———————————————– mu2_hat_1 0.33706*** (0.03595)<br>
-Constant 2.94743*** (0.44023)<br>
-———————————————– Observations 688<br>
-R2 0.11361<br>
-Adjusted R2 0.11231<br>
-Residual Std. Error 10.75907 (df = 686)<br>
-F Statistic 87.92263*** (df = 1; 686) =============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+mu2_hat
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+mu2_hat_1
+</td>
+<td>
+0.33706<sup>***</sup> (0.03595)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+2.94743<sup>***</sup> (0.44023)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+688
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.11361
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.11231
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+10.75907 (df = 686)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+87.92263<sup>***</sup> (df = 1; 686)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods</h1>
-<section id="example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" class="level3" data-number="16.0.1">
-<h3 data-number="16.0.1" class="anchored" data-anchor-id="example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities"><span class="header-section-number">16.0.1</span> <strong><code>Example 13.7:</code> Effect of Drunk Driving Laws on Traffic Fatalities</strong></h3>
+<section id="chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="chapter-13-pooling-cross-sections-across-time-simple-panel-data-methods"><span class="header-section-number">5.13</span> Chapter 13: Pooling Cross Sections across Time: Simple Panel Data Methods</h2>
+<section id="example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities" class="level3" data-number="5.13.1">
+<h3 data-number="5.13.1" class="anchored" data-anchor-id="example-13.7-effect-of-drunk-driving-laws-on-traffic-fatalities"><span class="header-section-number">5.13.1</span> <strong><code>Example 13.7:</code> Effect of Drunk Driving Laws on Traffic Fatalities</strong></h3>
 <p>Wooldridge collected these data from two sources, the 1992 <em>Statistical Abstract of the United States</em> (Tables 1009, 1012) and <em>A Digest of State Alcohol-Highway Safety Related Legislation</em>, 1985 and 1990, published by the U.S. National Highway Traffic Safety Administration. <span class="math display">\[\widehat{\Delta{dthrte}} = \beta_0 + \Delta{open} + \Delta{admin}\]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>DD_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdthrte <span class="sc">~</span> copen <span class="sc">+</span> cadmn, <span class="at">data =</span> traffic1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>=============================================== Dependent variable:<br>
-————————— cdthrte<br>
-———————————————– copen -0.41968** (0.20559)<br>
-cadmn -0.15060 (0.11682)<br>
-Constant -0.49679*** (0.05243)<br>
-———————————————– Observations 51<br>
-R2 0.11867<br>
-Adjusted R2 0.08194<br>
-Residual Std. Error 0.34350 (df = 48)<br>
-F Statistic 3.23144** (df = 2; 48)<br>
-=============================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+cdthrte
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+copen
+</td>
+<td>
+-0.41968<sup>**</sup> (0.20559)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+cadmn
+</td>
+<td>
+-0.15060 (0.11682)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+-0.49679<sup>***</sup> (0.05243)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.11867
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.08194
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.34350 (df = 48)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+3.23144<sup>**</sup> (df = 2; 48)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 </section>
 </section>
-<section id="chapter-18-advanced-time-series-topics" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> Chapter 18: Advanced Time Series Topics</h1>
-<section id="example-18.8-forecasting-the-u.s.-unemployment-rate" class="level3" data-number="17.0.1">
-<h3 data-number="17.0.1" class="anchored" data-anchor-id="example-18.8-forecasting-the-u.s.-unemployment-rate"><span class="header-section-number">17.0.1</span> <strong><code>Example 18.8:</code> FORECASTING THE U.S. UNEMPLOYMENT RATE</strong></h3>
+<section id="chapter-18-advanced-time-series-topics" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="chapter-18-advanced-time-series-topics"><span class="header-section-number">5.14</span> Chapter 18: Advanced Time Series Topics</h2>
+<section id="example-18.8-forecasting-the-u.s.-unemployment-rate" class="level3" data-number="5.14.1">
+<h3 data-number="5.14.1" class="anchored" data-anchor-id="example-18.8-forecasting-the-u.s.-unemployment-rate"><span class="header-section-number">5.14.1</span> <strong><code>Example 18.8:</code> FORECASTING THE U.S. UNEMPLOYMENT RATE</strong></h3>
 <p>Data from <em>Economic Report of the President, 2004</em>, Tables B-42 and B-64.</p>
 <p><span class="math display">\[\widehat{unemp_t} = \beta_0 + \beta_1unem_{t-1}\]</span></p>
 <p>Estimate the linear model in the usual way and note the use of the <code>subset</code> argument to define data equal to and before the year 1996.</p>
@@ -1046,17 +2939,151 @@ F Statistic 3.23144** (df = 2; 48)<br>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>unem_inf_VAR1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(unem <span class="sc">~</span> unem_1 <span class="sc">+</span> inf_1, <span class="at">data =</span> phillips_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>===================================================================== Dependent variable:<br>
-————————————————- unem<br>
-(1) (2)<br>
-——————————————————————— unem_1 0.73235*** (0.09689) 0.64703*** (0.08381)<br>
-inf_1 0.18358*** (0.04118)<br>
-Constant 1.57174*** (0.57712) 1.30380** (0.48969)<br>
-——————————————————————— Observations 48 48<br>
-R2 0.55397 0.69059<br>
-Adjusted R2 0.54427 0.67684<br>
-Residual Std. Error 1.04857 (df = 46) 0.88298 (df = 45)<br>
-F Statistic 57.13184*** (df = 1; 46) 50.21941*** (df = 2; 45) ===================================================================== Note: <em>p&lt;0.1; <strong>p&lt;0.05; </strong></em>p&lt;0.01</p>
+
+<table style="text-align:center">
+<tbody><tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+unem
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+unem_1
+</td>
+<td>
+0.73235<sup>***</sup> (0.09689)
+</td>
+<td>
+0.64703<sup>***</sup> (0.08381)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+inf_1
+</td>
+<td>
+</td>
+<td>
+0.18358<sup>***</sup> (0.04118)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+1.57174<sup>***</sup> (0.57712)
+</td>
+<td>
+1.30380<sup>**</sup> (0.48969)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+48
+</td>
+<td>
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.55397
+</td>
+<td>
+0.69059
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.54427
+</td>
+<td>
+0.67684
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+1.04857 (df = 46)
+</td>
+<td>
+0.88298 (df = 45)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+57.13184<sup>***</sup> (df = 1; 46)
+</td>
+<td>
+50.21941<sup>***</sup> (df = 2; 45)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></em></sup><em>p&lt;0.1; <sup><strong></strong></sup><strong>p&lt;0.05; <sup></sup></strong></em>p&lt;0.01
+</td>
+</tr>
+
+</tbody></table>
 <p>Now, use the <code>subset</code> argument to create our testing data set containing observation after 1996. Next, pass the both the model object and the test set to the <code>predict</code> function for both models. Finally, <code>cbind</code> or “column bind” both forecasts as well as the year and unemployment rate of the test set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>phillips_test <span class="ot">&lt;-</span> <span class="fu">subset</span>(phillips, year <span class="sc">&gt;=</span> <span class="dv">1997</span>)</span>
