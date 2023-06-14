@@ -2,7 +2,15 @@
 
 ```{r}
 pacman::p_load(tidyverse,
-               knitr)
+               knitr,
+               dplyr,
+               tidyr,
+               ggplot2,
+               readr,
+               kableExtra,
+               stargazer,
+               lmtest,
+               plm)
 ```
 
 ## Wide and long data formats
@@ -34,17 +42,6 @@ city_wide_df %>%
 ### Why do we care about the data format
 
 In some instances long format datasets are required for advanced statistical analysis and graphing. For example, if we wanted to run the regression formulation of the difference in differences model, we would need to input our data in long format. Furthermore, having our data in long format is very useful when plotting. Packages such as ggplot2, expect that your data will be in long form for the most part.
-
-```{r}
-library(dplyr) # to wrangle our data
-library(tidyr) # to wrangle our data - pivot_longer()
-library(ggplot2) # to render our graphs
-library(readr) # for loading the .csv data
-library(kableExtra) # to render better formatted tables
-library(stargazer) # for formatting your model output
-library(lmtest) # to gather our clustered standard errors - coeftest()
-library(plm)  # to gather our clustered standard errors - vcovHC()
-```
 
 ```{r}
 soda_tax_df <- read.csv("data/soda_tax_df.csv")
