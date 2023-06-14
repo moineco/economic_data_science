@@ -14,6 +14,7 @@ book:
     - chapter_4.qmd
     - chapter_5.qmd
     - chapter_6.qmd
+    - references.qmd
 #bibliography: development_economics.bib
 
 format:
