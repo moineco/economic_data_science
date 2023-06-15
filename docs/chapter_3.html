@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 6</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data tidying</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -195,11 +195,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#wide-and-long-data-formats" id="toc-wide-and-long-data-formats" class="nav-link active" data-scroll-target="#wide-and-long-data-formats"><span class="header-section-number">3.1</span> Wide and long data formats</a>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites"><span class="header-section-number">3.1</span> Prerequisites</a></li>
+  <li><a href="#before-and-after-and-difference-in-differences-designs" id="toc-before-and-after-and-difference-in-differences-designs" class="nav-link" data-scroll-target="#before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> BEFORE-AND-AFTER AND DIFFERENCE-IN-DIFFERENCES DESIGNS</a>
   <ul class="collapse">
-  <li><a href="#why-do-we-care-about-the-data-format" id="toc-why-do-we-care-about-the-data-format" class="nav-link" data-scroll-target="#why-do-we-care-about-the-data-format"><span class="header-section-number">3.1.1</span> Why do we care about the data format</a></li>
-  <li><a href="#exploring-our-data" id="toc-exploring-our-data" class="nav-link" data-scroll-target="#exploring-our-data"><span class="header-section-number">3.1.2</span> Exploring our data</a></li>
-  <li><a href="#modeling-and-estimating" id="toc-modeling-and-estimating" class="nav-link" data-scroll-target="#modeling-and-estimating"><span class="header-section-number">3.1.3</span> Modeling and estimating</a></li>
+  <li><a href="#minimum-wage-and-unemployment" id="toc-minimum-wage-and-unemployment" class="nav-link" data-scroll-target="#minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> MINIMUM WAGE AND UNEMPLOYMENT</a></li>
+  </ul></li>
+  <li><a href="#wide-and-long-data-formats" id="toc-wide-and-long-data-formats" class="nav-link" data-scroll-target="#wide-and-long-data-formats"><span class="header-section-number">3.3</span> Wide and long data formats</a>
+  <ul class="collapse">
+  <li><a href="#why-do-we-care-about-the-data-format" id="toc-why-do-we-care-about-the-data-format" class="nav-link" data-scroll-target="#why-do-we-care-about-the-data-format"><span class="header-section-number">3.3.1</span> Why do we care about the data format</a></li>
+  <li><a href="#exploring-our-data" id="toc-exploring-our-data" class="nav-link" data-scroll-target="#exploring-our-data"><span class="header-section-number">3.3.2</span> Exploring our data</a></li>
+  <li><a href="#modeling-and-estimating" id="toc-modeling-and-estimating" class="nav-link" data-scroll-target="#modeling-and-estimating"><span class="header-section-number">3.3.3</span> Modeling and estimating</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,6 +229,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="prerequisites" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">3.1</span> Prerequisites</h2>
+<p>We will use following packages for reproducing the contents of this chapter. For mamaging the necessary packages, we will use <code>pacman</code> package manager.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               knitr,</span>
@@ -236,8 +244,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               lmtest,</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               plm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="wide-and-long-data-formats" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="wide-and-long-data-formats"><span class="header-section-number">3.1</span> Wide and long data formats</h2>
+</section>
+<section id="before-and-after-and-difference-in-differences-designs" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> BEFORE-AND-AFTER AND DIFFERENCE-IN-DIFFERENCES DESIGNS</h2>
+<p>In observational studies, the data collected over time are a valuable source of information. Multiple measurements taken over time on the same units are called longitudinal data or panel data. Longitudinal data often yield a more credible comparison of the treatment and control groups than cross-section data because the former contain additional information about changes over time.</p>
+<ul>
+<li><p>The before-and-after design examines how the outcome variable changed from the pretreatment period to the posttreatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.</p></li>
+<li><p>The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment.</p></li>
+</ul>
+<p>Following figure graphically illustrates this assumption using the minimum-wage study data. The figure shows the outcome of interest, i.e., the average proportion of full-time employees, before and after the increase in the minimum wage for both the treatment group (fast-food restaurants in NJ, indicated by the solid black circles) and the control group (restaurants in PA, represented by the open black circles). In this setting, we can estimate the counterfactual outcome for the treatment group by assuming that the time trend for the treatment group is parallel to the observed trend for the control group. This estimate is indicated by the solid blue triangle.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figure/did_1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">The Difference-in-Differences Design in the Minimum-Wage Study</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In the minimum- wage study, the researchers had collected the employment and wage information from the same set of restaurants before the minimum wage was increased in NJ. This pretreatment information allows several alternative designs for estimating causal effects in observational studies.</p>
+<section id="minimum-wage-and-unemployment" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> MINIMUM WAGE AND UNEMPLOYMENT</h3>
+<p>Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts?</p>
+</section>
+</section>
+<section id="wide-and-long-data-formats" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="wide-and-long-data-formats"><span class="header-section-number">3.3</span> Wide and long data formats</h2>
 <p>Wide data set:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>city_wide_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/city_wide.csv"</span>)</span>
@@ -389,8 +422,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 12 "London " 2020   9.3 </code></pre>
 </div>
 </div>
-<section id="why-do-we-care-about-the-data-format" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="why-do-we-care-about-the-data-format"><span class="header-section-number">3.1.1</span> Why do we care about the data format</h3>
+<section id="why-do-we-care-about-the-data-format" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="why-do-we-care-about-the-data-format"><span class="header-section-number">3.3.1</span> Why do we care about the data format</h3>
 <p>In some instances long format datasets are required for advanced statistical analysis and graphing. For example, if we wanted to run the regression formulation of the difference in differences model, we would need to input our data in long format. Furthermore, having our data in long format is very useful when plotting. Packages such as ggplot2, expect that your data will be in long form for the most part.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/soda_tax_df.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -440,12 +473,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exploring-our-data" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="exploring-our-data"><span class="header-section-number">3.1.2</span> Exploring our data</h3>
+<section id="exploring-our-data" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="exploring-our-data"><span class="header-section-number">3.3.2</span> Exploring our data</h3>
 <p>We can use our soda_tax_df to explore the distribution of soda consumption at different points in time.</p>
 <p>Let’s try first to look at the differences in the distribution only at the</p>
-<section id="pre-tax-time-period" class="level4" data-number="3.1.2.1">
-<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="pre-tax-time-period"><span class="header-section-number">3.1.2.1</span> pre-tax time period:</h4>
+<section id="pre-tax-time-period" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="pre-tax-time-period"><span class="header-section-number">3.3.2.1</span> pre-tax time period:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(soda_tax_df, <span class="fu">aes</span>(<span class="at">x =</span> pre_tax, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># density plot with transparency (alpha = 0.5)</span></span>
@@ -458,13 +491,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Let’s look at the</p>
 </section>
-<section id="post-tax-period" class="level4" data-number="3.1.2.2">
-<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="post-tax-period"><span class="header-section-number">3.1.2.2</span> post-tax period:</h4>
+<section id="post-tax-period" class="level4" data-number="3.3.2.2">
+<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="post-tax-period"><span class="header-section-number">3.3.2.2</span> post-tax period:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(soda_tax_df, <span class="fu">aes</span>(<span class="at">x =</span> post_tax, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># density plot with transparency (alpha = 0.5)</span></span>
@@ -477,13 +510,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Since in our soda_tax_df_long we represent the time and soda consumption dimensions under the same columns, we can create even more complex graphs.</p>
 </section>
-<section id="grammar-of-graphs-facets" class="level4" data-number="3.1.2.3">
-<h4 data-number="3.1.2.3" class="anchored" data-anchor-id="grammar-of-graphs-facets"><span class="header-section-number">3.1.2.3</span> grammar of graphs: Facets</h4>
+<section id="grammar-of-graphs-facets" class="level4" data-number="3.3.2.3">
+<h4 data-number="3.3.2.3" class="anchored" data-anchor-id="grammar-of-graphs-facets"><span class="header-section-number">3.3.2.3</span> grammar of graphs: Facets</h4>
 <p>We will use facet_grid() which forms a matrix of panels defined by row and column faceting variables. It is most useful when you have two discrete variables, and all combinations of the variables exist in the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df_long <span class="sc">%&gt;%</span> </span>
@@ -503,16 +536,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Soda consumed (oz)"</span>,</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
-<section id="modeling-and-estimating" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="modeling-and-estimating"><span class="header-section-number">3.1.3</span> Modeling and estimating</h3>
+<section id="modeling-and-estimating" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="modeling-and-estimating"><span class="header-section-number">3.3.3</span> Modeling and estimating</h3>
 <p>So far we have ignored time in our estimations. Difference-in-differences compares the changes in outcomes over time between units under different treatment states. This allows us to correct for any differences between the treatment and comparison groups that are constant over time assuming that the trends in time are parallel.</p>
-<section id="calculating-without-time" class="level4" data-number="3.1.3.1">
-<h4 data-number="3.1.3.1" class="anchored" data-anchor-id="calculating-without-time"><span class="header-section-number">3.1.3.1</span> Calculating without time</h4>
+<section id="calculating-without-time" class="level4" data-number="3.3.3.1">
+<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="calculating-without-time"><span class="header-section-number">3.3.3.1</span> Calculating without time</h4>
 <p>If we did not have the pre_tax baseline measure, we would likely utilize the post_tax to explore the average effect on the treated. In this case, we would model this as:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>after_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_tax <span class="sc">~</span> treatment, <span class="at">data =</span> soda_tax_df)</span>
@@ -575,12 +608,12 @@ Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="including-the-time-dimension-manual-extraction-of-the-did-estimate" class="level4" data-number="3.1.3.2">
-<h4 data-number="3.1.3.2" class="anchored" data-anchor-id="including-the-time-dimension-manual-extraction-of-the-did-estimate"><span class="header-section-number">3.1.3.2</span> Including the time dimension (Manual extraction of the DiD estimate)</h4>
+<section id="including-the-time-dimension-manual-extraction-of-the-did-estimate" class="level4" data-number="3.3.3.2">
+<h4 data-number="3.3.3.2" class="anchored" data-anchor-id="including-the-time-dimension-manual-extraction-of-the-did-estimate"><span class="header-section-number">3.3.3.2</span> Including the time dimension (Manual extraction of the DiD estimate)</h4>
 <table class="table">
 <thead>
 <tr class="header">
@@ -608,8 +641,8 @@ Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 <p>We can just manually substract:</p>
 <p><span class="math display">\[ DiD = -134.79 -14.97 = -149.76\]</span></p>
 </section>
-<section id="including-the-time-dimension" class="level4" data-number="3.1.3.3">
-<h4 data-number="3.1.3.3" class="anchored" data-anchor-id="including-the-time-dimension"><span class="header-section-number">3.1.3.3</span> Including the time dimension</h4>
+<section id="including-the-time-dimension" class="level4" data-number="3.3.3.3">
+<h4 data-number="3.3.3.3" class="anchored" data-anchor-id="including-the-time-dimension"><span class="header-section-number">3.3.3.3</span> Including the time dimension</h4>
 <p>We can introduce the time component to our calculation by incorporating the pre-treatment levels of sugar-added drink consumption, which gives us the diff-in-diff estimand. We could calculate this in a fairly straightforward manner by creating a variable assessing the change in our wide format data frame:</p>
 <ul>
 <li>change: The difference in sugar-added drink consuption between post- and pre-tax</li>
@@ -647,8 +680,8 @@ Note:                            *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pr
 <p>We could read this result substantively as: those who lived in districts were the tax was implemented consumed on average 149.7 ounces less of sugar-added drinks per week compared to those who lived in districts were the tax was not put in place. This calculation would give us the change, or difference, in sugar-added drink consumption for treatment and control groups.</p>
 <p>To believe the results of our did_model, we would need to believe that there are parallel trends between the two groups.</p>
 </section>
-<section id="including-the-time-dimension-regression-formulation-of-the-did-model" class="level4" data-number="3.1.3.4">
-<h4 data-number="3.1.3.4" class="anchored" data-anchor-id="including-the-time-dimension-regression-formulation-of-the-did-model"><span class="header-section-number">3.1.3.4</span> Including the time dimension (Regression formulation of the DiD model)</h4>
+<section id="including-the-time-dimension-regression-formulation-of-the-did-model" class="level4" data-number="3.3.3.4">
+<h4 data-number="3.3.3.4" class="anchored" data-anchor-id="including-the-time-dimension-regression-formulation-of-the-did-model"><span class="header-section-number">3.3.3.4</span> Including the time dimension (Regression formulation of the DiD model)</h4>
 <p>We can re-format our data to gather our diff-in-diff estimate</p>
 <p><span class="math display">\[ Y_{it} = ......\]</span></p>
 <p>For this calculation we need our data in long format to use the time and treatment dummy variables. We can see that under our long format, we have two entries for every individual.</p>
@@ -700,7 +733,7 @@ Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Soda consumed (oz)"</span>,</span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -717,7 +750,7 @@ Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time periods"</span>, <span class="at">y =</span> <span class="st">"Ounces of soda drank per week"</span>, <span class="at">color =</span> <span class="st">"Treatment group"</span>)<span class="sc">+</span></span>
 <span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ul>
