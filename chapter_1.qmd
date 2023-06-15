@@ -1,7 +1,6 @@
 #Basics of ggplot2
 
-This chapter focuses on *ggplot2*, one of the core packages in the *tidyverse*.
-Load the tidyverse by running:
+This chapter focuses on *ggplot2*, one of the core packages in the *tidyverse*. Load the tidyverse by running:
 
 ```{r}
 pacman::p_load("tidyverse",
@@ -15,8 +14,7 @@ We will use penguins data frame. A data frame is a rectangular collection of var
 penguins <- read.csv("data/penguins.csv")
 ```
 
-- For an alternative view, where you can see all variables and the first few observations of each variable, use glimpse().
-Or by using view(), you can see the data in a different tab with all information.
+-   For an alternative view, where you can see all variables and the first few observations of each variable, use glimpse(). Or by using view(), you can see the data in a different tab with all information.
 
 ```{r}
 glimpse(penguins)
@@ -28,9 +26,9 @@ view(penguins)
 
 ## Creating a ggplot
 
-Let’s recreate this plot step-by-step.
+Let's recreate this plot step-by-step.
 
-With ggplot2, you begin a plot with the function ggplot(), defining a plot object that you then add layers to. The first argument of ggplot() is the dataset to use in the graph and so ggplot(data = penguins) creates an empty graph that is primed to display the penguins data, but since we haven’t told it how to visualize it yet, for now it’s empty. This is not a very exciting plot, but you can think of it like an empty canvas you’ll paint the remaining layers of your plot onto.
+With ggplot2, you begin a plot with the function ggplot(), defining a plot object that you then add layers to. The first argument of ggplot() is the dataset to use in the graph and so ggplot(data = penguins) creates an empty graph that is primed to display the penguins data, but since we haven't told it how to visualize it yet, for now it's empty. This is not a very exciting plot, but you can think of it like an empty canvas you'll paint the remaining layers of your plot onto.
 
 ```{r}
 ggplot(data = penguins)
@@ -46,9 +44,10 @@ ggplot(
   mapping = aes(x = flipper_length_mm, y = body_mass_g)
 )
 ```
-Our empty canvas now has more structure – it’s clear where flipper lengths will be displayed (on the x-axis) and where body masses will be displayed (on the y-axis). But the penguins themselves are not yet on the plot. This is because we have not yet articulated, in our code, how to represent the observations from our data frame on our plot.
 
-To do so, we need to define a geom: the geometrical object that a plot uses to represent data. These geometric objects are made available in ggplot2 with functions that start with geom_. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms (geom_bar()), line charts use line geoms (geom_line()), boxplots use boxplot geoms (geom_boxplot()), scatterplots use point geoms (geom_point()), and so on.
+Our empty canvas now has more structure -- it's clear where flipper lengths will be displayed (on the x-axis) and where body masses will be displayed (on the y-axis). But the penguins themselves are not yet on the plot. This is because we have not yet articulated, in our code, how to represent the observations from our data frame on our plot.
+
+To do so, we need to define a geom: the geometrical object that a plot uses to represent data. These geometric objects are made available in ggplot2 with functions that start with geom\_. People often describe plots by the type of geom that the plot uses. For example, bar charts use bar geoms (geom_bar()), line charts use line geoms (geom_line()), boxplots use boxplot geoms (geom_boxplot()), scatterplots use point geoms (geom_point()), and so on.
 
 ```{r}
 ggplot(
@@ -57,11 +56,12 @@ ggplot(
 ) +
   geom_point()
 ```
-Now we have something that looks like what we might think of as a “scatterplot”. It doesn’t yet match our “ultimate goal” plot.
 
-We’re seeing the warning message because there are two penguins in our dataset with missing body mass and/or flipper length values and ggplot2 has no way of representing them on the plot without both of these values.
+Now we have something that looks like what we might think of as a "scatterplot". It doesn't yet match our "ultimate goal" plot.
 
-Let’s incorporate species into our plot and see if this reveals any additional insights into the apparent relationship between these variables. We will do this by representing species with different colored points.
+We're seeing the warning message because there are two penguins in our dataset with missing body mass and/or flipper length values and ggplot2 has no way of representing them on the plot without both of these values.
+
+Let's incorporate species into our plot and see if this reveals any additional insights into the apparent relationship between these variables. We will do this by representing species with different colored points.
 
 ```{r}
 #| warning: false
@@ -73,7 +73,7 @@ ggplot(
   geom_point()
 ```
 
-Now let’s add one more layer: a smooth curve displaying the relationship between body mass and flipper length.
+Now let's add one more layer: a smooth curve displaying the relationship between body mass and flipper length.
 
 Since this is a new geometric object representing our data, we will add a new geom as a layer on top of our point geom: geom_smooth(). And we will specify that we want to draw the line of best fit based on a linear model with method = "lm".
 
@@ -88,7 +88,7 @@ ggplot(
   geom_smooth(method = "lm")
 ```
 
-When aesthetic mappings are defined in ggplot(), at the global level, they’re passed down to each of the subsequent geom layers of the plot. However, each geom function in ggplot2 can also take a mapping argument, which allows for aesthetic mappings at the local level that are added to those inherited from the global level. Since we want points to be colored based on species but don’t want the lines to be separated out for them, we should specify color = species for geom_point() only.
+When aesthetic mappings are defined in ggplot(), at the global level, they're passed down to each of the subsequent geom layers of the plot. However, each geom function in ggplot2 can also take a mapping argument, which allows for aesthetic mappings at the local level that are added to those inherited from the global level. Since we want points to be colored based on species but don't want the lines to be separated out for them, we should specify color = species for geom_point() only.
 
 ```{r}
 #| warning: false
@@ -101,7 +101,7 @@ ggplot(
   geom_smooth(method = "lm")
 ```
 
-It’s generally not a good idea to represent information using only colors on a plot, as people perceive colors differently due to color blindness or other color vision differences. Therefore, in addition to color, we can also map species to the shape aesthetic.
+It's generally not a good idea to represent information using only colors on a plot, as people perceive colors differently due to color blindness or other color vision differences. Therefore, in addition to color, we can also map species to the shape aesthetic.
 
 ```{r}
 #| warning: false
@@ -132,5 +132,39 @@ ggplot(
     color = "Species", shape = "Species"
   ) +
   scale_color_colorblind()
+```
+
+As we move on from these introductory sections, we'll transition to a more concise expression of ggplot2 code. So far we've been very explicit, which is helpful when you are learning:
+
+Expression 1:
+
+```{r}
+#| warning: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+```
+
+Typically, the first one or two arguments to a function are so important that you should know them by heart. The first two arguments to ggplot() are data and mapping, in the remainder of the book, we won't supply those names. That saves typing, and, by reducing the amount of extra text, makes it easier to see what's different between plots.
+
+Expression 2:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+```
+
+We can also use the pipe, \|\>, which will allow you to create that plot.
+
+Expression 3:
+
+```{r}
+#| warning: false
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
 ```
 

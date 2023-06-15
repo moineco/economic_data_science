@@ -1,4 +1,4 @@
-# Create simple vann diagram by using R
+# Create simple vann diagram
 
 ```{r}
 #| warning: false
