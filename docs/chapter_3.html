@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">More on ggplot2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data types and formats</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Create simple vann diagram by using R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Create simple vann diagram</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,9 +196,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites"><span class="header-section-number">3.1</span> Prerequisites</a></li>
-  <li><a href="#before-and-after-and-difference-in-differences-designs" id="toc-before-and-after-and-difference-in-differences-designs" class="nav-link" data-scroll-target="#before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> BEFORE-AND-AFTER AND DIFFERENCE-IN-DIFFERENCES DESIGNS</a>
+  <li><a href="#before-and-after-and-difference-in-differences-designs" id="toc-before-and-after-and-difference-in-differences-designs" class="nav-link" data-scroll-target="#before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> Before-and-after and Difference-in-Differences designs</a>
   <ul class="collapse">
-  <li><a href="#minimum-wage-and-unemployment" id="toc-minimum-wage-and-unemployment" class="nav-link" data-scroll-target="#minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> MINIMUM WAGE AND UNEMPLOYMENT</a></li>
+  <li><a href="#minimum-wage-and-unemployment" id="toc-minimum-wage-and-unemployment" class="nav-link" data-scroll-target="#minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> Minimum wage and unemployment</a></li>
   </ul></li>
   <li><a href="#wide-and-long-data-formats" id="toc-wide-and-long-data-formats" class="nav-link" data-scroll-target="#wide-and-long-data-formats"><span class="header-section-number">3.3</span> Wide and long data formats</a>
   <ul class="collapse">
@@ -246,10 +246,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="before-and-after-and-difference-in-differences-designs" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> BEFORE-AND-AFTER AND DIFFERENCE-IN-DIFFERENCES DESIGNS</h2>
+<h2 data-number="3.2" class="anchored" data-anchor-id="before-and-after-and-difference-in-differences-designs"><span class="header-section-number">3.2</span> Before-and-after and Difference-in-Differences designs</h2>
 <p>In observational studies, the data collected over time are a valuable source of information. Multiple measurements taken over time on the same units are called longitudinal data or panel data. Longitudinal data often yield a more credible comparison of the treatment and control groups than cross-section data because the former contain additional information about changes over time.</p>
 <ul>
-<li><p>The before-and-after design examines how the outcome variable changed from the pretreatment period to the posttreatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.</p></li>
+<li><p>The before-and-after design examines how the outcome variable changed from the pre-treatment period to the post-treatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.</p></li>
 <li><p>The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment.</p></li>
 </ul>
 <p>Following figure graphically illustrates this assumption using the minimum-wage study data. The figure shows the outcome of interest, i.e., the average proportion of full-time employees, before and after the increase in the minimum wage for both the treatment group (fast-food restaurants in NJ, indicated by the solid black circles) and the control group (restaurants in PA, represented by the open black circles). In this setting, we can estimate the counterfactual outcome for the treatment group by assuming that the time trend for the treatment group is parallel to the observed trend for the control group. This estimate is indicated by the solid blue triangle.</p>
@@ -265,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In the minimum- wage study, the researchers had collected the employment and wage information from the same set of restaurants before the minimum wage was increased in NJ. This pretreatment information allows several alternative designs for estimating causal effects in observational studies.</p>
 <section id="minimum-wage-and-unemployment" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> MINIMUM WAGE AND UNEMPLOYMENT</h3>
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="minimum-wage-and-unemployment"><span class="header-section-number">3.2.1</span> Minimum wage and unemployment</h3>
 <p>Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts?</p>
 </section>
 </section>
@@ -682,8 +682,6 @@ Note:                            *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pr
 </section>
 <section id="including-the-time-dimension-regression-formulation-of-the-did-model" class="level4" data-number="3.3.3.4">
 <h4 data-number="3.3.3.4" class="anchored" data-anchor-id="including-the-time-dimension-regression-formulation-of-the-did-model"><span class="header-section-number">3.3.3.4</span> Including the time dimension (Regression formulation of the DiD model)</h4>
-<p>We can re-format our data to gather our diff-in-diff estimate</p>
-<p><span class="math display">\[ Y_{it} = ......\]</span></p>
 <p>For this calculation we need our data in long format to use the time and treatment dummy variables. We can see that under our long format, we have two entries for every individual.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>did_long <span class="ot">&lt;-</span> <span class="fu">lm</span>(soda_drank <span class="sc">~</span> treatment <span class="sc">+</span> after_tax <span class="sc">+</span> treatment<span class="sc">*</span>after_tax, <span class="at">data =</span> soda_tax_df_long) <span class="co">#running our model</span></span>
@@ -754,7 +752,7 @@ Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 </div>
 </div>
 <ul>
-<li>Drafting some brief recommedations</li>
+<li>Drafting some brief recommendations</li>
 </ul>
 <p>Based on your analysis of the data at hand, you decide to recommend that the tax measure should move forward in the rest of Pawnee. You state that it is a very good example of a pigouvian tax, which captures the negative externalities not included in the market price of sugar-added drinks. The findings suggest that the tax reduced the weekly sugar-added drink consumption by about 150 luquid ounces (almost 4.5 liters).</p>
 
@@ -1000,12 +998,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chapter_2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">More on ggplot2</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data types and formats</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chapter_4.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Create simple vann diagram by using R</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Create simple vann diagram</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

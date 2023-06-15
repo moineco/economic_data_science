@@ -28,6 +28,30 @@ knitr::include_graphics('figure/tidy_1.png')
 
 This is a consistent way of storing data. `dplyr`, `ggplot2`, and all the other packages in the tidyverse are designed to work with tidy data. 
 
+```{r}
+table1 <- read.csv("data/table_1.csv")
+head(table1)
+```
+Here are a few small examples showing how you might work with table1.
 
+```{r}
+# Compute rate per 10,000
+table1 |>
+  mutate(rate = cases / population * 10000)
+```
 
+```{r}
+# Compute total cases per year
+table1 |> 
+  group_by(year) |> 
+  summarize(total_cases = sum(cases))
+```
+
+```{r}
+# Visualize changes over time
+ggplot(table1, aes(x = year, y = cases)) +
+  geom_line(aes(group = country), color = "grey50") +
+  geom_point(aes(color = country, shape = country)) +
+  scale_x_continuous(breaks = c(1999, 2000)) # x-axis breaks at 1999 and 2000
+```
 
