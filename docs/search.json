@@ -180,5 +180,26 @@
     "title": "5  Regression models",
     "section": "6.9 Chapter 18: Advanced Time Series Topics",
     "text": "6.9 Chapter 18: Advanced Time Series Topics\n\n6.9.1 Example 18.8: FORECASTING THE U.S. UNEMPLOYMENT RATE\nData from Economic Report of the President, 2004, Tables B-42 and B-64.\n\\[\\widehat{unemp_t} = \\beta_0 + \\beta_1unem_{t-1}\\]\nEstimate the linear model in the usual way and note the use of the subset argument to define data equal to and before the year 1996.\n\nphillips_train &lt;- subset(phillips, year &lt;= 1996)\nunem_AR1 &lt;- lm(unem ~ unem_1, data = phillips_train)\n\n\\[\\widehat{unemp_t} = \\beta_0 + \\beta_1unem_{t-1} + \\beta_2inf_{t-1}\\]\n\nunem_inf_VAR1 &lt;- lm(unem ~ unem_1 + inf_1, data = phillips_train)\n\n\n\n\n\n\n\n\n\n\n\nDependent variable:\n\n\n\n\n\n\n\n\n\n\n\n\nunem\n\n\n\n\n\n\n(1)\n\n\n(2)\n\n\n\n\n\n\n\n\nunem_1\n\n\n0.73235*** (0.09689)\n\n\n0.64703*** (0.08381)\n\n\n\n\ninf_1\n\n\n\n\n0.18358*** (0.04118)\n\n\n\n\nConstant\n\n\n1.57174*** (0.57712)\n\n\n1.30380** (0.48969)\n\n\n\n\n\n\n\n\nObservations\n\n\n48\n\n\n48\n\n\n\n\nR2\n\n\n0.55397\n\n\n0.69059\n\n\n\n\nAdjusted R2\n\n\n0.54427\n\n\n0.67684\n\n\n\n\nResidual Std. Error\n\n\n1.04857 (df = 46)\n\n\n0.88298 (df = 45)\n\n\n\n\nF Statistic\n\n\n57.13184*** (df = 1; 46)\n\n\n50.21941*** (df = 2; 45)\n\n\n\n\n\n\n\n\nNote:\n\n\np&lt;0.1; p&lt;0.05; p&lt;0.01\n\n\n\n\nNow, use the subset argument to create our testing data set containing observation after 1996. Next, pass the both the model object and the test set to the predict function for both models. Finally, cbind or “column bind” both forecasts as well as the year and unemployment rate of the test set.\n\nphillips_test &lt;- subset(phillips, year &gt;= 1997)\nAR1_forecast &lt;- predict.lm(unem_AR1, newdata = phillips_test)\nVAR1_forecast &lt;- predict.lm(unem_inf_VAR1, newdata = phillips_test)\nkable(cbind(phillips_test[ ,c(\"year\", \"unem\")], AR1_forecast, VAR1_forecast))\n\n\n\n\n\nyear\nunem\nAR1_forecast\nVAR1_forecast\n\n\n\n\n50\n1997\n4.9\n5.526452\n5.348468\n\n\n51\n1998\n4.5\n5.160275\n4.896451\n\n\n52\n1999\n4.2\n4.867333\n4.509137\n\n\n53\n2000\n4.0\n4.647627\n4.425175\n\n\n54\n2001\n4.8\n4.501157\n4.516062\n\n\n55\n2002\n5.8\n5.087040\n4.923537\n\n\n56\n2003\n6.0\n5.819394\n5.350271"
+  },
+  {
+    "objectID": "chapter_6.html",
+    "href": "chapter_6.html",
+    "title": "6  Data tidying",
+    "section": "",
+    "text": "Let`s learn a consistent way to organize the data in R using a system called tidy data."
+  },
+  {
+    "objectID": "chapter_6.html#prerequisites",
+    "href": "chapter_6.html#prerequisites",
+    "title": "6  Data tidying",
+    "section": "6.1 Prerequisites",
+    "text": "6.1 Prerequisites\nWe’ll focus on tidyr, a package that provides a bunch of tools to help tidy up your messy datasets. tidyr is a member of the core tidyverse. We will use pacman package to manage the necessary packages for this chapter.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "chapter_6.html#tidy-data",
+    "href": "chapter_6.html#tidy-data",
+    "title": "6  Data tidying",
+    "section": "6.2 Tidy data",
+    "text": "6.2 Tidy data\nYou can represent the same underlying data in multiple ways. The example below shows the same data organized in three different ways. Each dataset shows the same values of four variables: country, year, population, and number of documented cases of TB (tuberculosis), but each dataset organizes the values in a different way.\nThere are three interrelated rules that make a dataset tidy:\n\n\nEach variable is a column; each column is a variable.\n\n\nEach observation is a row; each row is an observation.\n\n\nEach value is a cell; each cell is a single value.\n\n\n\n\n\n\n\nThe following three rules make a dataset tidy: variables are columns, observations are rows, and values are cells\n\n\n\n\n\nWhy ensure that your data is tidy?\n\nThis is a consistent way of storing data. dplyr, ggplot2, and all the other packages in the tidyverse are designed to work with tidy data."
   }
 ]
