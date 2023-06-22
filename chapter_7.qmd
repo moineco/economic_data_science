@@ -1,0 +1,42 @@
+# Visualization of qualitative data
+
+Visualization can either be made with vectors and tables but also though diagrams like histograms, bar charts, pie charts etc. In each case, it is quite important to distinct our observations in quantitative or qualitative data. We start with qualitative data, which are usually represented with tables, bar charts and pie charts.
+
+Example: Let’s assume we have the answers given by 20 persons to the question: “What means of transportation do you use every day to go to your job?”. Respondents had to choose between car, bus, metro and foot. The answers given where:
+
+> car, car, bus, metro, metro, car, metro, metro, foot, car, foot, bus, bus, metro, metro, car, car, car, metro, car
+
+We initially insert data by using the m vector. Our data are categorical so we should add these values inside double quotes:
+
+```{r}
+m = c("car", "car", "bus", "metro", "metro", "car", "metro", "metro", "foot", "car", "foot", "bus", "bus", "metro", "metro", "car", "car", "car", "metro", "car")
+```
+
+FREQUENCY TABLE: We can represent our data in a frequency table by using the table() command.
+
+```{r}
+table(m)
+```
+
+If we wanted to view the relative frequency then we could use the prop.table(table()) command.
+
+```{r}
+prop.table(table(m))
+```
+
+BAR CHARTS: Frequency bar charts can be displayed with the command:
+
+```{r}
+barplot(table(m))
+```
+
+Relative frequency bar charts can be displayed with the command:
+
+```{r}
+barplot(prop.table(table(m)))
+```
+PIE CHART: We can display our data in a pie chart by using the command:
+
+```{r}
+pie(table(m))
+```
