@@ -1,6 +1,7 @@
----
-title: "Lecture 8"
----
-
 # Autoregressive Distributed Lag (ARDL) Models
 
+## Panel Autoregressive Distributed Lag (ARDL) Models
+
+## Nonlinear Autoregressive Distributed Lag (NARDL) Models
+
+## Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models
