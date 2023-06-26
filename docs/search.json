@@ -254,9 +254,9 @@
   {
     "objectID": "chapter_8.html#panel-autoregressive-distributed-lag-ardl-models",
     "href": "chapter_8.html#panel-autoregressive-distributed-lag-ardl-models",
-    "title": "8  Autoregressive Distributed Lag (ARDL) Models",
-    "section": "8.1 Panel Autoregressive Distributed Lag (ARDL) Models",
-    "text": "8.1 Panel Autoregressive Distributed Lag (ARDL) Models"
+    "title": "8  Time Series Regression and Forecasting",
+    "section": "8.3 Panel Autoregressive Distributed Lag (ARDL) Models",
+    "text": "8.3 Panel Autoregressive Distributed Lag (ARDL) Models"
   },
   {
     "objectID": "chapter_8.html#nonlinear-autoregressive-distributed-lag-nardl",
@@ -275,15 +275,29 @@
   {
     "objectID": "chapter_8.html#nonlinear-autoregressive-distributed-lag-nardl-models",
     "href": "chapter_8.html#nonlinear-autoregressive-distributed-lag-nardl-models",
-    "title": "8  Autoregressive Distributed Lag (ARDL) Models",
-    "section": "8.2 Nonlinear Autoregressive Distributed Lag (NARDL) Models",
-    "text": "8.2 Nonlinear Autoregressive Distributed Lag (NARDL) Models"
+    "title": "8  Time Series Regression and Forecasting",
+    "section": "8.4 Nonlinear Autoregressive Distributed Lag (NARDL) Models",
+    "text": "8.4 Nonlinear Autoregressive Distributed Lag (NARDL) Models"
   },
   {
     "objectID": "chapter_8.html#panel-nonlinear-autoregressive-distributed-lag-nardl-models",
     "href": "chapter_8.html#panel-nonlinear-autoregressive-distributed-lag-nardl-models",
-    "title": "8  Autoregressive Distributed Lag (ARDL) Models",
-    "section": "8.3 Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models",
-    "text": "8.3 Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models"
+    "title": "8  Time Series Regression and Forecasting",
+    "section": "8.5 Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models",
+    "text": "8.5 Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models"
+  },
+  {
+    "objectID": "chapter_8.html#linear-and-nonlinear-autoregressive-distributed-lag-models",
+    "href": "chapter_8.html#linear-and-nonlinear-autoregressive-distributed-lag-models",
+    "title": "8  Time Series Regression and Forecasting",
+    "section": "8.2 Linear and Nonlinear Autoregressive Distributed Lag Models",
+    "text": "8.2 Linear and Nonlinear Autoregressive Distributed Lag Models\n\n8.2.1 Autoregressive Distributed Lag (ARDL) Models"
+  },
+  {
+    "objectID": "chapter_8.html#how-to-create-a-time-series-in-r",
+    "href": "chapter_8.html#how-to-create-a-time-series-in-r",
+    "title": "8  Time Series Regression and Forecasting",
+    "section": "8.1 How to create a Time Series in R ?",
+    "text": "8.1 How to create a Time Series in R ?\nUpon importing your data into R, use ts() function as follows. The input Data used here is ideally a numeric vector of the class ‘numeric’ or ‘integer’.\n\n8.1.1 ts objects\nA time series can be thought of as a list of numbers, along with some information about what times those numbers were recorded. This information can be stored as a ts object in R.\nSuppose you have annual observations for the last few years:\n\ndata_times &lt;- read.csv(\"data/timeseries.csv\")\nhead(data_times)\n\n  Year Observation\n1 2012         123\n2 2013          39\n3 2014          78\n4 2015          52\n5 2016         110\n\n\nWe turn this into a ts object using the ts() function:\n\ny &lt;- ts(c(123,39,78,52,110), start=2012)\n\n\nIf you have annual data, with one observation per year, you only need to provide the starting year (or the ending year).\nFor observations that are more frequent than once per year, you simply add a frequency argument. For example, if your monthly data is already stored as a numerical vector z, then it can be converted to a ts object like this:"
   }
 ]
