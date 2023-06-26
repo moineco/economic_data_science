@@ -40,3 +40,92 @@ PIE CHART: We can display our data in a pie chart by using the command:
 ```{r}
 pie(table(m))
 ```
+
+### Contigency Matrix
+
+A contingency matrix has to do with two categorical variables and displays their frequency distribution.
+
+- Let’s assume that in the previous example’s data we have added the gender of each person. 
+
+- For convenience, let’s assume that the first 8 people were male (M) and the remaining 12 were female (F). 
+
+We create the vector g:
+
+```{r}
+g = c(rep("M", 8), rep("F", 12))
+g
+```
+
+We create the double input frequency table mg like this:
+
+```{r}
+mg = table(m,g)
+mg
+```
+Then, using the table, we calculate marginal frequencies in terms of means of transportation and gender, respectively:
+
+```{r}
+margin.table(mg,1)
+```
+
+```{r}
+margin.table(mg,2)
+```
+
+We can work with the relative frequency table with the exact same way.
+
+```{r}
+prop.table(mg)
+```
+```{r}
+prop.table(mg,1)
+```
+```{r}
+prop.table(mg,2)
+```
+### Stacked bar charts and grouped bar charts
+
+We can display qualitative data coming from the values of two variables by using a stacked bar chart or a grouped bar chart.
+
+```{r}
+barplot(mg)
+```
+
+
+By using the command parameters, the result is much better:
+
+```{r}
+barplot(mg, xlim=c(0,2), xlab="Gender",
+        legend =levels(m), col =1:4)
+```
+
+```{r}
+barplot(mg, xlim = c(0,2), xlab = "Transportation",
+        legend = levels(g), col=1:2)
+```
+
+The below commands create grouped bar charts.
+
+```{r}
+barplot(prop.table(mg,1), width = 0.25,
+        xlim = c(0,3), ylim = c(0,1), xlab = "Gender",
+        legend = levels(m), beside = T, col = 1:4)
+```
+
+```{r}
+mg = table(g,m)
+barplot(prop.table(mg,2), width = 0.25,
+       xlim = c(0,3), ylim = c(0,1), xlab = "Transportation",
+       legend = levels(g), beside = T, col = 1:2)
+```
+
+
+
+
+
+
+
+
+
+
+
