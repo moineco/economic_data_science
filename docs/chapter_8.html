@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science and Economics - 8&nbsp; Autoregressive Distributed Lag (ARDL) Models</title>
+<title>Data Science and Economics - 8&nbsp; Linear and Nonlinear Autoregressive Distributed Lag Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Autoregressive Distributed Lag (ARDL) Models</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear and Nonlinear Autoregressive Distributed Lag Models</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Autoregressive Distributed Lag (ARDL) Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear and Nonlinear Autoregressive Distributed Lag Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -168,9 +168,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#panel-autoregressive-distributed-lag-ardl-models" id="toc-panel-autoregressive-distributed-lag-ardl-models" class="nav-link active" data-scroll-target="#panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.1</span> Panel Autoregressive Distributed Lag (ARDL) Models</a></li>
-  <li><a href="#nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.2</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
-  <li><a href="#panel-nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.3</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
+  <li><a href="#autoregressive-distributed-lag-ardl-models" id="toc-autoregressive-distributed-lag-ardl-models" class="nav-link active" data-scroll-target="#autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.1</span> Autoregressive Distributed Lag (ARDL) Models</a></li>
+  <li><a href="#panel-autoregressive-distributed-lag-ardl-models" id="toc-panel-autoregressive-distributed-lag-ardl-models" class="nav-link" data-scroll-target="#panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.2</span> Panel Autoregressive Distributed Lag (ARDL) Models</a></li>
+  <li><a href="#nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.3</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
+  <li><a href="#panel-nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.4</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
   </ul>
 </nav>
     </div>
@@ -179,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Autoregressive Distributed Lag (ARDL) Models</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear and Nonlinear Autoregressive Distributed Lag Models</span></h1>
 </div>
 
 
@@ -194,14 +195,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="panel-autoregressive-distributed-lag-ardl-models" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.1</span> Panel Autoregressive Distributed Lag (ARDL) Models</h2>
+<section id="autoregressive-distributed-lag-ardl-models" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.1</span> Autoregressive Distributed Lag (ARDL) Models</h2>
 </section>
-<section id="nonlinear-autoregressive-distributed-lag-nardl-models" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.2</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</h2>
+<section id="panel-autoregressive-distributed-lag-ardl-models" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">8.2</span> Panel Autoregressive Distributed Lag (ARDL) Models</h2>
 </section>
-<section id="panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.3</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</h2>
+<section id="nonlinear-autoregressive-distributed-lag-nardl-models" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.3</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</h2>
+</section>
+<section id="panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">8.4</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</h2>
 
 
 </section>

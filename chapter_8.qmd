@@ -1,4 +1,6 @@
-# Autoregressive Distributed Lag (ARDL) Models
+# Linear and Nonlinear Autoregressive Distributed Lag Models
+
+## Autoregressive Distributed Lag (ARDL) Models
 
 ## Panel Autoregressive Distributed Lag (ARDL) Models
 
