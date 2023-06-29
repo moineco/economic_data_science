@@ -276,4 +276,4 @@ soda_tax_df_long %>%
 
 -   Drafting some brief recommendations
 
-Based on your analysis of the data at hand, you decide to recommend that the tax measure should move forward in the rest of Pawnee. You state that it is a very good example of a pigouvian tax, which captures the negative externalities not included in the market price of sugar-added drinks. The findings suggest that the tax reduced the weekly sugar-added drink consumption by about 150 luquid ounces (almost 4.5 liters).
+Based on your analysis of the data at hand, you decide to recommend that the tax measure should move forward in the rest of Pawnee. You state that it is a very good example of a pigouvian tax, which captures the negative externalities not included in the market price of sugar-added drinks. The findings suggest that the tax reduced the weekly sugar-added drink consumption by about 150 liquid ounces (almost 4.5 liters).

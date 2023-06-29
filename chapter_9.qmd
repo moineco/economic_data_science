@@ -1,0 +1,140 @@
+# Probability Theory
+
+Prerequisites:
+
+We will use following packages for reproducing the contents of this chapter. For mamaging the necessary packages, we will use `pacman` package manager.
+
+```{r}
+pacman::p_load(stats)
+```
+
+## Random Variables
+
+A random variable is essentially a random number. Random variables can be discrete or continuous.
+
+### Discrete Random Variables
+
+Discrete random variables have discrete outcomes, e.g., 0 and 1. A typical example for a discrete random variable $D$ is the result of a dice roll: in terms of a random experiment this is nothing but randomly selecting a sample of size  1 from a set of numbers which are mutually exclusive outcomes. Here, the sample space is  
+$$[{1,2,3,4,5,6}]$$
+A basic function to draw random samples from a specified set of elements is the function `sample()`:
+
+```{r}
+sample(1:6, 1)
+```
+
+Probability distribution: The probability distribution of a discrete random variable is the list of all possible values of the variable and their probabilities which sum to 1
+
+Cumulative probability distribution: The cumulative probability distribution function gives the probability that the random variable is less than or equal to a particular value.
+
+We can easily plot both functions using R. Since the probability equals $1/6$ for each outcome, we set up the vector probability by using the function `rep()` which replicates a given value a specified number of times.
+
+- generate the vector of probabilities 
+
+```{r}
+probability <- rep(1/6, 6)
+```
+
+- plot the probabilities  
+
+```{r}
+plot(probability,
+     xlab = "outcomes",
+     main = "Probability Distribution") 
+```
+
+For the cumulative probability distribution we need the cumulative probabilities, i.e., we need the cumulative sums of the vector probability. These sums can be computed using `cumsum()`
+
+- generate the vector of cumulative probabilities 
+
+```{r}
+cum_probability <- cumsum(probability)
+```
+
+- plot the probabilites
+
+```{r}
+plot(cum_probability, 
+     xlab = "outcomes", 
+     main = "Cumulative Probability Distribution") 
+```
+
+### Bernoulli Random Variables
+
+A Bernoulli random variable takes on only two values: 0 and 1, with probabilities $1 − p$ and $p$, respectively.
+
+The result of a single coin toss is a Bernoulli distributed random variable, i.e., a variable with two possible distinct outcomes. We might simulate coin tossing with outcomes H (heads) and T (tails).
+
+```{r}
+sample(c("H", "T"), 1) 
+```
+
+Imagine you are about to toss a coin 10 times in a row and wonder how likely it is to end up with a 5 times heads. This is a typical example of what we call a Bernoulli experiment as it consists of n=10
+
+Bernoulli trials that are independent of each other and we are interested in the likelihood of observing  k=5 successes H that occur with probability p=0.5 (assuming a fair coin) in each trial. Note that the order of the outcomes does not matter here.
+
+In R, we can solve problems like the one stated above by means of the function `dbinom()` 
+
+```{r}
+dbinom(x = 5,
+       size = 10,
+       prob = 0.5) 
+```
+
+We conclude that the probability of observing Head k=5 times when tossing a fair coin n=10 times is about 24.6%.
+
+Now assume we are interested in P(4≤k≤7), i.e.the probability of observing 4, 5,6 or 7 successes for B(10,0.5). This may be computed by providing a vector as the argument x in our call of `dbinom()` and summing up using `sum()`.
+
+- compute P(4 <= k <= 7) using `dbinom()`
+
+```{r}
+sum(dbinom(x = 4:7, size = 10, prob = 0.5))
+```
+
+The probability distribution of a discrete random variable is nothing but a list of all possible outcomes that can occur and their respective probabilities. In the coin tossing example we have 11 possible outcomes for k.
+
+- set up vector of possible outcomes:
+
+```{r}
+k <- 0:10
+k
+```
+
+To visualize the probability distribution function of k we may therefore do the following:
+
+-  assign the probabilities
+
+```{r}
+probability_1 <- dbinom(x = k,
+                      size = 10, 
+                      prob = 0.5)
+```
+
+- plot the outcomes against their probabilities
+
+```{r}
+plot(x = k, 
+     y = probability_1,
+     main = "Probability Distribution Function") 
+```
+
+In a similar fashion we may plot the cumulative distribution function of k by executing the following code chunk:
+
+- compute cumulative probabilities
+
+```{r}
+prob_1 <- pbinom(q = k, 
+               size = 10, 
+               prob = 0.5)
+```
+
+- plot the cumulative probabilities
+
+```{r}
+plot(x = k, 
+     y = prob_1,
+     main = "Cumulative Distribution Function") 
+```
+
+
+
+

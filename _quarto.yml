@@ -17,6 +17,7 @@ book:
     - chapter_6.qmd
     - chapter_7.qmd
     - chapter_8.qmd
+    - chapter_9.qmd
     - references.qmd
 bibliography: data_science.bib
 
