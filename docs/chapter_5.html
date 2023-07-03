@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data types and formats</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Beautiful Plotting in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -180,6 +180,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./chapter_7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualization of qualitative data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Time Series Regression and Forecasting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -306,17 +318,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-2.10-a-log-wage-equation" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="example-2.10-a-log-wage-equation"><span class="header-section-number">5.2.1</span> <strong><code>Example 2.10:</code> A Log Wage Equation</strong></h3>
 <p>Load the <code>wage1</code> data and check out the documentation. The documentation indicates these are data from the 1976 Current Population Survey, collected by Henry Farber when he and Wooldridge were colleagues at MIT in 1988.</p>
-<p><strong><span class="math inline">\(educ\)</span>:</strong> years of education</p>
-<p><strong><span class="math inline">\(wage\)</span>:</strong> average hourly earnings</p>
-<p><strong><span class="math inline">\(lwage\)</span>:</strong> log of the average hourly earnings</p>
+<p><span class="math inline">\(educ\)</span>: years of education</p>
+<p><span class="math inline">\(wage\)</span>: average hourly earnings</p>
+<p><span class="math inline">\(lwage\)</span>: log of the average hourly earnings</p>
 <p>First, make a scatter-plot of the two variables and look for possible patterns in the relationship between them.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="chapter_5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>It appears that <em><strong>on average</strong></em>, more years of education, leads to higher wages.</p>
-<p>The example in the text is interested in the <em>return to another year of education</em>, or what the <em><strong>percentage</strong></em> change in wages one might expect for each additional year of education. To do so, one must use the <span class="math inline">\(log(\)</span><code>wage</code><span class="math inline">\()\)</span>. This has already been computed in the data set and is defined as <code>lwage</code>.</p>
+<p>It appears that <strong><em>on average</em></strong>, more years of education, leads to higher wages.</p>
+<p>The example in the text is interested in the <em>return to another year of education</em>, or what the <strong><em>percentage</em></strong> change in wages one might expect for each additional year of education. To do so, one must use the <span class="math inline">\(log(\)</span><code>wage</code><span class="math inline">\()\)</span>. This has already been computed in the data set and is defined as <code>lwage</code>.</p>
 <p>The textbook provides excellent discussions around these topics, so please consult it.</p>
 <p>Build a linear model to estimate the relationship between the <em>log of wage</em> (<code>lwage</code>) and <em>education</em> (<code>educ</code>).</p>
 <p><span class="math display">\[\widehat{log(wage)} = \beta_0 + \beta_1educ\]</span></p>
@@ -444,10 +456,10 @@ F Statistic
 <section id="example-3.2-hourly-wage-equation" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="example-3.2-hourly-wage-equation"><span class="header-section-number">5.3.1</span> <strong><code>Example 3.2:</code> Hourly Wage Equation</strong></h3>
 <p>Check the documentation for variable information</p>
-<p><strong><span class="math inline">\(lwage\)</span>:</strong> log of the average hourly earnings</p>
-<p><strong><span class="math inline">\(educ\)</span>:</strong> years of education</p>
-<p><strong><span class="math inline">\(exper\)</span>:</strong> years of potential experience</p>
-<p><strong><span class="math inline">\(tenutre\)</span>:</strong> years with current employer</p>
+<p><span class="math inline">\(lwage\)</span>: log of the average hourly earnings</p>
+<p><span class="math inline">\(educ\)</span>: years of education</p>
+<p><span class="math inline">\(exper\)</span>: years of potential experience</p>
+<p><span class="math inline">\(tenutre\)</span>: years with current employer</p>
 <p>Plot the variables against <code>lwage</code> and compare their distributions and slope (<span class="math inline">\(\beta\)</span>) of the simple regression lines.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -695,12 +707,12 @@ F Statistic
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="example-4.7-effect-of-job-training-on-firm-scrap-rates"><span class="header-section-number">5.4.2</span> <strong><code>Example 4.7</code> Effect of Job Training on Firm Scrap Rates</strong></h3>
 <p>Load the <code>jtrain</code> data set.</p>
 <p>From H. Holzer, R. Block, M. Cheatham, and J. Knott (1993), <em>Are Training Subsidies Effective? The Michigan Experience</em>, Industrial and Labor Relations Review 46, 625-636. The authors kindly provided the data.</p>
-<p><strong><span class="math inline">\(year:\)</span></strong> 1987, 1988, or 1989</p>
-<p><strong><span class="math inline">\(union:\)</span></strong> =1 if unionized</p>
-<p><strong><span class="math inline">\(lscrap:\)</span></strong> Log(scrap rate per 100 items)</p>
-<p><strong><span class="math inline">\(hrsemp:\)</span></strong> (total hours training) / (total employees trained)</p>
-<p><strong><span class="math inline">\(lsales:\)</span></strong> Log(annual sales, $)</p>
-<p><strong><span class="math inline">\(lemploy:\)</span></strong> Log(umber of employees at plant)</p>
+<p><span class="math inline">\(year:\)</span> 1987, 1988, or 1989</p>
+<p><span class="math inline">\(union:\)</span> =1 if unionized</p>
+<p><span class="math inline">\(lscrap:\)</span> Log(scrap rate per 100 items)</p>
+<p><span class="math inline">\(hrsemp:\)</span> (total hours training) / (total employees trained)</p>
+<p><span class="math inline">\(lsales:\)</span> Log(annual sales, $)</p>
+<p><span class="math inline">\(lemploy:\)</span> Log(umber of employees at plant)</p>
 <p>First, use the <code>subset</code> function and it’s argument by the same name to return observations which occurred in <strong>1987</strong> and are not <strong>union</strong>. At the same time, use the <code>select</code> argument to return only the variables of interest for this problem.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jtrain_subset <span class="ot">&lt;-</span> <span class="fu">subset</span>(jtrain, <span class="at">subset =</span> (year <span class="sc">==</span> <span class="dv">1987</span> <span class="sc">&amp;</span> union <span class="sc">==</span> <span class="dv">0</span>),</span>
@@ -859,9 +871,9 @@ F Statistic
 <section id="example-5.1-housing-prices-and-distance-from-an-incinerator" class="level3" data-number="5.5.1">
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="example-5.1-housing-prices-and-distance-from-an-incinerator"><span class="header-section-number">5.5.1</span> <strong><code>Example 5.1:</code> Housing Prices and Distance From an Incinerator</strong></h3>
 <p>Load the <code>hprice3</code> data set.</p>
-<p><strong><span class="math inline">\(lprice:\)</span></strong> Log(selling price)</p>
-<p><strong><span class="math inline">\(ldist:\)</span></strong> Log(distance from house to incinerator, feet)</p>
-<p><strong><span class="math inline">\(larea:\)</span></strong> Log(square footage of house)</p>
+<p><span class="math inline">\(lprice:\)</span> Log(selling price)</p>
+<p><span class="math inline">\(ldist:\)</span> Log(distance from house to incinerator, feet)</p>
+<p><span class="math inline">\(larea:\)</span> Log(square footage of house)</p>
 <p>Graph the prices of housing against distance from an incinerator:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1563,11 +1575,11 @@ F Statistic
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="example-7.4-housing-price-regression-qualitative-binary-variable"><span class="header-section-number">5.7.1</span> <strong><code>Example 7.4:</code> Housing Price Regression, Qualitative Binary variable</strong></h3>
 <p>This time, use the <code>hrprice1</code> data.</p>
 <p>Data collected from the real estate pages of the Boston Globe during 1990. These are homes that sold in the Boston, MA area.</p>
-<p><strong><span class="math inline">\(lprice:\)</span></strong> Log(house price, $1000s)</p>
-<p><strong><span class="math inline">\(llotsize:\)</span></strong> Log(size of lot in square feet)</p>
-<p><strong><span class="math inline">\(lsqrft:\)</span></strong> Log(size of house in square feet)</p>
-<p><strong><span class="math inline">\(bdrms:\)</span></strong> number of bdrms</p>
-<p><strong><span class="math inline">\(colonial:\)</span></strong> =1 if home is colonial style</p>
+<p><span class="math inline">\(lprice:\)</span> Log(house price, $1000s)</p>
+<p><span class="math inline">\(llotsize:\)</span> Log(size of lot in square feet)</p>
+<p><span class="math inline">\(lsqrft:\)</span> Log(size of house in square feet)</p>
+<p><span class="math inline">\(bdrms:\)</span> number of bdrms</p>
+<p><span class="math inline">\(colonial:\)</span> =1 if home is colonial style</p>
 <p><span class="math display">\[\widehat{log(price)} = \beta_0 + \beta_1log(lotsize) + \beta_2log(sqrft) + \beta_3bdrms + \beta_4colonial \]</span></p>
 <p>Estimate the coefficients of the above linear model on the <code>hprice</code> data set.</p>
 <div class="cell">
