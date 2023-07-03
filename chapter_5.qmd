@@ -14,6 +14,7 @@ pacman::p_load(wooldridge,
 ```
 
 ## Data
+
 ```{r, message=FALSE, eval=FALSE}
 earns <- read.csv("data/earns.csv")
 gpa1 <- read.csv("data/gpa1.csv")
@@ -28,20 +29,17 @@ traffic1 <- read.csv("data/traffic1.csv")
 wage1 <- read.csv("data/wage1.csv")
 ```
 
-
-##  Chapter 2: The Simple Regression Model
+## Chapter 2: The Simple Regression Model
 
 ### **`Example 2.10:` A Log Wage Equation**
 
-Load the `wage1` data and check out the documentation.
-The documentation indicates these are data from the 1976 Current Population Survey, collected by Henry Farber when he and Wooldridge were colleagues at MIT in 1988.
+Load the `wage1` data and check out the documentation. The documentation indicates these are data from the 1976 Current Population Survey, collected by Henry Farber when he and Wooldridge were colleagues at MIT in 1988.
 
-**$educ$:** years of education
+$educ$: years of education
 
-**$wage$:** average hourly earnings
+$wage$: average hourly earnings
 
-**$lwage$:** log of the average hourly earnings
-
+$lwage$: log of the average hourly earnings
 
 First, make a scatter-plot of the two variables and look for possible patterns in the relationship between them.
 
@@ -53,13 +51,13 @@ axis(side = 1, at = c(0,6,12,18))
 rug(wage1$wage, side=2, col="grey")
 ```
 
-It appears that _**on average**_, more years of education, leads to higher wages.
+It appears that ***on average***, more years of education, leads to higher wages.
 
-The example in the text is interested in the _return to another year of education_, or what the _**percentage**_ change in wages one might expect for each additional year of education. To do so, one must use the $log($`wage`$)$. This has already been computed in the data set and is defined as `lwage`.
+The example in the text is interested in the *return to another year of education*, or what the ***percentage*** change in wages one might expect for each additional year of education. To do so, one must use the $log($`wage`$)$. This has already been computed in the data set and is defined as `lwage`.
 
 The textbook provides excellent discussions around these topics, so please consult it.
 
-Build a linear model to estimate the relationship between the _log of wage_ (`lwage`) and _education_ (`educ`).
+Build a linear model to estimate the relationship between the *log of wage* (`lwage`) and *education* (`educ`).
 
 $$\widehat{log(wage)} = \beta_0 + \beta_1educ$$
 
@@ -72,7 +70,6 @@ Print the `summary` of the results.
 ```{r, echo = TRUE, eval = FALSE, warning=FALSE}
 summary(log_wage_model)
 ```
-
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 stargazer(type = "html", log_wage_model, single.row = TRUE, header = FALSE, digits = 5)
@@ -96,16 +93,15 @@ rug(wage1$lwage, side=2, col="darkgreen")
 
 Check the documentation for variable information
 
-**$lwage$:** log of the average hourly earnings
+$lwage$: log of the average hourly earnings
 
-**$educ$:** years of education
+$educ$: years of education
 
-**$exper$:** years of potential experience
+$exper$: years of potential experience
 
-**$tenutre$:** years with current employer
+$tenutre$: years with current employer
 
-Plot the variables against `lwage` and compare their distributions
-and slope ($\beta$) of the simple regression lines.
+Plot the variables against `lwage` and compare their distributions and slope ($\beta$) of the simple regression lines.
 
 ```{r, fig.height=3, echo=FALSE}
 par(mfrow=c(1,3))
@@ -121,7 +117,7 @@ axis(side = 1, at = c(0,11,22,33,44))
 abline(lm(lwage ~ tenure, data=wage1), col = "darkblue", lwd=2)
 ```
 
-Estimate the model regressing _educ_, _exper_, and _tenure_ against _log(wage)_.
+Estimate the model regressing *educ*, *exper*, and *tenure* against *log(wage)*.
 
 $$\widehat{log(wage)} = \beta_0 + \beta_1educ + \beta_3exper + \beta_4tenure$$
 
@@ -152,7 +148,6 @@ barplot(sort(100*hourly_wage_model$coefficients[-1]), horiz=TRUE, las=1,
 
 Using the same model estimated in **`example: 3.2`**, examine and compare the standard errors associated with each coefficient. Like the textbook, these are contained in parenthesis next to each associated coefficient.
 
-
 ```{r, eval=FALSE}
 summary(hourly_wage_model)
 ```
@@ -161,13 +156,11 @@ summary(hourly_wage_model)
 stargazer(type = "html", hourly_wage_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-For the years of experience variable, or `exper`, use coefficient and Standard Error 
-to compute the $t$ statistic:
+For the years of experience variable, or `exper`, use coefficient and Standard Error to compute the $t$ statistic:
 
 $$t_{exper} = \frac{0.004121}{0.001723} = 2.391$$
 
 Fortunately, `R` includes $t$ statistics in the `summary` of model diagnostics.
-
 
 ```{r, eval=FALSE}
 summary(hourly_wage_model)$coefficients
@@ -205,58 +198,44 @@ barplot(sort(summary(hourly_wage_model)$coefficients[-1, "t value"]), horiz=TRUE
         ylab = " ", main = "t statistics of Hourly Wage Equation")
 ```
 
-
 ### **`Example 4.7` Effect of Job Training on Firm Scrap Rates**
 
-Load the `jtrain` data set. 
+Load the `jtrain` data set.
 
-From H. Holzer, R. Block, M. Cheatham, and J. Knott (1993), _Are Training Subsidies Effective? The Michigan Experience_, Industrial and Labor Relations Review 46, 625-636. The authors kindly provided the data.
+From H. Holzer, R. Block, M. Cheatham, and J. Knott (1993), *Are Training Subsidies Effective? The Michigan Experience*, Industrial and Labor Relations Review 46, 625-636. The authors kindly provided the data.
 
+$year:$ 1987, 1988, or 1989
 
-**$year:$** 1987, 1988, or 1989 
+$union:$ =1 if unionized
 
-**$union:$** =1 if unionized    
+$lscrap:$ Log(scrap rate per 100 items)
 
-**$lscrap:$** Log(scrap rate per 100 items)     
+$hrsemp:$ (total hours training) / (total employees trained)
 
-**$hrsemp:$** (total hours training) / (total employees trained)        
+$lsales:$ Log(annual sales, \$)
 
-**$lsales:$** Log(annual sales, $)      
+$lemploy:$ Log(umber of employees at plant)
 
-**$lemploy:$** Log(umber of employees at plant) 
-
-
-First, use the `subset` function and it's argument by the same name to return
-observations which occurred in **1987** and are not **union**. At the same time, use
-the `select` argument to return only the variables of interest for this problem.
-
+First, use the `subset` function and it's argument by the same name to return observations which occurred in **1987** and are not **union**. At the same time, use the `select` argument to return only the variables of interest for this problem.
 
 ```{r}
 jtrain_subset <- subset(jtrain, subset = (year == 1987 & union == 0),
                         select = c(year, union, lscrap, hrsemp, lsales, lemploy))
 ```
 
-Next, test for missing values. One can "eyeball" these with R Studio's `View`
-function, but a more precise approach combines the `sum` and `is.na` functions 
-to return the total number of observations equal to `NA`.
+Next, test for missing values. One can "eyeball" these with R Studio's `View` function, but a more precise approach combines the `sum` and `is.na` functions to return the total number of observations equal to `NA`.
 
 ```{r}
 sum(is.na(jtrain_subset))
 ```
 
-While `R`'s `lm` function will automatically remove missing `NA` values, eliminating
-these manually will produce more clearly proportioned graphs for exploratory analysis.
-Call the `na.omit` function to remove all missing values and assign the new 
-`data.frame` object the name **`jtrain_clean`**.
+While `R`'s `lm` function will automatically remove missing `NA` values, eliminating these manually will produce more clearly proportioned graphs for exploratory analysis. Call the `na.omit` function to remove all missing values and assign the new `data.frame` object the name **`jtrain_clean`**.
 
 ```{r}
 jtrain_clean <- na.omit(jtrain_subset)
 ```
 
-
-Use `jtrain_clean` to plot the variables of interest against `lscrap`. Visually 
-observe the respective distributions for each variable, and compare the slope 
-($\beta$) of the simple regression lines.
+Use `jtrain_clean` to plot the variables of interest against `lscrap`. Visually observe the respective distributions for each variable, and compare the slope ($\beta$) of the simple regression lines.
 
 ```{r, echo=FALSE, fig.height=3}
 par(mfrow=c(1,3))
@@ -271,11 +250,9 @@ plot(y = jtrain_clean$lscrap, x = jtrain_clean$lemploy, frame = FALSE, main = "L
 abline(lm(lscrap ~ lemploy, data=jtrain_clean), col = "blue", lwd=2)
 ```
 
-
 Now create the linear model regressing `hrsemp`(total hours training/total employees trained), `lsales`(log of annual sales), and `lemploy`(the log of the number of the employees), against `lscrap`(the log of the scrape rate).
 
 $$lscrap = \alpha + \beta_1 hrsemp + \beta_2 lsales + \beta_3 lemploy$$
-
 
 ```{r}
 linear_model <- lm(lscrap ~ hrsemp + lsales + lemploy, data = jtrain_clean)
@@ -290,7 +267,6 @@ summary(linear_model)
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 stargazer(type = "html", linear_model, single.row = TRUE, header = FALSE, digits=5)
 ```
-
 
 ```{r, echo=FALSE, eval=FALSE}
 #Plot the coefficients, representing the impact of each variable on $log($`scrap`$)$ for a quick comparison. As you can observe, for some variables, the confidence intervals are wider than others.
@@ -308,12 +284,11 @@ arrows(graph, coefficient, graph, confidence[,2], angle=90, length=0.55, col="bl
 
 Load the `hprice3` data set.
 
-**$lprice:$** Log(selling price)
+$lprice:$ Log(selling price)
 
-**$ldist:$** Log(distance from house to incinerator, feet)
+$ldist:$ Log(distance from house to incinerator, feet)
 
-**$larea:$** Log(square footage of house)
-
+$larea:$ Log(square footage of house)
 
 Graph the prices of housing against distance from an incinerator:
 
@@ -322,7 +297,6 @@ par(mfrow=c(1,2))
 plot(y = hprice3$price, x = hprice3$dist, main = " ", xlab = "Distance to Incinerator in feet", ylab = "Selling Price",  frame = FALSE, pch = 21, bg = "lightgrey")
 abline(lm(price ~ dist, data=hprice3), col = "blue", lwd=2)
 ```
-
 
 Next, model the $log($`price`$)$ against the $log($`dist`$)$ to estimate the percentage relationship between the two.
 
@@ -340,7 +314,7 @@ $$price = \alpha + \beta_1 dist + \beta_2 area$$
 price_area_model <- lm(lprice ~ ldist + larea, data = hprice3)
 ```
 
-Compare the coefficients of both models. Notice that adding `area` improves the quality of the model, but also reduces the coefficient size of `dist`.  
+Compare the coefficients of both models. Notice that adding `area` improves the quality of the model, but also reduces the coefficient size of `dist`.
 
 ```{r, eval=FALSE}
 summary(price_dist_model)
@@ -351,7 +325,7 @@ summary(price_area_model)
 stargazer(type = "html",price_dist_model, price_area_model,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
- Graphing illustrates the larger coefficient for `area`.
+Graphing illustrates the larger coefficient for `area`.
 
 ```{r, echo=FALSE}
 par(mfrow=c(1,2))
@@ -371,8 +345,7 @@ abline(lm(lprice ~ larea, data=hprice3), col = "blue", lwd=2)
 
 Load the `hprice2` data and view the documentation.
 
-Data from _Hedonic Housing Prices and the Demand for Clean Air_, by Harrison, D. and D.L.Rubinfeld, Journal of Environmental Economics and Management 5, 81-102. Diego Garcia, a former Ph.D. student in economics at MIT, kindly provided these data, which he obtained from the book Regression Diagnostics: Identifying Influential Data and Sources of Collinearity, by D.A. Belsey, E. Kuh, and R. Welsch, 1990. New York: Wiley. 
-
+Data from *Hedonic Housing Prices and the Demand for Clean Air*, by Harrison, D. and D.L.Rubinfeld, Journal of Environmental Economics and Management 5, 81-102. Diego Garcia, a former Ph.D. student in economics at MIT, kindly provided these data, which he obtained from the book Regression Diagnostics: Identifying Influential Data and Sources of Collinearity, by D.A. Belsey, E. Kuh, and R. Welsch, 1990. New York: Wiley.
 
 $price$: median housing price.
 
@@ -386,7 +359,6 @@ $dist$: weighted distance of the community to 5 employment centers.
 
 $stratio$: average student-teacher ratio of schools in the community.
 
-
 $$price = \beta_0 + \beta_1nox + \beta_2crime + \beta_3rooms + \beta_4dist + \beta_5stratio + \mu$$
 
 Estimate the usual `lm` model.
@@ -395,8 +367,7 @@ Estimate the usual `lm` model.
 housing_level <- lm(price ~ nox + crime + rooms + dist + stratio, data = hprice2)
 ```
 
-Estimate the same model, but standardized coefficients by wrapping each variable 
-with R's `scale` function:
+Estimate the same model, but standardized coefficients by wrapping each variable with R's `scale` function:
 
 $$\widehat{zprice} = \beta_1znox + \beta_2zcrime + \beta_3zrooms + \beta_4zdist + \beta_5zstratio$$
 
@@ -417,9 +388,10 @@ stargazer(type = "html",housing_level, housing_standardized,  single.row = TRUE,
 
 ### **`Example 6.2:` Effects of Pollution on Housing Prices, Quadratic Interactive Term**
 
-Modify the housing model from **`example 4.5`**, adding a quadratic term in _rooms_: 
+Modify the housing model from **`example 4.5`**, adding a quadratic term in *rooms*:
 
 $$log(price) = \beta_0 + \beta_1log(nox) + \beta_2log(dist) + \beta_3rooms + \beta_4rooms^2 + \beta_5stratio + \mu$$
+
 ```{r}
 housing_model_4.5 <- lm(lprice ~ lnox + log(dist) + rooms + stratio, data = hprice2)
 housing_model_6.2 <- lm(lprice ~ lnox + log(dist) + rooms + I(rooms^2) + stratio, 
@@ -437,8 +409,7 @@ summary(housing_model_6.2)
 stargazer(type = "html", housing_model_4.5 , housing_model_6.2, single.row = TRUE, header = FALSE, digits=5)
 ```
 
-Estimate the minimum turning point at which the `rooms` interactive term changes
-from negative to positive.
+Estimate the minimum turning point at which the `rooms` interactive term changes from negative to positive.
 
 $$x = \frac{\hat{\beta_1}}{2\hat{\beta_2}}$$
 
@@ -449,8 +420,7 @@ turning_point <- abs(beta_1 / (2*beta_2))
 print(turning_point)
 ```
 
-Compute the percent change across a range of average rooms. Include the smallest, 
-turning point, and largest.
+Compute the percent change across a range of average rooms. Include the smallest, turning point, and largest.
 
 ```{r}
 Rooms <- c(min(hprice2$rooms), 4, turning_point, 5, 5.5, 6.45, 7.5, max(hprice2$rooms))
@@ -468,8 +438,7 @@ housing_sq <- abs(beta_1*housing_model_frame[,"rooms"]) +
               beta_2*housing_model_frame[,"I(rooms^2)"]
 ```
 
-Graph the log of the selling price against the number of rooms. Superimpose a
-simple model as well as a quadratic model and examine the difference.
+Graph the log of the selling price against the number of rooms. Superimpose a simple model as well as a quadratic model and examine the difference.
 
 ```{r, echo=FALSE}
 rooms_interaction <- lm(lprice ~ rooms + I(rooms^2), data = hprice2)
@@ -485,23 +454,23 @@ axis(side = 1, at = c(min(hprice2$rooms), 4, 5, 6, 7, 8, max(hprice2$rooms)))
 lines(sort(hprice2$rooms), sort(fitted(rooms_interaction)), col = "red", lwd=2.5)
 ```
 
-## Chapter 7: Multiple Regression Analysis with Qualitative Information 
+## Chapter 7: Multiple Regression Analysis with Qualitative Information
+
 ### **`Example 7.4:` Housing Price Regression, Qualitative Binary variable**
 
-This time, use the `hrprice1` data. 
+This time, use the `hrprice1` data.
 
-Data collected from the real estate pages of the Boston Globe during 1990. 
-These are homes that sold in the Boston, MA area.
+Data collected from the real estate pages of the Boston Globe during 1990. These are homes that sold in the Boston, MA area.
 
-**$lprice:$** Log(house price, $1000s)
+$lprice:$ Log(house price, \$1000s)
 
-**$llotsize:$** Log(size of lot in square feet)
+$llotsize:$ Log(size of lot in square feet)
 
-**$lsqrft:$** Log(size of house in square feet)
+$lsqrft:$ Log(size of house in square feet)
 
-**$bdrms:$** number of bdrms
+$bdrms:$ number of bdrms
 
-**$colonial:$** =1 if home is colonial style
+$colonial:$ =1 if home is colonial style
 
 ```{r, fig.height=8, eval=FALSE, echo=FALSE}
 par(mfrow=c(2,2))
@@ -523,7 +492,6 @@ plot(y = hprice1$lprice, x = hprice1$lsqrft, col=hprice1$colonial, pch=19,
 legend(8, 5.25, unique(hprice1$colonial), col=1:length(hprice1$colonial), pch=19, title = "colonial")
 ```
 
-
 $$\widehat{log(price)} = \beta_0 + \beta_1log(lotsize) + \beta_2log(sqrft) + \beta_3bdrms + \beta_4colonial $$
 
 Estimate the coefficients of the above linear model on the `hprice` data set.
@@ -531,7 +499,6 @@ Estimate the coefficients of the above linear model on the `hprice` data set.
 ```{r}
 housing_qualitative <- lm(lprice ~ llotsize + lsqrft + bdrms + colonial, data = hprice1)
 ```
-
 
 ```{r, eval=FALSE}
 summary(housing_qualitative)
@@ -542,10 +509,10 @@ stargazer(type = "html",housing_qualitative,  single.row = TRUE, header = FALSE,
 ```
 
 ## Chapter 8: Heteroskedasticity
+
 ### **`Example 8.9:` Determinants of Personal Computer Ownership**
 
-$$\widehat{PC} = \beta_0 + \beta_1hsGPA + \beta_2ACT + \beta_3parcoll + \beta_4colonial $$
-Christopher Lemmon, a former MSU undergraduate, collected these data from a survey he took of MSU students in Fall 1994. Load `gpa1` and create a new variable combining the `fathcoll` and `mothcoll`, into `parcoll`. This new column indicates if either parent went to college.
+$$\widehat{PC} = \beta_0 + \beta_1hsGPA + \beta_2ACT + \beta_3parcoll + \beta_4colonial $$ Christopher Lemmon, a former MSU undergraduate, collected these data from a survey he took of MSU students in Fall 1994. Load `gpa1` and create a new variable combining the `fathcoll` and `mothcoll`, into `parcoll`. This new column indicates if either parent went to college.
 
 ```{r, message=FALSE}
 gpa1$parcoll <- as.integer(gpa1$fathcoll==1 | gpa1$mothcoll)
@@ -566,11 +533,12 @@ stargazer(type = "html",GPA_OLS, GPA_WLS,  single.row = TRUE, header = FALSE, di
 ```
 
 ## Chapter 9: More on Specification and Data Issues
+
 ### **`Example 9.8:` R&D Intensity and Firm Size**
 
 $$rdintens = \beta_0 + \beta_1sales + \beta_2profmarg + \mu$$
 
-From _Businessweek R&D Scoreboard_, October 25, 1991. Load the data and estimate the model.
+From *Businessweek R&D Scoreboard*, October 25, 1991. Load the data and estimate the model.
 
 ```{r, message=FALSE}
 all_rdchem <- lm(rdintens ~ sales + profmarg, data = rdchem)
@@ -594,7 +562,6 @@ smallest_rdchem <- lm(rdintens ~ sales + profmarg, data = rdchem,
 
 The table below compares the results of both models side by side. By removing the outlier firm, $sales$ become a more significant determination of R&D expenditures.
 
-
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 stargazer(type = "html",all_rdchem, smallest_rdchem,  single.row = TRUE, header = FALSE, digits=5)
 ```
@@ -603,8 +570,7 @@ stargazer(type = "html",all_rdchem, smallest_rdchem,  single.row = TRUE, header 
 
 ### **`Example 10.2:` Effects of Inflation and Deficits on Interest Rates**
 
-$$\widehat{i3} = \beta_0 + \beta_1inf_t + \beta_2def_t$$
-Data from the _Economic Report of the President, 2004_, Tables B-64, B-73, and B-79.
+$$\widehat{i3} = \beta_0 + \beta_1inf_t + \beta_2def_t$$ Data from the *Economic Report of the President, 2004*, Tables B-64, B-73, and B-79.
 
 ```{r, message=FALSE}
 #data("intdef") # load data
@@ -629,7 +595,6 @@ plot(x = intdef.xts,
 # Run a Linear regression model
 tbill_model <- lm(Tbill3mo ~ cpi + deficit, data = intdef.xts)
 ```
-
 
 ```{r, results='asis', echo=FALSE, warning=FALSE, message=FALSE}
 stargazer(type = "html",tbill_model, single.row = TRUE, header = FALSE, digits=5)
@@ -668,7 +633,7 @@ receipts <- FYONGDA188S
 colnames(receipts) <- "receipts"
 ```
 
-Now that all data has been downloaded, we can calculate the deficit from the federal `outlays` and `receipts` data. Next, we will merge our new `deficit` variable with `inflation` and `TB3MS` variables. As these are all `xts` times series objects, the `merge` function will automatically key off each series time date index, insuring integrity and alignment among each observation and its respective date.  Additionally, xts provides easy chart construction with its plot method.
+Now that all data has been downloaded, we can calculate the deficit from the federal `outlays` and `receipts` data. Next, we will merge our new `deficit` variable with `inflation` and `TB3MS` variables. As these are all `xts` times series objects, the `merge` function will automatically key off each series time date index, insuring integrity and alignment among each observation and its respective date. Additionally, xts provides easy chart construction with its plot method.
 
 ```{r message=FALSE, warning=FALSE}
 # create deficits from outlays - receipts
@@ -684,7 +649,7 @@ plot(intdef_updated,
      legend.loc = "topright",)
 ```
 
-Now lets run the model again. Inflation plays a much more prominent role in the 3 month T-bill rate, than the deficit. 
+Now lets run the model again. Inflation plays a much more prominent role in the 3 month T-bill rate, than the deficit.
 
 ```{r}
 updated_model <- lm(TB3MS ~ inflation + deficit, data = intdef_updated)
@@ -699,8 +664,7 @@ stargazer(type = "html", updated_model, single.row = TRUE, header = FALSE, digit
 
 ### **`Example 11.7:` Wages and Productivity**
 
-$$\widehat{log(hrwage_t)} = \beta_0 + \beta_1log(outphr_t) + \beta_2t + \mu_t$$
-Data from the _Economic Report of the President, 1989_, Table B-47. The data are for the non-farm business sector.
+$$\widehat{log(hrwage_t)} = \beta_0 + \beta_1log(outphr_t) + \beta_2t + \mu_t$$ Data from the *Economic Report of the President, 1989*, Table B-47. The data are for the non-farm business sector.
 
 ```{r, message=FALSE}
 wage_time <- lm(lhrwage ~ loutphr + t, data = earns)
@@ -718,7 +682,7 @@ stargazer(type = "html",wage_time, wage_diff,  single.row = TRUE, header = FALSE
 
 ### **`Example 12.8:` Heteroskedasticity and the Efficient Markets Hypothesis**
 
-These are Wednesday closing prices of value-weighted NYSE average, available in many publications. Wooldridge does not recall the particular source used when he collected these data at MIT, but notes probably the easiest way to get similar data is to go to the NYSE web site, [www.nyse.com](https://www.nyse.com/data-and-tech). 
+These are Wednesday closing prices of value-weighted NYSE average, available in many publications. Wooldridge does not recall the particular source used when he collected these data at MIT, but notes probably the easiest way to get similar data is to go to the NYSE web site, [www.nyse.com](https://www.nyse.com/data-and-tech).
 
 $$return_t = \beta_0 + \beta_1return_{t-1} + \mu_t$$
 
@@ -727,7 +691,6 @@ return_AR1 <-lm(return ~ return_1, data = nyse)
 ```
 
 $$\hat{\mu^2_t} = \beta_0 + \beta_1return_{t-1} + residual_t$$
-
 
 ```{r}
 return_mu <- residuals(return_AR1)
@@ -739,7 +702,6 @@ stargazer(type = "html",return_AR1, mu2_hat_model,  single.row = TRUE, header = 
 ```
 
 ### **`Example 12.9:` ARCH in Stock Returns**
-
 
 $$\hat{\mu^2_t} = \beta_0 + \hat{\mu^2_{t-1}} + residual_t$$
 
@@ -759,8 +721,7 @@ stargazer(type = "html",arch_model, single.row = TRUE, header = FALSE, digits=5)
 
 ### **`Example 13.7:` Effect of Drunk Driving Laws on Traffic Fatalities**
 
-Wooldridge collected these data from two sources, the 1992 _Statistical Abstract of the United States_ (Tables 1009, 1012) and _A Digest of State Alcohol-Highway Safety Related Legislation_, 1985 and 1990, published by the U.S. National Highway Traffic Safety Administration. 
-$$\widehat{\Delta{dthrte}} = \beta_0 + \Delta{open} + \Delta{admin}$$
+Wooldridge collected these data from two sources, the 1992 *Statistical Abstract of the United States* (Tables 1009, 1012) and *A Digest of State Alcohol-Highway Safety Related Legislation*, 1985 and 1990, published by the U.S. National Highway Traffic Safety Administration. $$\widehat{\Delta{dthrte}} = \beta_0 + \Delta{open} + \Delta{admin}$$
 
 ```{r}
 DD_model <- lm(cdthrte ~ copen + cadmn, data = traffic1)
@@ -774,7 +735,7 @@ stargazer(type = "html",DD_model,  single.row = TRUE, header = FALSE, digits=5)
 
 ### **`Example 18.8:` FORECASTING THE U.S. UNEMPLOYMENT RATE**
 
-Data from _Economic Report of the President, 2004_, Tables B-42 and B-64.
+Data from *Economic Report of the President, 2004*, Tables B-42 and B-64.
 
 $$\widehat{unemp_t} = \beta_0 + \beta_1unem_{t-1}$$
 
@@ -795,9 +756,7 @@ unem_inf_VAR1 <- lm(unem ~ unem_1 + inf_1, data = phillips_train)
 stargazer(type = "html",unem_AR1, unem_inf_VAR1,  single.row = TRUE, header = FALSE, digits=5)
 ```
 
-Now, use the `subset` argument to create our testing data set containing observation after 1996.
-Next, pass the both the model object and the test set to the `predict` function for both models.
-Finally, `cbind` or "column bind" both forecasts as well as the year and unemployment rate of the test set.
+Now, use the `subset` argument to create our testing data set containing observation after 1996. Next, pass the both the model object and the test set to the `predict` function for both models. Finally, `cbind` or "column bind" both forecasts as well as the year and unemployment rate of the test set.
 
 ```{r, warning=FALSE, message=FALSE, echo=TRUE}
 phillips_test <- subset(phillips, year >= 1997)
@@ -805,4 +764,3 @@ AR1_forecast <- predict.lm(unem_AR1, newdata = phillips_test)
 VAR1_forecast <- predict.lm(unem_inf_VAR1, newdata = phillips_test)
 kable(cbind(phillips_test[ ,c("year", "unem")], AR1_forecast, VAR1_forecast))
 ```
-
