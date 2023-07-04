@@ -3,28 +3,7 @@
 - Necessary packages
 
 ```{r}
-pacman::p_load(tidyverse,
-               colorspace,
-               corrr,
-               cowplot,
-               ggdark,
-               ggforce,
-               ggrepel,
-               ggridges,
-               ggsci,
-               ggtext,
-               ggthemes,
-               grid,
-               gridExtra,
-               patchwork,
-               rcartocolor,
-               scico,
-               showtext,
-               shiny,
-               echarts4r,
-               ggiraph,
-               highcharter,
-               plotly
+pacman::p_load(tidyverse, colorspace, corrr, cowplot, ggdark, ggforce, ggrepel, ggridges, ggsci, ggtext, ggthemes, grid, gridExtra, patchwork, rcartocolor, scico, showtext, shiny, echarts4r, ggiraph, highcharter, plotly
               )
 ```
 
@@ -91,6 +70,119 @@ One can also combine several geometric layers—and this is where the magic and 
 ```{r}
 g + geom_line() + geom_point()
 ```
+
+Change Properties of Geometries
+
+```{r}
+g + geom_point(color = "firebrick", shape = "diamond", size = 2)
+```
+
+```{r}
+g + geom_point(color = "firebrick", shape = "diamond", size = 2) +
+    geom_line(color = "firebrick", linetype = "dotted", lwd = .3)
+```
+
+- Replace the default ggplot2 theme
+
+To illustrate some more of ggplot’s versatility, let’s get rid of the grayish default `ggplot2` look by setting a different built-in theme, e.g. theme_bw() by calling `theme_set()`
+
+```{r}
+theme_set(theme_bw())
+g + geom_point(color = "firebrick")
+```
+
+## Working with Axes
+
+- Change Axis Titles:
+
+Let’s add some well-written labels to the axes. For this, we add labs() providing a character string for each label we want to change (here x and y):
+
+```{r}
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)")
+```
+
+- Increase Space between Axis and Axis Titles
+
+We are going to use them a lot! For now, we are going to modify text elements. We can change the properties of all or particular text elements (here axis titles) by overwriting the default element_text() within the theme() call:
+
+```{r}
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)") +
+  theme(axis.title.x = element_text(vjust = 0, size = 15),
+        axis.title.y = element_text(vjust = 0, size = 15))
+```
+
+The labels t and r within the margin() object refer to top and right, respectively. 
+
+```{r}
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)") +
+  theme(axis.title.x = element_text(margin = margin(t = 10), size = 15),
+        axis.title.y = element_text(margin = margin(r = 10), size = 15))
+```
+
+## Limit Axis Range
+
+Sometimes you want to zoom into take a closer look at some range of your data. You can do this without sub-setting your data:
+
+```{r}
+#| warning: false
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)") +
+  ylim(c(0, 50))
+```
+
+- Alternatively you can use scale_y_continuous(limits = c(0, 50))
+
+```{r}
+#| warning: false
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)") +
+  scale_y_continuous(limits = c(0, 50))
+```
+
+- or coord_cartesian(ylim = c(0, 50)). 
+
+```{r}
+#| warning: false
+ggplot(chic, aes(x = date, y = temp)) +
+  geom_point(color = "firebrick") +
+  labs(x = "Year", y = "Temperature (°F)") +
+  coord_cartesian(ylim = c(0, 50))
+```
+
+### Force Plot to Start at Origin
+
+Related to that, you can force R to plot the graph starting at the origin:
+
+```{r}
+library(tidyverse)
+
+chic_high <- dplyr::filter(chic, temp > 25, o3 > 20)
+
+ggplot(chic_high, aes(x = temp, y = o3)) +
+  geom_point(color = "darkblue") +
+  labs(x = "Temperature higher than 25°F",
+       y = "Ozone higher than 20 ppb") +
+  expand_limits(x = 0, y = 0)
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
