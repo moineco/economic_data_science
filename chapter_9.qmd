@@ -2,7 +2,7 @@
 
 Prerequisites:
 
-We will use following packages for reproducing the contents of this chapter. For mamaging the necessary packages, we will use `pacman` package manager.
+We will use following packages for reproducing the contents of this chapter. For managing the necessary packages, we will use `pacman` package manager.
 
 ```{r}
 pacman::p_load(stats)
