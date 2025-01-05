@@ -21,12 +21,11 @@ pacman::p_load(tidyverse,
 
 In observational studies, the data collected over time are a valuable source of information. Multiple measurements taken over time on the same units are called longitudinal data or panel data. Longitudinal data often yield a more credible comparison of the treatment and control groups than cross-section data because the former contain additional information about changes over time.
 
-- The before-and-after design examines how the outcome variable changed from the pre-treatment period to the post-treatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.
+-   The before-and-after design examines how the outcome variable changed from the pre-treatment period to the post-treatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.
 
-- The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment. 
+-   The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment.
 
 Following figure graphically illustrates this assumption using the minimum-wage study data. The figure shows the outcome of interest, i.e., the average proportion of full-time employees, before and after the increase in the minimum wage for both the treatment group (fast-food restaurants in NJ, indicated by the solid black circles) and the control group (restaurants in PA, represented by the open black circles). In this setting, we can estimate the counterfactual outcome for the treatment group by assuming that the time trend for the treatment group is parallel to the observed trend for the control group. This estimate is indicated by the solid blue triangle.
-
 
 ```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap="The Difference-in-Differences Design in the Minimum-Wage Study"}
 knitr::include_graphics('figure/did_1.png')
@@ -34,10 +33,9 @@ knitr::include_graphics('figure/did_1.png')
 
 In the minimum- wage study, the researchers had collected the employment and wage information from the same set of restaurants before the minimum wage was increased in NJ. This pretreatment information allows several alternative designs for estimating causal effects in observational studies.
 
-
 ### Minimum wage and unemployment
 
-Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts? 
+Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts?
 
 ## Wide and long data formats
 
@@ -72,7 +70,6 @@ In some instances long format datasets are required for advanced statistical ana
 ```{r}
 soda_tax_df <- read.csv("data/soda_tax_df.csv")
 ```
-
 
 Are this wide or long data
 

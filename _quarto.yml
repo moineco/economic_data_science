@@ -6,11 +6,11 @@ book:
   title: "Data Science and Economics"
   image: "figure/logo.png"
   author: "Moinul Islam"
-  date: "5/1/2023"
+  date: today
   chapters:
     - index.qmd
     - chapter_1.qmd
-    - chapter_2.qmd
+    #- chapter_2.qmd
     - chapter_3.qmd
     - chapter_4.qmd
     - chapter_5.qmd
@@ -23,7 +23,9 @@ bibliography: data_science.bib
 
 format:
   html:
-    theme: cosmo
+    theme: 
+       dark: darkly
+       light: cosmo
   pdf:
     documentclass: scrreprt
 

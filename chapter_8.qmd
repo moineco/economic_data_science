@@ -32,15 +32,16 @@ Suppose you have annual observations for the last few years:
 data_year <- read.csv("data/timeseries.csv")
 head(data_year)
 ```
+
 We turn this into a ts object using the ts() function:
 
 ```{r}
 y <- ts(c(123,39,78,52,110), start=2012)
 ```
 
-- If you have annual data, with one observation per year, you only need to provide the starting year (or the ending year).
+-   If you have annual data, with one observation per year, you only need to provide the starting year (or the ending year).
 
-- For observations that are more frequent than once per year, you simply add a frequency argument. For example, if your monthly data is already stored as a numerical vector z, then it can be converted to a ts object like this:
+-   For observations that are more frequent than once per year, you simply add a frequency argument. For example, if your monthly data is already stored as a numerical vector z, then it can be converted to a ts object like this:
 
 ```{txt}
 y <- ts(z, start=2003, frequency=12)
@@ -49,7 +50,6 @@ y <- ts(z, start=2003, frequency=12)
 ### Time plots
 
 For time series data, the obvious graph to start with is a time plot. That is, the observations are plotted against the time of observation, with consecutive observations joined by straight lines.
-
 
 ## Linear and Nonlinear Autoregressive Distributed Lag Models
 
