@@ -4,7 +4,6 @@ project:
 
 book:
   title: "Data Science and Economics"
-  image: "figure/logo.png"
   author: "Moinul Islam"
   date: today
   chapters:
