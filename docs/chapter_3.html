@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science and Economics – 2&nbsp; Difference in Differences</title>
+<title>3&nbsp; Venn diagram – Economic Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,18 +65,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./chapter_4.html" rel="next">
-<link href="./chapter_1.html" rel="prev">
+<link href="./chapter_2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c1966a8c70583a3816b1e3a216c1caf1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,38 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -148,7 +117,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_3.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in Differences</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Venn diagram</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,7 +132,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Science and Economics</a> 
+      <a href="./">Economic Data Science</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -190,44 +159,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in differences</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in Differences</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Venn diagram</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Create simple vann diagram</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data tidying</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_7.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization of qualitative data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time Series Regression and Forecasting</span></span></a>
+  <a href="./chapter_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time series regression and forecasting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory</span></span></a>
+  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability theory</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,17 +215,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites"><span class="header-section-number">2.1</span> Prerequisites</a></li>
-  <li><a href="#before-and-after-and-difference-in-differences-designs" id="toc-before-and-after-and-difference-in-differences-designs" class="nav-link" data-scroll-target="#before-and-after-and-difference-in-differences-designs"><span class="header-section-number">2.2</span> Before-and-after and Difference-in-Differences designs</a>
-  <ul class="collapse">
-  <li><a href="#minimum-wage-and-unemployment" id="toc-minimum-wage-and-unemployment" class="nav-link" data-scroll-target="#minimum-wage-and-unemployment"><span class="header-section-number">2.2.1</span> Minimum wage and unemployment</a></li>
-  </ul></li>
-  <li><a href="#wide-and-long-data-formats" id="toc-wide-and-long-data-formats" class="nav-link" data-scroll-target="#wide-and-long-data-formats"><span class="header-section-number">2.3</span> Wide and long data formats</a>
-  <ul class="collapse">
-  <li><a href="#why-do-we-care-about-the-data-format" id="toc-why-do-we-care-about-the-data-format" class="nav-link" data-scroll-target="#why-do-we-care-about-the-data-format"><span class="header-section-number">2.3.1</span> Why do we care about the data format</a></li>
-  <li><a href="#exploring-our-data" id="toc-exploring-our-data" class="nav-link" data-scroll-target="#exploring-our-data"><span class="header-section-number">2.3.2</span> Exploring our data</a></li>
-  <li><a href="#modeling-and-estimating" id="toc-modeling-and-estimating" class="nav-link" data-scroll-target="#modeling-and-estimating"><span class="header-section-number">2.3.3</span> Modeling and estimating</a></li>
-  </ul></li>
+  <li><a href="#basic-2d-venn-diagram" id="toc-basic-2d-venn-diagram" class="nav-link active" data-scroll-target="#basic-2d-venn-diagram"><span class="header-section-number">3.1</span> Basic 2D Venn diagram:</a></li>
+  <li><a href="#d-venn-diagram" id="toc-d-venn-diagram" class="nav-link" data-scroll-target="#d-venn-diagram"><span class="header-section-number">3.2</span> 3D Venn diagram:</a></li>
+  <li><a href="#changing-the-colors-of-the-diagram" id="toc-changing-the-colors-of-the-diagram" class="nav-link" data-scroll-target="#changing-the-colors-of-the-diagram"><span class="header-section-number">3.3</span> Changing the colors of the diagram</a></li>
+  <li><a href="#labels-and-group-names" id="toc-labels-and-group-names" class="nav-link" data-scroll-target="#labels-and-group-names"><span class="header-section-number">3.4</span> Labels and group names</a></li>
+  <li><a href="#d-venn-diagram-1" id="toc-d-venn-diagram-1" class="nav-link" data-scroll-target="#d-venn-diagram-1"><span class="header-section-number">3.5</span> 4D Venn diagram</a></li>
   </ul>
 </nav>
     </div>
@@ -265,7 +228,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in Differences</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Venn diagram</span></h1>
 </div>
 
 
@@ -282,267 +245,133 @@ window.Quarto = {
 </header>
 
 
-<section id="prerequisites" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">2.1</span> Prerequisites</h2>
-<p>We will use following packages for reproducing the contents of this chapter. For mamaging the necessary packages, we will use <code>pacman</code> package manager.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               knitr,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               dplyr,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               tidyr,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               ggplot2,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               readr,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               kableExtra,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               stargazer,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               lmtest,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               plm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggVennDiagram,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="before-and-after-and-difference-in-differences-designs" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="before-and-after-and-difference-in-differences-designs"><span class="header-section-number">2.2</span> Before-and-after and Difference-in-Differences designs</h2>
-<p>In observational studies, the data collected over time are a valuable source of information. Multiple measurements taken over time on the same units are called longitudinal data or panel data. Longitudinal data often yield a more credible comparison of the treatment and control groups than cross-section data because the former contain additional information about changes over time.</p>
-<ul>
-<li><p>The before-and-after design examines how the outcome variable changed from the pre-treatment period to the post-treatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.</p></li>
-<li><p>The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment.</p></li>
-</ul>
-<p>Following figure graphically illustrates this assumption using the minimum-wage study data. The figure shows the outcome of interest, i.e., the average proportion of full-time employees, before and after the increase in the minimum wage for both the treatment group (fast-food restaurants in NJ, indicated by the solid black circles) and the control group (restaurants in PA, represented by the open black circles). In this setting, we can estimate the counterfactual outcome for the treatment group by assuming that the time trend for the treatment group is parallel to the observed trend for the control group. This estimate is indicated by the solid blue triangle.</p>
-<div class="cell" data-layout-align="center">
+<section id="basic-2d-venn-diagram" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="basic-2d-venn-diagram"><span class="header-section-number">3.1</span> Basic 2D Venn diagram:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure">
-<p><img src="figure/did_1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>The Difference-in-Differences Design in the Minimum-Wage Study</figcaption>
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In the minimum- wage study, the researchers had collected the employment and wage information from the same set of restaurants before the minimum wage was increased in NJ. This pretreatment information allows several alternative designs for estimating causal effects in observational studies.</p>
-<section id="minimum-wage-and-unemployment" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="minimum-wage-and-unemployment"><span class="header-section-number">2.2.1</span> Minimum wage and unemployment</h3>
-<p>Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts?</p>
 </section>
-</section>
-<section id="wide-and-long-data-formats" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="wide-and-long-data-formats"><span class="header-section-number">2.3</span> Wide and long data formats</h2>
-<p>Wide data set:</p>
+<section id="d-venn-diagram" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="d-venn-diagram"><span class="header-section-number">3.2</span> 3D Venn diagram:</h2>
+<p>If you pass a list with three elements you will get some Venn diagram like the following</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>city_wide_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/city_wide.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>city_wide_df <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">%&gt;%</span> kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pop_2000</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pop_2010</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pop_2020</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Berlin</td>
-<td style="text-align: right;">3.38</td>
-<td style="text-align: right;">3.45</td>
-<td style="text-align: right;">3.56</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Rome</td>
-<td style="text-align: right;">3.70</td>
-<td style="text-align: right;">3.96</td>
-<td style="text-align: right;">4.26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paris</td>
-<td style="text-align: right;">9.74</td>
-<td style="text-align: right;">10.46</td>
-<td style="text-align: right;">11.01</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">London</td>
-<td style="text-align: right;">7.27</td>
-<td style="text-align: right;">8.04</td>
-<td style="text-align: right;">9.30</td>
-</tr>
-</tbody>
-</table>
-
-
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>city_long_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/city_long.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>city_long_df <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">%&gt;%</span> kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">pop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Berlin</td>
-<td style="text-align: right;">2000</td>
-<td style="text-align: right;">3.38</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Berlin</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">3.45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Berlin</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">3.56</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Rome</td>
-<td style="text-align: right;">2000</td>
-<td style="text-align: right;">3.70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Rome</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">3.96</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Rome</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">4.26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paris</td>
-<td style="text-align: right;">2000</td>
-<td style="text-align: right;">9.74</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Paris</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">10.46</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Paris</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">11.01</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">London</td>
-<td style="text-align: right;">2000</td>
-<td style="text-align: right;">7.27</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">London</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">8.04</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">London</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">9.30</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<p>Convert “city_wide_df” to long data set</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>city_wide_df <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(pop_2000, pop_2010, pop_2020), <span class="co"># -city, !city, starts_with(pop_), etc... would also work</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="co"># where do we want the names of the columns to go? (year)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"pop_"</span>, <span class="co"># names_prefix removes matching text from the start of each variable name (not always necessary)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"pop"</span> <span class="co"># where do we want the values in the columns to go? (pop)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 3
-   city      year    pop
-   &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
- 1 "Berlin " 2000   3.38
- 2 "Berlin " 2010   3.45
- 3 "Berlin " 2020   3.56
- 4 "Rome "   2000   3.7 
- 5 "Rome "   2010   3.96
- 6 "Rome "   2020   4.26
- 7 "Paris "  2000   9.74
- 8 "Paris "  2010  10.5 
- 9 "Paris "  2020  11.0 
-10 "London " 2000   7.27
-11 "London " 2010   8.04
-12 "London " 2020   9.3 </code></pre>
-</div>
-</div>
-<section id="why-do-we-care-about-the-data-format" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="why-do-we-care-about-the-data-format"><span class="header-section-number">2.3.1</span> Why do we care about the data format</h3>
-<p>In some instances long format datasets are required for advanced statistical analysis and graphing. For example, if we wanted to run the regression formulation of the difference in differences model, we would need to input our data in long format. Furthermore, having our data in long format is very useful when plotting. Packages such as ggplot2, expect that your data will be in long form for the most part.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/soda_tax_df.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Are this wide or long data</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id     district treatment   pre_tax  post_tax
-1   1 Snake Lounge         0 1687.6438 1705.5791
-2   2 Snake Lounge         0  427.2953  438.2526
-3   3 Snake Lounge         0  566.4693  559.6664
-4   4 Snake Lounge         0  606.9294  623.9057
-5   5 Snake Lounge         0  572.6402  606.8654
-6   6 Snake Lounge         0  496.0813  501.8001
-7   7 Snake Lounge         0  658.7283  670.4385
-8   8 Snake Lounge         0  497.8011  522.3219
-9   9 Snake Lounge         0  814.7636  846.2049
-10 10 Snake Lounge         0  502.5929  509.9525</code></pre>
-</div>
-</div>
-<p>Our soda_tax_df is in wide format. We can convert our data to a long format to render the time and treatment dummy variables and save is to the soda_tax_df_long.</p>
-<p>We will utilize the pivot_longer() function from tidyr to format our data frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df_long <span class="ot">&lt;-</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  soda_tax_df <span class="sc">%&gt;%</span> <span class="co"># the wide format df</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pre_tax, post_tax), <span class="co"># both contain information about soda drank at two points in time</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">"period"</span>, <span class="co"># grab the names of pre and post and save them to period</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">"soda_drank"</span>) <span class="sc">%&gt;%</span> <span class="co"># grab values from pre and post and put them in soda_drank</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">after_tax =</span> <span class="fu">ifelse</span>(period <span class="sc">==</span> <span class="st">"post_tax"</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="co"># create dummy for period</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soda_tax_df_long, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 6
-      id district     treatment period   soda_drank after_tax
-   &lt;int&gt; &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
- 1     1 Snake Lounge         0 pre_tax       1688.         0
- 2     1 Snake Lounge         0 post_tax      1706.         1
- 3     2 Snake Lounge         0 pre_tax        427.         0
- 4     2 Snake Lounge         0 post_tax       438.         1
- 5     3 Snake Lounge         0 pre_tax        566.         0
- 6     3 Snake Lounge         0 post_tax       560.         1
- 7     4 Snake Lounge         0 pre_tax        607.         0
- 8     4 Snake Lounge         0 post_tax       624.         1
- 9     5 Snake Lounge         0 pre_tax        573.         0
-10     5 Snake Lounge         0 post_tax       607.         1</code></pre>
 </div>
 </div>
 </section>
-<section id="exploring-our-data" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="exploring-our-data"><span class="header-section-number">2.3.2</span> Exploring our data</h3>
-<p>We can use our soda_tax_df to explore the distribution of soda consumption at different points in time.</p>
-<p>Let’s try first to look at the differences in the distribution only at the</p>
-<section id="pre-tax-time-period" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="pre-tax-time-period"><span class="header-section-number">2.3.2.1</span> pre-tax time period:</h4>
+<section id="changing-the-colors-of-the-diagram" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="changing-the-colors-of-the-diagram"><span class="header-section-number">3.3</span> Changing the colors of the diagram</h2>
+<ul>
+<li>As <code>ggVennDiagram</code> is based on <code>ggplot2</code> you can add more layers or override the ones existing. In order to change the colors use <code>scale_fill_gradient</code> as in the following example:</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(soda_tax_df, <span class="fu">aes</span>(<span class="at">x =</span> pre_tax, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># density plot with transparency (alpha = 0.5)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to fill dimension</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a7a8aa"</span>, <span class="st">"#cc0055"</span>),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>)) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of soda consumption before the tax was imposed"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#F4FAFE"</span>, <span class="at">high =</span> <span class="st">"#4981BF"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>The border can also be customized but making use of color argument. The line width and line style can be changed with <code>lwd</code> and <code>lty</code>, respectively.</li>
+</ul>
+</section>
+<section id="labels-and-group-names" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="labels-and-group-names"><span class="header-section-number">3.4</span> Labels and group names</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x, <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"A"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"B"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"C"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Labels with percentages</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="st">"percent"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"A"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"B"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"C"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Remove the labels</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">category.names =</span> <span class="fu">c</span>(<span class="st">"A"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"B"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"C"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>-Customize the legend</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Title"</span>)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_3_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="d-venn-diagram-1" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="d-venn-diagram-1"><span class="header-section-number">3.5</span> 4D Venn diagram</h2>
+<p>You can also pass a list with up to four different elements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">C =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">D =</span> <span class="dv">8</span><span class="sc">:</span><span class="dv">15</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggVennDiagram</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -551,291 +380,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Let’s look at the</p>
-</section>
-<section id="post-tax-period" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="post-tax-period"><span class="header-section-number">2.3.2.2</span> post-tax period:</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(soda_tax_df, <span class="fu">aes</span>(<span class="at">x =</span> post_tax, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># density plot with transparency (alpha = 0.5)</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to fill dimension</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a7a8aa"</span>, <span class="st">"#cc0055"</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>)) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of soda consumption after the tax was imposed"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Since in our soda_tax_df_long we represent the time and soda consumption dimensions under the same columns, we can create even more complex graphs.</p>
-</section>
-<section id="grammar-of-graphs-facets" class="level4" data-number="2.3.2.3">
-<h4 data-number="2.3.2.3" class="anchored" data-anchor-id="grammar-of-graphs-facets"><span class="header-section-number">2.3.2.3</span> grammar of graphs: Facets</h4>
-<p>We will use facet_grid() which forms a matrix of panels defined by row and column faceting variables. It is most useful when you have two discrete variables, and all combinations of the variables exist in the data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df_long <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">ifelse</span>(period <span class="sc">==</span> <span class="st">"post_tax"</span>, <span class="st">"T1 - Post-tax"</span>, <span class="st">"T0 - Pre-tax"</span>), <span class="co"># create more meaningful labels</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">treatment =</span> <span class="fu">ifelse</span>(treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Treated (D=1)"</span>, <span class="st">"Untreated (D=0)"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(period, treatment) <span class="sc">%&gt;%</span> <span class="co"># group to extract means of each group at each time</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">group_mean =</span> <span class="fu">mean</span>(soda_drank)) <span class="sc">%&gt;%</span> <span class="co"># extract means of each group at each time</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> soda_drank, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to fill dimension</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#cc0055"</span>, <span class="st">"#a7a8aa"</span>),</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Treatment"</span>, <span class="st">"Control"</span>)) <span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(treatment<span class="sc">~</span>period) <span class="sc">+</span> <span class="co"># we specify the matrix (treatment and period)</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> group_mean), <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span> <span class="co"># add vertical line with the mean</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Soda consumed (oz)"</span>,</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="modeling-and-estimating" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="modeling-and-estimating"><span class="header-section-number">2.3.3</span> Modeling and estimating</h3>
-<p>So far we have ignored time in our estimations. Difference-in-differences compares the changes in outcomes over time between units under different treatment states. This allows us to correct for any differences between the treatment and comparison groups that are constant over time assuming that the trends in time are parallel.</p>
-<section id="calculating-without-time" class="level4" data-number="2.3.3.1">
-<h4 data-number="2.3.3.1" class="anchored" data-anchor-id="calculating-without-time"><span class="header-section-number">2.3.3.1</span> Calculating without time</h4>
-<p>If we did not have the pre_tax baseline measure, we would likely utilize the post_tax to explore the average effect on the treated. In this case, we would model this as:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>after_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(post_tax <span class="sc">~</span> treatment, <span class="at">data =</span> soda_tax_df)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(after_model, <span class="at">type =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-===============================================
-                        Dependent variable:    
-                    ---------------------------
-                             post_tax          
------------------------------------------------
-treatment                   -146.918***        
-                              (3.798)          
-                                               
-Constant                    523.273***         
-                              (2.686)          
-                                               
------------------------------------------------
-Observations                   7,500           
-R2                             0.166           
-Adjusted R2                    0.166           
-Residual Std. Error     164.465 (df = 7498)    
-F Statistic         1,496.245*** (df = 1; 7498)
-===============================================
-Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
-</div>
-</div>
-<p>We could read this result substantively as: those who lived in districts were the tax was implemented consumed on average 146.9 ounces less of sugar-added drinks per week compared to those who lived in districts were the tax was not put in place. This calculation would give us a comparison of the treatment and control groups after treatment.</p>
-<p>We would have to think carefully about possible factors that could differentiate our treatment and control groups. We use a treatment indicator based on the districts where the measure was able to be implemented. Treatment was not fully randomly assigned, so there may be lots of potential confounders that create baseline differences in the scores for those living in Old Eagleton compared to those in Snake Lounge, which also affect the after-treatment comparisons.</p>
-<p>If we think about the mechanics behind this naive calculation, we are just comparing the average observed outcomes for those treated and not treated after the tax was imposed:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Treatment</th>
-<th>Average after tax</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>523.2726</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>376.3548</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(soda_tax_df, <span class="fu">aes</span>(<span class="at">x =</span> post_tax, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to fill dimension</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a7a8aa"</span>, <span class="st">"#cc0055"</span>),</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>)) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">523.27</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>, <span class="at">color =</span> <span class="st">"#a7a8aa"</span>) <span class="sc">+</span> <span class="co">#avg for the untreated</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">376.35</span>, <span class="at">linetype =</span> <span class="st">"longdash"</span>, <span class="at">color =</span> <span class="st">"#cc0055"</span>) <span class="sc">+</span> <span class="co">#avg for the treated</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of soda consumption after the tax was imposed"</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Soda consumtion (oz)"</span>,</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="including-the-time-dimension-manual-extraction-of-the-did-estimate" class="level4" data-number="2.3.3.2">
-<h4 data-number="2.3.3.2" class="anchored" data-anchor-id="including-the-time-dimension-manual-extraction-of-the-did-estimate"><span class="header-section-number">2.3.3.2</span> Including the time dimension (Manual extraction of the DiD estimate)</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Treatment</th>
-<th>Pre-tax</th>
-<th>Post-tax</th>
-<th>Difference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>511.13</td>
-<td>376.35</td>
-<td>-134.78</td>
-</tr>
-<tr class="even">
-<td>0</td>
-<td>508.31</td>
-<td>523.27</td>
-<td>14.97</td>
-</tr>
-</tbody>
-</table>
-<p>We can just manually substract:</p>
-<p><span class="math display">\[ DiD = -134.79 -14.97 = -149.76\]</span></p>
-</section>
-<section id="including-the-time-dimension" class="level4" data-number="2.3.3.3">
-<h4 data-number="2.3.3.3" class="anchored" data-anchor-id="including-the-time-dimension"><span class="header-section-number">2.3.3.3</span> Including the time dimension</h4>
-<p>We can introduce the time component to our calculation by incorporating the pre-treatment levels of sugar-added drink consumption, which gives us the diff-in-diff estimand. We could calculate this in a fairly straightforward manner by creating a variable assessing the change in our wide format data frame:</p>
-<ul>
-<li>change: The difference in sugar-added drink consuption between post- and pre-tax</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df <span class="ot">&lt;-</span> soda_tax_df <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">change =</span> post_tax <span class="sc">-</span> pre_tax) <span class="co">#simple substraction</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>did_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> treatment, <span class="at">data =</span> soda_tax_df)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(did_model, after_model, <span class="at">type =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-============================================================
-                                    Dependent variable:     
-                                ----------------------------
-                                    change        post_tax  
-                                      (1)           (2)     
-------------------------------------------------------------
-treatment                         -149.744***   -146.918*** 
-                                    (0.246)       (3.798)   
-                                                            
-Constant                           14.967***     523.273*** 
-                                    (0.174)       (2.686)   
-                                                            
-------------------------------------------------------------
-Observations                         7,500         7,500    
-R2                                   0.980         0.166    
-Adjusted R2                          0.980         0.166    
-Residual Std. Error (df = 7498)     10.671        164.465   
-F Statistic (df = 1; 7498)      369,242.400***  1,496.245***
-============================================================
-Note:                            *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
-</div>
-</div>
-<p>We could read this result substantively as: those who lived in districts were the tax was implemented consumed on average 149.7 ounces less of sugar-added drinks per week compared to those who lived in districts were the tax was not put in place. This calculation would give us the change, or difference, in sugar-added drink consumption for treatment and control groups.</p>
-<p>To believe the results of our did_model, we would need to believe that there are parallel trends between the two groups.</p>
-</section>
-<section id="including-the-time-dimension-regression-formulation-of-the-did-model" class="level4" data-number="2.3.3.4">
-<h4 data-number="2.3.3.4" class="anchored" data-anchor-id="including-the-time-dimension-regression-formulation-of-the-did-model"><span class="header-section-number">2.3.3.4</span> Including the time dimension (Regression formulation of the DiD model)</h4>
-<p>For this calculation we need our data in long format to use the time and treatment dummy variables. We can see that under our long format, we have two entries for every individual.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>did_long <span class="ot">&lt;-</span> <span class="fu">lm</span>(soda_drank <span class="sc">~</span> treatment <span class="sc">+</span> after_tax <span class="sc">+</span> treatment<span class="sc">*</span>after_tax, <span class="at">data =</span> soda_tax_df_long) <span class="co">#running our model</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>did_long_clustered_se <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(did_long, <span class="at">vcov=</span><span class="fu">vcovHC</span>(did_long,<span class="at">type=</span><span class="st">"HC0"</span>,<span class="at">cluster=</span><span class="st">"district"</span>)) <span class="co">#clustering out standard errors at the district level</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(did_long_clustered_se, <span class="at">type =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-===============================================
-                        Dependent variable:    
-                    ---------------------------
-                                               
------------------------------------------------
-treatment                      2.827           
-                              (3.799)          
-                                               
-after_tax                    14.967***         
-                              (3.836)          
-                                               
-treatment:after_tax         -149.744***        
-                              (5.372)          
-                                               
-Constant                    508.306***         
-                              (2.708)          
-                                               
-===============================================
-===============================================
-Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df_long <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">period =</span> <span class="fu">ifelse</span>(period <span class="sc">==</span> <span class="st">"post_tax"</span>, <span class="st">"T1 - Post-tax"</span>, <span class="st">"T0 - Pre-tax"</span>), <span class="co"># create more meaningful labels</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">treatment =</span> <span class="fu">ifelse</span>(treatment <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Treated (D=1)"</span>, <span class="st">"Untreated (D=0)"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(period, treatment) <span class="sc">%&gt;%</span> <span class="co"># group to extract means of each group at each time</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">group_mean =</span> <span class="fu">mean</span>(soda_drank)) <span class="sc">%&gt;%</span> <span class="co"># extract means of each group at each time</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> soda_drank, <span class="at">fill =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to fill dimension</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#cc0055"</span>, <span class="st">"#a7a8aa"</span>),</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Treatment"</span>, <span class="st">"Control"</span>)) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(treatment<span class="sc">~</span>period) <span class="sc">+</span> <span class="co"># we specify the matrix (treatment and period)</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> group_mean), <span class="at">linetype =</span> <span class="st">"longdash"</span>) <span class="sc">+</span> <span class="co"># add vertical line with the mean</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Soda consumed (oz)"</span>,</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>soda_tax_df_long <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(period, treatment) <span class="sc">%&gt;%</span> <span class="co"># group to extract means of each group at each time</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">group_mean =</span> <span class="fu">mean</span>(soda_drank)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> after_tax, <span class="at">y =</span> group_mean, <span class="at">color =</span> <span class="fu">factor</span>(treatment))) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> after_tax, <span class="at">y =</span> group_mean)) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">" "</span>, <span class="co"># changes to color dimension</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#a7a8aa"</span>, <span class="st">"#cc0055"</span>),</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Treatment"</span>)) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time periods"</span>, <span class="at">y =</span> <span class="st">"Ounces of soda drank per week"</span>, <span class="at">color =</span> <span class="st">"Treatment group"</span>)<span class="sc">+</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="chapter_3_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Drafting some brief recommendations</li>
-</ul>
-<p>Based on your analysis of the data at hand, you decide to recommend that the tax measure should move forward in the rest of Pawnee. You state that it is a very good example of a pigouvian tax, which captures the negative externalities not included in the market price of sugar-added drinks. The findings suggest that the tax reduced the weekly sugar-added drink consumption by about 150 liquid ounces (almost 4.5 liters).</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1065,8 +611,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1177,7 +721,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1405,13 +948,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter_1.html" class="pagination-link" aria-label="Creating a ggplot">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Creating a ggplot</span></span>
+      <a href="./chapter_2.html" class="pagination-link" aria-label="Difference in differences">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in differences</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_4.html" class="pagination-link" aria-label="Create simple vann diagram">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Create simple vann diagram</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_4.html" class="pagination-link" aria-label="Regression models">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

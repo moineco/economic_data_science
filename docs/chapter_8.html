@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science and Economics – 7&nbsp; Time Series Regression and Forecasting</title>
+<title>8&nbsp; Probability theory – Economic Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,19 +64,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter_9.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./chapter_7.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c1966a8c70583a3816b1e3a216c1caf1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -146,7 +146,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_8.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time Series Regression and Forecasting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability theory</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +161,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Science and Economics</a> 
+      <a href="./">Economic Data Science</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -188,44 +188,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in differences</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Difference in Differences</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Venn diagram</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Create simple vann diagram</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regression models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data tidying</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_7.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter_6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization of qualitative data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time Series Regression and Forecasting</span></span></a>
+  <a href="./chapter_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time series regression and forecasting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory</span></span></a>
+  <a href="./chapter_8.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability theory</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -244,18 +244,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#how-to-create-a-time-series-in-r" id="toc-how-to-create-a-time-series-in-r" class="nav-link active" data-scroll-target="#how-to-create-a-time-series-in-r"><span class="header-section-number">7.1</span> How to create a Time Series in R ?</a>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link active" data-scroll-target="#random-variables"><span class="header-section-number">8.1</span> Random Variables</a>
   <ul class="collapse">
-  <li><a href="#ts-objects" id="toc-ts-objects" class="nav-link" data-scroll-target="#ts-objects"><span class="header-section-number">7.1.1</span> <code>ts</code> objects</a></li>
-  <li><a href="#time-plots" id="toc-time-plots" class="nav-link" data-scroll-target="#time-plots"><span class="header-section-number">7.1.2</span> Time plots</a></li>
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">8.1.1</span> Discrete Random Variables</a></li>
+  <li><a href="#bernoulli-random-variables" id="toc-bernoulli-random-variables" class="nav-link" data-scroll-target="#bernoulli-random-variables"><span class="header-section-number">8.1.2</span> Bernoulli Random Variables</a></li>
+  <li><a href="#mean-and-variance" id="toc-mean-and-variance" class="nav-link" data-scroll-target="#mean-and-variance"><span class="header-section-number">8.1.3</span> Mean and Variance</a></li>
   </ul></li>
-  <li><a href="#linear-and-nonlinear-autoregressive-distributed-lag-models" id="toc-linear-and-nonlinear-autoregressive-distributed-lag-models" class="nav-link" data-scroll-target="#linear-and-nonlinear-autoregressive-distributed-lag-models"><span class="header-section-number">7.2</span> Linear and Nonlinear Autoregressive Distributed Lag Models</a>
+  <li><a href="#probability-distributions-of-continuous-random-variables" id="toc-probability-distributions-of-continuous-random-variables" class="nav-link" data-scroll-target="#probability-distributions-of-continuous-random-variables"><span class="header-section-number">8.2</span> Probability Distributions of Continuous Random Variables</a>
   <ul class="collapse">
-  <li><a href="#autoregressive-distributed-lag-ardl-models" id="toc-autoregressive-distributed-lag-ardl-models" class="nav-link" data-scroll-target="#autoregressive-distributed-lag-ardl-models"><span class="header-section-number">7.2.1</span> Autoregressive Distributed Lag (ARDL) Models</a></li>
-  <li><a href="#panel-autoregressive-distributed-lag-ardl-models" id="toc-panel-autoregressive-distributed-lag-ardl-models" class="nav-link" data-scroll-target="#panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">7.2.2</span> Panel Autoregressive Distributed Lag (ARDL) Models</a></li>
-  <li><a href="#nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">7.2.3</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
-  <li><a href="#panel-nonlinear-autoregressive-distributed-lag-nardl-models" id="toc-panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="nav-link" data-scroll-target="#panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">7.2.4</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</a></li>
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution"><span class="header-section-number">8.2.1</span> The Normal Distribution</a></li>
   </ul></li>
+  <li><a href="#the-chi-squared-distribution" id="toc-the-chi-squared-distribution" class="nav-link" data-scroll-target="#the-chi-squared-distribution"><span class="header-section-number">8.3</span> The Chi-Squared Distribution</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +263,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time Series Regression and Forecasting</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability theory</span></h1>
 </div>
 
 
@@ -281,71 +280,287 @@ window.Quarto = {
 </header>
 
 
-<p>Any metric that is measured over regular time intervals forms a time series. Analysis of time series is commercially importance because of industrial need and relevance especially w.r.t forecasting (demand, sales, supply etc).</p>
-<p>Time series data is collected for a single entity over time. Time series data allows estimation of the effect on <span class="math inline">\(Y\)</span> of a change in <span class="math inline">\(X\)</span> over time. This is what econometricians call a dynamic causal effect. Another application of time series data is forecasting. The following packages and their dependencies are needed for reproduction of the code chunks presented throughout this chapter:</p>
+<p>Prerequisites:</p>
+<p>We will use following packages for reproducing the contents of this chapter. For managing the necessary packages, we will use <code>pacman</code> package manager.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(AER,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               dynly,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               forecast,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               readxl,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               stargazer,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               scales,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               quantmod,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               urca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A time series can be broken down to its components so as to systematically understand, analyze, model and forecast it.</p>
-<section id="how-to-create-a-time-series-in-r" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="how-to-create-a-time-series-in-r"><span class="header-section-number">7.1</span> How to create a Time Series in R ?</h2>
-<p>Upon importing your data into R, use ts() function as follows. The input Data used here is ideally a numeric vector of the class ‘numeric’ or ‘integer’.</p>
-<section id="ts-objects" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="ts-objects"><span class="header-section-number">7.1.1</span> <code>ts</code> objects</h3>
-<p>A time series can be thought of as a list of numbers, along with some information about what times those numbers were recorded. This information can be stored as a <code>ts</code> object in R.</p>
-<p>Suppose you have annual observations for the last few years:</p>
+<section id="random-variables" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">8.1</span> Random Variables</h2>
+<p>A random variable is essentially a random number. Random variables can be discrete or continuous.</p>
+<section id="discrete-random-variables" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">8.1.1</span> Discrete Random Variables</h3>
+<p>Discrete random variables have discrete outcomes, e.g., 0 and 1. A typical example for a discrete random variable <span class="math inline">\(D\)</span> is the result of a dice roll: in terms of a random experiment this is nothing but randomly selecting a sample of size 1 from a set of numbers which are mutually exclusive outcomes. Here, the sample space is<br>
+<span class="math display">\[[{1,2,3,4,5,6}]\]</span> A basic function to draw random samples from a specified set of elements is the function <code>sample()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_year <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/timeseries.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Year Observation
-1 2012         123
-2 2013          39
-3 2014          78
-4 2015          52
-5 2016         110</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
-<p>We turn this into a ts object using the ts() function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ts</span>(<span class="fu">c</span>(<span class="dv">123</span>,<span class="dv">39</span>,<span class="dv">78</span>,<span class="dv">52</span>,<span class="dv">110</span>), <span class="at">start=</span><span class="dv">2012</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Probability distribution: The probability distribution of a discrete random variable is the list of all possible values of the variable and their probabilities which sum to 1</p>
+<p>Cumulative probability distribution: The cumulative probability distribution function gives the probability that the random variable is less than or equal to a particular value.</p>
+<p>We can easily plot both functions using R. Since the probability equals <span class="math inline">\(1/6\)</span> for each outcome, we set up the vector probability by using the function <code>rep()</code> which replicates a given value a specified number of times.</p>
 <ul>
-<li><p>If you have annual data, with one observation per year, you only need to provide the starting year (or the ending year).</p></li>
-<li><p>For observations that are more frequent than once per year, you simply add a frequency argument. For example, if your monthly data is already stored as a numerical vector z, then it can be converted to a ts object like this:</p></li>
+<li>generate the vector of probabilities</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y &lt;- ts(z, start=2003, frequency=12)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>probability <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plot the probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(probability,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"outcomes"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the cumulative probability distribution we need the cumulative probabilities, i.e., we need the cumulative sums of the vector probability. These sums can be computed using <code>cumsum()</code></p>
+<ul>
+<li>generate the vector of cumulative probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cum_probability <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plot the probabilites</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cum_probability, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"outcomes"</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Cumulative Probability Distribution"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="time-plots" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="time-plots"><span class="header-section-number">7.1.2</span> Time plots</h3>
-<p>For time series data, the obvious graph to start with is a time plot. That is, the observations are plotted against the time of observation, with consecutive observations joined by straight lines.</p>
+<section id="bernoulli-random-variables" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="bernoulli-random-variables"><span class="header-section-number">8.1.2</span> Bernoulli Random Variables</h3>
+<p>A Bernoulli random variable takes on only two values: 0 and 1, with probabilities <span class="math inline">\(1 − p\)</span> and <span class="math inline">\(p\)</span>, respectively.</p>
+<p>The result of a single coin toss is a Bernoulli distributed random variable, i.e., a variable with two possible distinct outcomes. We might simulate coin tossing with outcomes H (heads) and T (tails).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "T"</code></pre>
+</div>
+</div>
+<p>Imagine you are about to toss a coin 10 times in a row and wonder how likely it is to end up with a 5 times heads. This is a typical example of what we call a Bernoulli experiment as it consists of n=10</p>
+<p>Bernoulli trials that are independent of each other and we are interested in the likelihood of observing k=5 successes H that occur with probability p=0.5 (assuming a fair coin) in each trial. Note that the order of the outcomes does not matter here.</p>
+<p>In R, we can solve problems like the one stated above by means of the function <code>dbinom()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">5</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">size =</span> <span class="dv">10</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">prob =</span> <span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2460938</code></pre>
+</div>
+</div>
+<p>We conclude that the probability of observing Head k=5 times when tossing a fair coin n=10 times is about 24.6%.</p>
+<p>Now assume we are interested in P(4≤k≤7), i.e.the probability of observing 4, 5,6 or 7 successes for B(10,0.5). This may be computed by providing a vector as the argument x in our call of <code>dbinom()</code> and summing up using <code>sum()</code>.</p>
+<ul>
+<li>compute P(4 &lt;= k &lt;= 7) using <code>dbinom()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7734375</code></pre>
+</div>
+</div>
+<p>The probability distribution of a discrete random variable is nothing but a list of all possible outcomes that can occur and their respective probabilities. In the coin tossing example we have 11 possible outcomes for k.</p>
+<ul>
+<li>set up vector of possible outcomes:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>To visualize the probability distribution function of k we may therefore do the following:</p>
+<ul>
+<li>assign the probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>probability_1 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(<span class="at">x =</span> k,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">size =</span> <span class="dv">10</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plot the outcomes against their probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> k, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> probability_1,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Function"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In a similar fashion we may plot the cumulative distribution function of k by executing the following code chunk:</p>
+<ul>
+<li>compute cumulative probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>prob_1 <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="at">q =</span> k, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">size =</span> <span class="dv">10</span>, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>plot the cumulative probabilities</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> k, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> prob_1,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Cumulative Distribution Function"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-and-variance" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="mean-and-variance"><span class="header-section-number">8.1.3</span> Mean and Variance</h3>
+<ul>
+<li>Compute mean of natural numbers from 1 to 6</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.5</code></pre>
+</div>
+</div>
+<ul>
+<li>An example of sampling with replacement is rolling a dice three times in a row.</li>
+</ul>
+<p>– Set seed for reproducibility and rolling a dice three times in a row</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="at">replace =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4 1</code></pre>
+</div>
+</div>
+<p>Note that every call of sample(1:6, 3, replace = T) gives a different outcome since we draw with replacement at random. To allow you to reproduce the results of computations that involve random numbers, we will used <code>set.seed()</code> to set R’s random number generator to a specific state.</p>
+<p>This is convenient for us:</p>
+<p>If we provide the same seed twice, we get the same sequence of numbers twice. Thus, setting a seed before executing R code which involves random numbers makes the outcome reproducible!</p>
+<p>We could also consider a much bigger number of trials, 10000 say.</p>
+<ul>
+<li>Set seed for reproducibility. Compute the sample mean of 10000 dice rolls</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>           <span class="dv">10000</span>, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">replace =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.5138</code></pre>
+</div>
+</div>
 </section>
 </section>
-<section id="linear-and-nonlinear-autoregressive-distributed-lag-models" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="linear-and-nonlinear-autoregressive-distributed-lag-models"><span class="header-section-number">7.2</span> Linear and Nonlinear Autoregressive Distributed Lag Models</h2>
-<section id="autoregressive-distributed-lag-ardl-models" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="autoregressive-distributed-lag-ardl-models"><span class="header-section-number">7.2.1</span> Autoregressive Distributed Lag (ARDL) Models</h3>
+<section id="probability-distributions-of-continuous-random-variables" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="probability-distributions-of-continuous-random-variables"><span class="header-section-number">8.2</span> Probability Distributions of Continuous Random Variables</h2>
+<p>Since a continuous random variable takes on a continuum of possible values, we cannot use the concept of a probability distribution as used for discrete random variables. Instead, the probability distribution of a continuous random variable is summarized by its probability density function.</p>
+<p>Every probability distribution that R handles has four basic functions whose names consist of a prefix followed by a root name. As an example, take the normal distribution. The root name of all four functions associated with the normal distribution is norm. The four prefixes are</p>
+<ul>
+<li>d for “density” - probability function / probability density function</li>
+<li>p for “probability” - cumulative distribution function</li>
+<li>q for “quantile” - quantile function (inverse cumulative distribution function)</li>
+<li>r for “random” - random number generator</li>
+</ul>
+<p>Thus, for the normal distribution we have the R functions <code>dnorm()</code>, <code>pnorm()</code>, <code>qnorm()</code> and <code>rnorm()</code>.</p>
+<section id="the-normal-distribution" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">8.2.1</span> The Normal Distribution</h3>
+<p>The probably most important probability distribution considered here is the normal distribution. Normal distributions are symmetric and bell-shaped. A normal distribution is characterized by its mean μ and its standard deviation σ, concisely expressed by <span class="math inline">\(N(μ,σ^2)\)</span>.</p>
+<p>In R, we can conveniently obtain densities of normal distributions using the function <code>dnorm()</code>. Let us draw a plot of the standard normal density function using <code>curve()</code> together with <code>dnorm()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x),</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.5</span>, <span class="fl">3.5</span>),</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Density"</span>, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Standard Normal Density Function"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="panel-autoregressive-distributed-lag-ardl-models" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="panel-autoregressive-distributed-lag-ardl-models"><span class="header-section-number">7.2.2</span> Panel Autoregressive Distributed Lag (ARDL) Models</h3>
 </section>
-<section id="nonlinear-autoregressive-distributed-lag-nardl-models" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">7.2.3</span> Nonlinear Autoregressive Distributed Lag (NARDL) Models</h3>
-</section>
-<section id="panel-nonlinear-autoregressive-distributed-lag-nardl-models" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="panel-nonlinear-autoregressive-distributed-lag-nardl-models"><span class="header-section-number">7.2.4</span> Panel Nonlinear Autoregressive Distributed Lag (NARDL) Models</h3>
+<section id="the-chi-squared-distribution" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="the-chi-squared-distribution"><span class="header-section-number">8.3</span> The Chi-Squared Distribution</h2>
+<p>Chi-square distributions are a family of continuous probability distributions. - plot the probability density function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dchisq</span>(x, <span class="at">df =</span> <span class="dv">3</span>), </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Probability density function of Chi-Squared Distribution, M = 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the next step, we loop over degrees of freedom M=2,…,7 and add a density curve for each M to the plot. We also adjust the line color for each iteration of the loop by setting col = M. At last, we add a legend that displays degrees of freedom and the associated colors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the density for M=1</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dchisq</span>(x, <span class="at">df =</span> <span class="dv">1</span>), </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"x"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Density"</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Chi-Square Distributed Random Variables"</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add densities for M=2,...,7 to the plot using a 'for()' loop </span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (M <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>) {</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dchisq</span>(x, <span class="at">df =</span> M),</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">add =</span> T, </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> M)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add a legend</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>       <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>), </span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span> , </span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>, </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Degrees of Freedom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_8_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Increasing the degrees of freedom shifts the distribution to the right (the mode becomes larger) and increases the dispersion (the distribution’s variance grows).</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -575,8 +790,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -687,7 +900,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -915,13 +1127,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter_7.html" class="pagination-link" aria-label="Visualization of qualitative data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualization of qualitative data</span></span>
+      <a href="./chapter_7.html" class="pagination-link" aria-label="Time series regression and forecasting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Time series regression and forecasting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_9.html" class="pagination-link" aria-label="Probability Theory">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,276 +1,90 @@
-# Difference in Differences
-
-## Prerequisites
-
-We will use following packages for reproducing the contents of this chapter. For mamaging the necessary packages, we will use `pacman` package manager.
-
-```{r}
-pacman::p_load(tidyverse,
-               knitr,
-               dplyr,
-               tidyr,
-               ggplot2,
-               readr,
-               kableExtra,
-               stargazer,
-               lmtest,
-               plm)
-```
-
-## Before-and-after and Difference-in-Differences designs
-
-In observational studies, the data collected over time are a valuable source of information. Multiple measurements taken over time on the same units are called longitudinal data or panel data. Longitudinal data often yield a more credible comparison of the treatment and control groups than cross-section data because the former contain additional information about changes over time.
-
--   The before-and-after design examines how the outcome variable changed from the pre-treatment period to the post-treatment period for the same set of units. The design is able to adjust for any confounding factor that is specific to each unit but does not change over time. However, the design does not address possible bias due to time-varying confounders.
-
--   The difference-in-differences (DiD) design extends the before-and-after design to address the confounding bias due to time trends. The key assumption behind the DiD design is that the outcome variable follows a parallel trend in the absence of treatment.
-
-Following figure graphically illustrates this assumption using the minimum-wage study data. The figure shows the outcome of interest, i.e., the average proportion of full-time employees, before and after the increase in the minimum wage for both the treatment group (fast-food restaurants in NJ, indicated by the solid black circles) and the control group (restaurants in PA, represented by the open black circles). In this setting, we can estimate the counterfactual outcome for the treatment group by assuming that the time trend for the treatment group is parallel to the observed trend for the control group. This estimate is indicated by the solid blue triangle.
-
-```{r echo=FALSE, out.width='80%', fig.align='center', fig.cap="The Difference-in-Differences Design in the Minimum-Wage Study"}
-knitr::include_graphics('figure/did_1.png')
-```
-
-In the minimum- wage study, the researchers had collected the employment and wage information from the same set of restaurants before the minimum wage was increased in NJ. This pretreatment information allows several alternative designs for estimating causal effects in observational studies.
-
-### Minimum wage and unemployment
-
-Our discussion of observational studies is based on the aforementioned minimum- wage debate. Two social science researchers examined the impact of raising the minimum wage on employment in the fast-food industry.3 In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from USD 4.25 to USD 5.05 per hour. Did such an increase in the minimum wage reduce employment as economic theory predicts?
-
-## Wide and long data formats
-
-Wide data set:
-
-```{r}
-city_wide_df <- read.csv("data/city_wide.csv")
-city_wide_df %>% knitr::kable() %>% kableExtra::kable_styling()
-```
-
-```{r}
-city_long_df <- read.csv("data/city_long.csv")
-city_long_df %>% knitr::kable() %>% kableExtra::kable_styling()
-```
-
-Convert "city_wide_df" to long data set
-
-```{r}
-city_wide_df %>%
-  tidyr::pivot_longer(
-    cols = c(pop_2000, pop_2010, pop_2020), # -city, !city, starts_with(pop_), etc... would also work
-    names_to = "year", # where do we want the names of the columns to go? (year)
-    names_prefix = "pop_", # names_prefix removes matching text from the start of each variable name (not always necessary)
-    values_to = "pop" # where do we want the values in the columns to go? (pop)
-  )
-```
-
-### Why do we care about the data format
-
-In some instances long format datasets are required for advanced statistical analysis and graphing. For example, if we wanted to run the regression formulation of the difference in differences model, we would need to input our data in long format. Furthermore, having our data in long format is very useful when plotting. Packages such as ggplot2, expect that your data will be in long form for the most part.
-
-```{r}
-soda_tax_df <- read.csv("data/soda_tax_df.csv")
-```
-
-Are this wide or long data
-
-```{r}
-soda_tax_df %>% head(10)
-```
-
-Our soda_tax_df is in wide format. We can convert our data to a long format to render the time and treatment dummy variables and save is to the soda_tax_df_long.
-
-We will utilize the pivot_longer() function from tidyr to format our data frame.
-
-```{r}
-soda_tax_df_long <- 
-  soda_tax_df %>% # the wide format df
-  tidyr::pivot_longer(cols = c(pre_tax, post_tax), # both contain information about soda drank at two points in time
-                      names_to = "period", # grab the names of pre and post and save them to period
-                      values_to = "soda_drank") %>% # grab values from pre and post and put them in soda_drank
-  dplyr::mutate(after_tax = ifelse(period == "post_tax", 1, 0)) # create dummy for period
-
-head(soda_tax_df_long, 10)
-```
-
-### Exploring our data
-
-We can use our soda_tax_df to explore the distribution of soda consumption at different points in time.
-
-Let's try first to look at the differences in the distribution only at the
-
-#### pre-tax time period:
-
-```{r}
-ggplot(soda_tax_df, aes(x = pre_tax, fill = factor(treatment))) + 
-  geom_density(alpha = 0.5) + # density plot with transparency (alpha = 0.5)
-  scale_fill_manual(name = " ", # changes to fill dimension
-                     values = c("#a7a8aa", "#cc0055"),
-                     labels = c("Control", "Treatment")) +
-  theme_minimal() +
-  theme(legend.position = "bottom") +
-  labs(title = "Distribution of soda consumption before the tax was imposed",
-       x = "Soda consumtion (oz)",
-       y = "Density")
-```
-
-Let's look at the
-
-#### post-tax period:
-
-```{r}
-ggplot(soda_tax_df, aes(x = post_tax, fill = factor(treatment))) + 
-  geom_density(alpha = 0.5) + # density plot with transparency (alpha = 0.5)
-  scale_fill_manual(name = " ", # changes to fill dimension
-                     values = c("#a7a8aa", "#cc0055"),
-                     labels = c("Control", "Treatment")) +
-  theme_minimal() +
-  theme(legend.position = "bottom") +
-  labs(title = "Distribution of soda consumption after the tax was imposed",
-       x = "Soda consumtion (oz)",
-       y = "Density")
-```
-
-Since in our soda_tax_df_long we represent the time and soda consumption dimensions under the same columns, we can create even more complex graphs.
-
-#### grammar of graphs: Facets
-
-We will use facet_grid() which forms a matrix of panels defined by row and column faceting variables. It is most useful when you have two discrete variables, and all combinations of the variables exist in the data.
-
-```{r}
-soda_tax_df_long %>% 
-  dplyr::mutate(period = ifelse(period == "post_tax", "T1 - Post-tax", "T0 - Pre-tax"), # create more meaningful labels
-                treatment = ifelse(treatment == 1, "Treated (D=1)", "Untreated (D=0)")) %>%
-  dplyr::group_by(period, treatment) %>% # group to extract means of each group at each time
-  dplyr::mutate(group_mean = mean(soda_drank)) %>% # extract means of each group at each time
-ggplot(., aes(x = soda_drank, fill = factor(treatment))) +
-  geom_density(alpha = 0.5) +
-  scale_fill_manual(name = " ", # changes to fill dimension
-                     values = c("#cc0055", "#a7a8aa"),
-                     labels = c("Treatment", "Control")) +
-  facet_grid(treatment~period) + # we specify the matrix (treatment and period)
-  geom_vline(aes(xintercept = group_mean), linetype = "longdash") + # add vertical line with the mean
-  theme_bw() +
-  theme(legend.position = "none") +
-  labs(x = "Soda consumed (oz)",
-       y = "Density")
-```
-
-### Modeling and estimating
-
-So far we have ignored time in our estimations. Difference-in-differences compares the changes in outcomes over time between units under different treatment states. This allows us to correct for any differences between the treatment and comparison groups that are constant over time assuming that the trends in time are parallel.
-
-#### Calculating without time
-
-If we did not have the pre_tax baseline measure, we would likely utilize the post_tax to explore the average effect on the treated. In this case, we would model this as:
-
-```{r}
-after_model <- lm(post_tax ~ treatment, data = soda_tax_df)
-stargazer(after_model, type = "text")
-```
-
-We could read this result substantively as: those who lived in districts were the tax was implemented consumed on average 146.9 ounces less of sugar-added drinks per week compared to those who lived in districts were the tax was not put in place. This calculation would give us a comparison of the treatment and control groups after treatment.
-
-We would have to think carefully about possible factors that could differentiate our treatment and control groups. We use a treatment indicator based on the districts where the measure was able to be implemented. Treatment was not fully randomly assigned, so there may be lots of potential confounders that create baseline differences in the scores for those living in Old Eagleton compared to those in Snake Lounge, which also affect the after-treatment comparisons.
-
-If we think about the mechanics behind this naive calculation, we are just comparing the average observed outcomes for those treated and not treated after the tax was imposed:
-
-| Treatment | Average after tax |
-|-----------|-------------------|
-| 0         | 523.2726          |
-| 1         | 376.3548          |
-
-```{r}
-ggplot(soda_tax_df, aes(x = post_tax, fill = factor(treatment))) +
-  geom_density(alpha = 0.5) +
-  scale_fill_manual(name = " ", # changes to fill dimension
-                     values = c("#a7a8aa", "#cc0055"),
-                     labels = c("Control", "Treatment")) +
-  geom_vline(xintercept = 523.27, linetype = "longdash", color = "#a7a8aa") + #avg for the untreated
-  geom_vline(xintercept = 376.35, linetype = "longdash", color = "#cc0055") + #avg for the treated
-  theme_minimal() +
-  theme(legend.position = "bottom") +
-  labs(title = "Distribution of soda consumption after the tax was imposed",
-       x = "Soda consumtion (oz)",
-       y = "Density")
-```
-
-#### Including the time dimension (Manual extraction of the DiD estimate)
-
-| Treatment | Pre-tax | Post-tax | Difference |
-|-----------|---------|----------|------------|
-| 1         | 511.13  | 376.35   | -134.78    |
-| 0         | 508.31  | 523.27   | 14.97      |
-
-We can just manually substract:
-
-$$ DiD = -134.79 -14.97 = -149.76$$
-
-#### Including the time dimension
-
-We can introduce the time component to our calculation by incorporating the pre-treatment levels of sugar-added drink consumption, which gives us the diff-in-diff estimand. We could calculate this in a fairly straightforward manner by creating a variable assessing the change in our wide format data frame:
-
--   change: The difference in sugar-added drink consuption between post- and pre-tax
+# Venn diagram
 
 ```{r}
 #| warning: false
-soda_tax_df <- soda_tax_df %>%
-  dplyr::mutate(change = post_tax - pre_tax) #simple substraction
-
-did_model <- lm(change ~ treatment, data = soda_tax_df)
-stargazer(did_model, after_model, type = "text")
+#| message: false
+pacman::p_load(ggVennDiagram,
+               ggplot2)
 ```
 
-We could read this result substantively as: those who lived in districts were the tax was implemented consumed on average 149.7 ounces less of sugar-added drinks per week compared to those who lived in districts were the tax was not put in place. This calculation would give us the change, or difference, in sugar-added drink consumption for treatment and control groups.
-
-To believe the results of our did_model, we would need to believe that there are parallel trends between the two groups.
-
-#### Including the time dimension (Regression formulation of the DiD model)
-
-For this calculation we need our data in long format to use the time and treatment dummy variables. We can see that under our long format, we have two entries for every individual.
+## Basic 2D Venn diagram:
 
 ```{r}
 #| warning: false
-did_long <- lm(soda_drank ~ treatment + after_tax + treatment*after_tax, data = soda_tax_df_long) #running our model
-
-did_long_clustered_se <- coeftest(did_long, vcov=vcovHC(did_long,type="HC0",cluster="district")) #clustering out standard errors at the district level
-
-stargazer::stargazer(did_long_clustered_se, type = "text")
+#| message: false
+x <- list(A = 1:5, B = 2:7)
+ggVennDiagram(x)
 ```
+
+## 3D Venn diagram:
+
+If you pass a list with three elements you will get some Venn diagram like the following
 
 ```{r}
-soda_tax_df_long %>% 
-  dplyr::mutate(period = ifelse(period == "post_tax", "T1 - Post-tax", "T0 - Pre-tax"), # create more meaningful labels
-                treatment = ifelse(treatment == 1, "Treated (D=1)", "Untreated (D=0)")) %>%
-  dplyr::group_by(period, treatment) %>% # group to extract means of each group at each time
-  dplyr::mutate(group_mean = mean(soda_drank)) %>% # extract means of each group at each time
-ggplot(., aes(x = soda_drank, fill = factor(treatment))) +
-  geom_density(alpha = 0.5) +
-  scale_fill_manual(name = " ", # changes to fill dimension
-                     values = c("#cc0055", "#a7a8aa"),
-                     labels = c("Treatment", "Control")) +
-  facet_grid(treatment~period) + # we specify the matrix (treatment and period)
-  geom_vline(aes(xintercept = group_mean), linetype = "longdash") + # add vertical line with the mean
-  theme_bw() +
-  theme(legend.position = "none") +
-  labs(x = "Soda consumed (oz)",
-       y = "Density")
+#| warning: false
+#| message: false
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x)
 ```
+
+## Changing the colors of the diagram
+
+-   As `ggVennDiagram` is based on `ggplot2` you can add more layers or override the ones existing. In order to change the colors use `scale_fill_gradient` as in the following example:
 
 ```{r}
-soda_tax_df_long %>%
-  dplyr::group_by(period, treatment) %>% # group to extract means of each group at each time
-  dplyr::mutate(group_mean = mean(soda_drank)) %>%
-  ggplot(aes(x = after_tax, y = group_mean, color = factor(treatment))) +
-  geom_point() +
-  geom_line(aes(x = after_tax, y = group_mean)) +
-  scale_x_continuous(breaks = c(0,1)) +
-  scale_color_manual(name = " ", # changes to color dimension
-                     values = c("#a7a8aa", "#cc0055"),
-                     labels = c("Control", "Treatment")) +
-  labs(x = "Time periods", y = "Ounces of soda drank per week", color = "Treatment group")+
-  theme_minimal() 
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x) + 
+  scale_fill_gradient(low = "#F4FAFE", high = "#4981BF") 
 ```
 
--   Drafting some brief recommendations
+-   The border can also be customized but making use of color argument. The line width and line style can be changed with `lwd` and `lty`, respectively.
 
-Based on your analysis of the data at hand, you decide to recommend that the tax measure should move forward in the rest of Pawnee. You state that it is a very good example of a pigouvian tax, which captures the negative externalities not included in the market price of sugar-added drinks. The findings suggest that the tax reduced the weekly sugar-added drink consumption by about 150 liquid ounces (almost 4.5 liters).
+## Labels and group names
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, category.names = c("A",
+                                    "B",
+                                    "C"))
+```
+
+-   Labels with percentages
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, 
+              label = "percent",
+              category.names = c("A",
+                                    "B",
+                                    "C")) 
+```
+
+-   Remove the labels
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x, 
+              label = "none",
+              category.names = c("A",
+                                    "B",
+                                    "C")) 
+```
+
+-Customize the legend
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10)
+ggVennDiagram(x) + 
+  guides(fill = guide_legend(title = "Title")) +
+  theme(legend.title = element_text(color = "black"),
+        legend.position = "bottom") 
+```
+
+## 4D Venn diagram
+
+You can also pass a list with up to four different elements.
+
+```{r}
+x <- list(A = 1:5, B = 2:7, C = 5:10, D = 8:15)
+ggVennDiagram(x)
+```

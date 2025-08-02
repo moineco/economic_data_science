@@ -1,65 +1,124 @@
-# Data tidying
+# Visualization of qualitative data
 
-Let\`s learn a consistent way to organize the data in R using a system called tidy data. Getting your data into this format requires some work up front, but that work pays off in the long term.
+Visualization can either be made with vectors and tables but also though diagrams like histograms, bar charts, pie charts etc. In each case, it is quite important to distinct our observations in quantitative or qualitative data. We start with qualitative data, which are usually represented with tables, bar charts and pie charts.
 
-## Prerequisites
+Example: Let’s assume we have the answers given by 20 persons to the question: “What means of transportation do you use every day to go to your job?”. Respondents had to choose between car, bus, metro and foot. The answers given where:
 
-We’ll focus on `tidyr`, a package that provides a bunch of tools to help tidy up your messy datasets. `tidyr` is a member of the core `tidyverse`. We will use `pacman` package to manage the necessary packages for this chapter.
+> car, car, bus, metro, metro, car, metro, metro, foot, car, foot, bus, bus, metro, metro, car, car, car, metro, car
 
-```{r}
-pacman::p_load(tidyverse)
-```
-
-## Tidy data
-
-You can represent the same underlying data in multiple ways. The example below shows the same data organized in three different ways. Each dataset shows the same values of four variables: country, year, population, and number of documented cases of TB (tuberculosis), but each dataset organizes the values in a different way.
-
-There are three interrelated rules that make a dataset tidy:
-
--   
-
-    1.  Each variable is a column; each column is a variable.
-
--   
-
-    2.  Each observation is a row; each row is an observation.
-
--   
-
-    3.  Each value is a cell; each cell is a single value.
-
-```{r echo=FALSE, out.width='100%', fig.align='center', fig.cap="The following three rules make a dataset tidy: variables are columns, observations are rows, and values are cells"}
-knitr::include_graphics('figure/tidy_1.png')
-```
-
--   Why ensure that your data is tidy?
-
-This is a consistent way of storing data. `dplyr`, `ggplot2`, and all the other packages in the tidyverse are designed to work with tidy data.
+We initially insert data by using the m vector. Our data are categorical so we should add these values inside double quotes:
 
 ```{r}
-table1 <- read.csv("data/table_1.csv")
-head(table1)
+m = c("car", "car", "bus", "metro", "metro", "car", "metro", "metro", "foot", "car", "foot", "bus", "bus", "metro", "metro", "car", "car", "car", "metro", "car")
 ```
 
-Here are a few small examples showing how you might work with table1.
+FREQUENCY TABLE: We can represent our data in a frequency table by using the table() command.
 
 ```{r}
-# Compute rate per 10,000
-table1 |>
-  mutate(rate = cases / population * 10000)
+table(m)
+```
+
+If we wanted to view the relative frequency then we could use the prop.table(table()) command.
+
+```{r}
+prop.table(table(m))
+```
+
+BAR CHARTS: Frequency bar charts can be displayed with the command:
+
+```{r}
+barplot(table(m))
+```
+
+Relative frequency bar charts can be displayed with the command:
+
+```{r}
+barplot(prop.table(table(m)))
+```
+
+PIE CHART: We can display our data in a pie chart by using the command:
+
+```{r}
+pie(table(m))
+```
+
+### Contigency Matrix
+
+A contingency matrix has to do with two categorical variables and displays their frequency distribution.
+
+-   Let’s assume that in the previous example’s data we have added the gender of each person.
+
+-   For convenience, let’s assume that the first 8 people were male (M) and the remaining 12 were female (F).
+
+We create the vector g:
+
+```{r}
+g = c(rep("M", 8), rep("F", 12))
+g
+```
+
+We create the double input frequency table mg like this:
+
+```{r}
+mg = table(m,g)
+mg
+```
+
+Then, using the table, we calculate marginal frequencies in terms of means of transportation and gender, respectively:
+
+```{r}
+margin.table(mg,1)
 ```
 
 ```{r}
-# Compute total cases per year
-table1 |> 
-  group_by(year) |> 
-  summarize(total_cases = sum(cases))
+margin.table(mg,2)
+```
+
+We can work with the relative frequency table with the exact same way.
+
+```{r}
+prop.table(mg)
 ```
 
 ```{r}
-# Visualize changes over time
-ggplot(table1, aes(x = year, y = cases)) +
-  geom_line(aes(group = country), color = "grey50") +
-  geom_point(aes(color = country, shape = country)) +
-  scale_x_continuous(breaks = c(1999, 2000)) # x-axis breaks at 1999 and 2000
+prop.table(mg,1)
+```
+
+```{r}
+prop.table(mg,2)
+```
+
+### Stacked bar charts and grouped bar charts
+
+We can display qualitative data coming from the values of two variables by using a stacked bar chart or a grouped bar chart.
+
+```{r}
+barplot(mg)
+```
+
+By using the command parameters, the result is much better:
+
+```{r}
+barplot(mg, xlim=c(0,2), xlab="Gender",
+        legend =levels(m), col =1:4)
+```
+
+```{r}
+barplot(mg, xlim = c(0,2), xlab = "Transportation",
+        legend = levels(g), col=1:2)
+```
+
+The below commands create grouped bar charts.
+
+```{r}
+barplot(prop.table(mg,1), width = 0.25,
+        xlim = c(0,3), ylim = c(0,1), xlab = "Gender",
+        legend = levels(m), beside = T, col = 1:4)
+```
+
+```{r}
+mg = table(g,m)
+barplot(prop.table(mg,2), width = 0.25,
+       xlim = c(0,3), ylim = c(0,1), xlab = "Transportation",
+       legend = levels(g), beside = T, col = 1:2)
 ```

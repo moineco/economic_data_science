@@ -3,20 +3,19 @@ project:
   output-dir: docs
 
 book:
-  title: "Data Science and Economics"
+  title: "Economic Data Science"
   author: "Moinul Islam"
   date: today
   chapters:
     - index.qmd
     - chapter_1.qmd
-    #- chapter_2.qmd
+    - chapter_2.qmd
     - chapter_3.qmd
     - chapter_4.qmd
     - chapter_5.qmd
     - chapter_6.qmd
     - chapter_7.qmd
     - chapter_8.qmd
-    - chapter_9.qmd
     - references.qmd
 bibliography: data_science.bib
 
